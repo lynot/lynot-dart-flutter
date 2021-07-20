@@ -1,8 +1,8 @@
 name: flutter_lyform
 description: A new Flutter package project.
 version: 0.0.1
-homepage: https://github.com/lynotofficial/flutter_lyform
-repository: https://github.com/lynotofficial/flutter_lyform
+homepage: https://github.com/lynotofficial/lynot-dart-flutter
+repository: https://github.com/lynotofficial/lynot-dart-flutter/packages/flutter_lyform
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
