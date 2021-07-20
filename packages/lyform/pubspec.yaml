@@ -1,0 +1,17 @@
+name: lyform
+description: A new Flutter package project.
+version: 0.0.1
+homepage: https://github.com/lynotofficial/lyform/
+repository: https://github.com/lynotofficial/lyform
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  bloc: ^7.0.0
+  collection: ^1.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:

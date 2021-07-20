@@ -1,0 +1,7 @@
+name: lynot-dart-flutter
+
+packages:
+  - packages/**
+
+scripts:
+  analyze: melos exec -- pub global run tuneup check
