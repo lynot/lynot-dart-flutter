@@ -3,9 +3,8 @@ import 'package:bloc/bloc.dart';
 
 part 'input_states.dart';
 part 'input_event.dart';
-part 'input_error.dart';
 
-typedef InputError? InputValidator<T>(T value);
+typedef E? InputValidator<T, E>(T value);
 
 enum ValidationType {
   none,
@@ -13,8 +12,8 @@ enum ValidationType {
   always,
 }
 
-class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
-  final List<InputValidator<T>> validators;
+class InputBloc<T, E> extends Bloc<InputBlocEvent<T>, InputBlocState<T, E>> {
+  final List<InputValidator<T, E>> validators;
 
   T pureValue;
   final ValidationType validationType;
@@ -41,22 +40,22 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
     if (validationType == ValidationType.always ||
         (validationType == ValidationType.explicit)) {
       final error = isPure ? null : _findError(state.value);
-      emit(InputBlocState<T>(state.value, error));
+      emit(InputBlocState<T, E>(state.value, error));
     }
   }
 
-  InputError? _findError(T value) {
+  E? _findError(T value) {
     return validators.fold(
         null, (previousValue, validator) => previousValue ?? validator(value));
   }
 
   @override
-  Stream<InputBlocState<T>> mapEventToState(event) async* {
+  Stream<InputBlocState<T, E>> mapEventToState(event) async* {
     if (event is PureEvent) {
       pureValue = event.value;
     }
 
-    InputError? error;
+    E? error;
 
     if (validationType == ValidationType.always ||
         (validationType == ValidationType.explicit && event is ValidateEvent))
@@ -64,6 +63,6 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
 
     error = event.value == pureValue ? null : error;
 
-    yield InputBlocState<T>(event.value, error);
+    yield InputBlocState<T, E>(event.value, error);
   }
 }

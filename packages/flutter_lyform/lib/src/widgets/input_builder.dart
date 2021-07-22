@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lyform/lyform.dart';
 
-class InputBlocBuilder<T> extends StatelessWidget {
-  final Widget Function(BuildContext, InputBlocState<T>) builder;
+class InputBlocBuilder<T, E> extends StatelessWidget {
+  final Widget Function(BuildContext, InputBlocState<T, E>) builder;
 
-  final InputBloc<T> bloc;
+  final InputBloc<T, E> bloc;
 
   const InputBlocBuilder({
     required this.builder,
@@ -15,7 +15,7 @@ class InputBlocBuilder<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InputBloc<T>, InputBlocState<T>>(
+    return BlocBuilder<InputBloc<T, E>, InputBlocState<T, E>>(
         bloc: bloc, builder: builder);
   }
 }
