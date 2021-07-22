@@ -19,7 +19,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   Future<FormBlocState<D, E>> onSubmmit();
 
   bool isValid() {
-    return inputs.every((input) => input.isValid);
+    return inputs.every((input) => input.isValid || !input.isPure);
   }
 
   bool isPure() {
