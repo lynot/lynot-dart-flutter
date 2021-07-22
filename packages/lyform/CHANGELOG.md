@@ -1,3 +1,9 @@
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**: Change from InputError to Generic type.
+
 ## 0.0.1+1
 
  - **FIX**: homepage and repository links.
