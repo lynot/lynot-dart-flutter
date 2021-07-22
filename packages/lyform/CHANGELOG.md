@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+ - **FIX**: change FormBloc.isValid condition excluding pure InputBlocs.
+
 ## 0.1.0
 
 > Note: This release has breaking changes.
