@@ -18,11 +18,15 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   T pureValue;
   final ValidationType validationType;
 
-  InputBloc(
-      {required this.pureValue,
-      this.validationType = ValidationType.always,
-      this.validators = const []})
-      : super(InputBlocState(pureValue));
+  InputBloc({
+    required this.pureValue,
+    ValidationType? validationType,
+    this.validators = const [],
+  })  : this.validationType = validationType ??
+            (validators.length > 0
+                ? ValidationType.always
+                : ValidationType.none),
+        super(InputBlocState(pureValue));
 
   bool get isPure => pureValue == state.value;
   bool get isValid => !isPure && state.error == null;
