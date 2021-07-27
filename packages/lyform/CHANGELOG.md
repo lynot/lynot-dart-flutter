@@ -1,3 +1,7 @@
+## 0.1.0+2
+
+ - **FIX**: simplify input errors to String.
+
 ## 0.1.0+1
 
  - **FIX**: change FormBloc.isValid condition excluding pure InputBlocs.
