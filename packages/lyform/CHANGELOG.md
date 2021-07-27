@@ -1,3 +1,7 @@
+## 0.1.1
+
+ - **FEAT**: optional validation.
+
 ## 0.1.0+2
 
  - **FIX**: simplify input errors to String.
