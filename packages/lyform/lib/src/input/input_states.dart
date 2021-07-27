@@ -1,13 +1,13 @@
 part of 'input_bloc.dart';
 
-class InputBlocState<T, E> {
+class InputBlocState<T> {
   final T value;
-  final E? error;
+  final String? error;
 
   InputBlocState(this.value, [this.error]);
 
   bool operator ==(dynamic other) {
-    return (other is InputBlocState<T, E> &&
+    return (other is InputBlocState<T> &&
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value))) &&
         (identical(other.error, value) ||
