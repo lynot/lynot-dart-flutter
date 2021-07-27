@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lyform/lyform.dart';
 
-class InputBlocBuilder<T, E> extends StatelessWidget {
+class InputBlocBuilder<T> extends StatelessWidget {
   final Widget Function(BuildContext, InputBlocState<T>) builder;
 
   final InputBloc<T> bloc;
