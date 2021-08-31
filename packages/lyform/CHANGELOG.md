@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - **FEAT**: add optional value input.
+
 ## 0.1.1
 
  - **FEAT**: optional validation.
