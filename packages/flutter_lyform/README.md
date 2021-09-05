@@ -1,14 +1,15 @@
-# flutter_lyform
+# Flutter LyForm
 
-A new Flutter package project.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?label=license)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/pub/v/flutter_lyform)](https://pub.dev/packages/flutter_lyform)
+[![codecov](https://codecov.io/gh/lynotofficial/lynot-dart-flutter/branch/main/graph/badge.svg?token=RTBS8EX4GQ)](https://codecov.io/gh/lynotofficial/lynot-dart-flutter)
+[![Test](https://github.com/lynotofficial/lynot-dart-flutter/actions/workflows/test.yml/badge.svg)](https://github.com/lynotofficial/lynot-dart-flutter/actions/workflows/test.yml)
+[![Melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos) [![Lint](https://img.shields.io/badge/style-lint-4BC0F.svg)](https://pub.dev/packages/lint)
+[![Last commit](https://img.shields.io/github/last-commit/lynotofficial/lynot-dart-flutter.svg?style=flat)](https://github.com/lynotofficial/lynot-dart-flutter/commits)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/lynotofficial/lynot-dart-flutter)](https://github.com/lynotofficial/lynot-dart-flutter/commits)
+[![Github Stars](https://img.shields.io/github/stars/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter/stargazers)
+[![Github Forks](https://img.shields.io/github/forks/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter/network/members)
+[![Github Watchers](https://img.shields.io/github/watchers/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter)
+[![GitHub contributors](https://img.shields.io/github/contributors/lynotofficial/lynot-dart-flutter?label=code%20contributors)](https://github.com/lynotofficial/lynot-dart-flutter/graphs/contributors)
 
-## Getting Started
-
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+---
