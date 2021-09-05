@@ -1,6 +1,6 @@
 name: flutter_lyform
 description: A new Flutter package project.
-version: 0.1.0+5
+version: 0.1.0+6
 homepage: https://github.com/lynotofficial/lynot-dart-flutter
 repository: https://github.com/lynotofficial/lynot-dart-flutter/packages/flutter_lyform
 
@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   flutter_bloc: ^7.0.1
-  lyform: ^0.1.2
+  lyform: ^0.1.2+1
   flutter:
     sdk: flutter
 
