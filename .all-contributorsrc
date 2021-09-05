@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "70nybl4nc0",
+      "name": "Tony Raul Blanco Fernandez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34517439?v=4",
+      "profile": "https://github.com/70nybl4nc0",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "lynot-dart-flutter",
+  "projectOwner": "lynotofficial",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
