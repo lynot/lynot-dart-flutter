@@ -11,10 +11,25 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     for (final input in inputs) {
       input.stream.listen((_) => change());
     }
+    on<FormChangedEvent>((event, emit) {
+      if (isPure()) {
+        emit(FormPureState<D, E>());
+      } else {
+        emit(isValid() ? FormValidState<D, E>() : FormInvalidState<D, E>());
+      }
+    });
+    on<FormSubmitEvent>((event, emit) async {
+      if (!validate()) {
+        emit(FormInvalidState<D, E>());
+        return;
+      } else {
+        emit(FormLoadingState<D, E>());
+        emit(await onSubmmit());
+      }
+    });
   }
 
   List<InputBloc> get inputs;
-
   Future<FormBlocState<D, E>> onSubmmit();
 
   bool isValid() {
@@ -38,25 +53,5 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
 
   void submit() {
     add(const FormSubmitEvent());
-  }
-
-  @override
-  Stream<FormBlocState<D, E>> mapEventToState(FormBlocEvent event) async* {
-    if (event is FormChangedEvent) {
-      if (isPure()) {
-        yield FormPureState<D, E>();
-      } else {
-        yield isValid() ? FormValidState<D, E>() : FormInvalidState<D, E>();
-      }
-    }
-    if (event is FormSubmitEvent) {
-      if (!validate()) {
-        yield FormInvalidState<D, E>();
-        return;
-      } else {
-        yield FormLoadingState<D, E>();
-        yield await onSubmmit();
-      }
-    }
   }
 }

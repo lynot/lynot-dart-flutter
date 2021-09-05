@@ -22,7 +22,21 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
             (validators.isNotEmpty
                 ? ValidationType.always
                 : ValidationType.none),
-        super(InputBlocState(pureValue));
+        super(InputBlocState(pureValue)) {
+    on<PureEvent<T>>((event, emit) {
+      pureValue = event.value;
+    });
+    on<InputBlocEvent<T>>((event, emit) {
+      String? error;
+      if (validationType == ValidationType.always ||
+          (validationType == ValidationType.explicit &&
+              event is ValidateEvent)) {
+        error = _findError(event.value);
+      }
+      error = event.value == pureValue ? null : error;
+      emit(InputBlocState<T>(event.value, error));
+    });
+  }
 
   final List<InputValidator<T>> validators;
   T pureValue;
@@ -52,23 +66,5 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   String? _findError(T value) {
     return validators.fold(
         null, (previousValue, validator) => previousValue ?? validator(value));
-  }
-
-  @override
-  Stream<InputBlocState<T>> mapEventToState(InputBlocEvent<T> event) async* {
-    if (event is PureEvent) {
-      pureValue = event.value;
-    }
-
-    String? error;
-
-    if (validationType == ValidationType.always ||
-        (validationType == ValidationType.explicit && event is ValidateEvent)) {
-      error = _findError(event.value);
-    }
-
-    error = event.value == pureValue ? null : error;
-
-    yield InputBlocState<T>(event.value, error);
   }
 }
