@@ -1,3 +1,7 @@
+## 0.1.3
+
+ - **FEAT**: migrate to bloc 7.2 and new on<Event> API.
+
 ## 0.1.2+2
 
  - **FIX**: fix validation on submit.
