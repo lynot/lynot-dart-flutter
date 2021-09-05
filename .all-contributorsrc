@@ -24,7 +24,8 @@
       "profile": "http://leynier.github.io",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "test"
       ]
     }
   ],
