@@ -1,3 +1,7 @@
+## 0.1.2+2
+
+ - **FIX**: fix validation on submit.
+
 ## 0.1.2+1
 
  - **FIX**: optional fields cant be pure.
