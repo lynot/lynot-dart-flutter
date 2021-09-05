@@ -1,6 +1,6 @@
 # LynoT Dart/Flutter packages
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?label=license)](https://opensource.org/licenses/MIT)
@@ -31,6 +31,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/70nybl4nc0"><img src="https://avatars.githubusercontent.com/u/34517439?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tony Raul Blanco Fernandez</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=70nybl4nc0" title="Code">💻</a> <a href="#maintenance-70nybl4nc0" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="http://leynier.github.io"><img src="https://avatars.githubusercontent.com/u/36774373?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leynier Gutiérrez González</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=leynier" title="Code">💻</a> <a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=leynier" title="Documentation">📖</a></td>
   </tr>
 </table>
 
