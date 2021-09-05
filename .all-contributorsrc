@@ -1,6 +1,8 @@
 {
   "files": [
-    "README.md"
+    "README.md",
+    "packages/flutter_lyform/README.md",
+    "packages/lyform/README.md"
   ],
   "imageSize": 100,
   "commit": false,
