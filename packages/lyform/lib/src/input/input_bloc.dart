@@ -30,8 +30,8 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
         super(InputBlocState(pureValue));
 
   bool isOptional;
-  bool get isPure => pureValue == state.value && !isOptional;
-  bool get isValid => !isPure && state.error == null;
+  bool get isPure => pureValue == state.value;
+  bool get isValid => !isPure && state.error == null || isPure && isOptional;
   bool get isInvalid => !isValid;
 
   void dirty(T value) {
