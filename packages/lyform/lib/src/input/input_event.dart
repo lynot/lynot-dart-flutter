@@ -1,14 +1,15 @@
 part of 'input_bloc.dart';
 
 abstract class InputBlocEvent<T> {
-  final T value;
-
   InputBlocEvent(this.value);
 
+  final T value;
+
+  @override
   bool operator ==(dynamic other) {
-    return (other is InputBlocEvent<T> &&
+    return other is InputBlocEvent<T> &&
         (identical(other.value, value) ||
-            const DeepCollectionEquality().equals(other.value, value)));
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override

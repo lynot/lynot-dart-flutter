@@ -1,10 +1,10 @@
-import 'package:collection/collection.dart';
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 
-part 'input_states.dart';
 part 'input_event.dart';
+part 'input_states.dart';
 
-typedef String? InputValidator<T>(T value);
+typedef InputValidator<T> = String? Function(T value);
 
 enum ValidationType {
   none,
@@ -13,21 +13,20 @@ enum ValidationType {
 }
 
 class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
-  final List<InputValidator<T>> validators;
-
-  T pureValue;
-  final ValidationType validationType;
-
   InputBloc({
     required this.pureValue,
     this.isOptional = false,
     ValidationType? validationType,
     this.validators = const [],
-  })  : this.validationType = validationType ??
-            (validators.length > 0
+  })  : validationType = validationType ??
+            (validators.isNotEmpty
                 ? ValidationType.always
                 : ValidationType.none),
         super(InputBlocState(pureValue));
+
+  final List<InputValidator<T>> validators;
+  T pureValue;
+  final ValidationType validationType;
 
   bool isOptional;
   bool get isPure => pureValue == state.value;
@@ -56,7 +55,7 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   }
 
   @override
-  Stream<InputBlocState<T>> mapEventToState(event) async* {
+  Stream<InputBlocState<T>> mapEventToState(InputBlocEvent<T> event) async* {
     if (event is PureEvent) {
       pureValue = event.value;
     }
@@ -64,8 +63,9 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
     String? error;
 
     if (validationType == ValidationType.always ||
-        (validationType == ValidationType.explicit && event is ValidateEvent))
+        (validationType == ValidationType.explicit && event is ValidateEvent)) {
       error = _findError(event.value);
+    }
 
     error = event.value == pureValue ? null : error;
 

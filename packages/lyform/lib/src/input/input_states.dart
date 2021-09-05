@@ -1,11 +1,12 @@
 part of 'input_bloc.dart';
 
 class InputBlocState<T> {
+  InputBlocState(this.value, [this.error]);
+
   final T value;
   final String? error;
 
-  InputBlocState(this.value, [this.error]);
-
+  @override
   bool operator ==(dynamic other) {
     return (other is InputBlocState<T> &&
             (identical(other.value, value) ||

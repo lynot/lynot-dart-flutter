@@ -4,7 +4,42 @@ packages:
   - packages/**
 
 scripts:
-  analyze: melos exec -- pub global run tuneup check
+  build:
+    run: melos exec -c 1 "flutter pub get && flutter pub run build_runner build"
+
+  build:all:
+    run: melos exec -c 1 "flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs"
+
+  format:
+    run: melos exec -c 1 "flutter format ."
+
+  test:format:
+    run: melos exec -c 1 "find . -name "*.dart" ! -name "*.g.dart" ! -name "*.config.dart" ! -name "*.freezed.dart" ! -name "generated_plugin_registrant.dart" ! -path "*/i18n/*" ! -path "*/generated/*" ! -path "./proto/*" | tr "\n" " " | xargs flutter format --set-exit-if-changed"
+
+  test:analyze:
+    run: melos exec -c 1 "flutter analyze"
+
+  test:only:
+    run: melos exec -c 1 "flutter test --no-pub --coverage"
+
+  test:
+    run: |
+      melos run test:format
+      melos run test:analyze
+      melos run test:only
+
+  coverage:install:
+    run: |
+      npm i -g lcov-result-merger
+      flutter pub global activate remove_from_coverage
+
+  coverage:
+    run: |
+      lcov-result-merger 'packages/**/coverage/lcov.info' coverage/lcov.info
+      remove_from_coverage -f coverage/lcov.info -r "\.freezed\.dart$","\.g\.dart$","\.config\.dart$","generated_plugin_registrant.dart$"
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
+
+dev_dependencies:
+  lint: ^1.5.3

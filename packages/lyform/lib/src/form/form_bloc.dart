@@ -3,15 +3,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:lyform/lyform.dart';
 
-part 'form_states.dart';
 part 'form_events.dart';
+part 'form_states.dart';
 
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
-  FormBloc() : super(FormPureState()) {
-    for (var input in inputs)
-      input.stream.listen(
-        (event) => change(),
-      );
+  FormBloc() : super(const FormPureState()) {
+    for (final input in inputs) {
+      input.stream.listen((_) => change());
+    }
   }
 
   List<InputBloc> get inputs;
@@ -27,7 +26,9 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   }
 
   bool validate() {
-    for (var input in inputs) input.validate();
+    for (final input in inputs) {
+      input.validate();
+    }
     return isValid();
   }
 
@@ -42,10 +43,11 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   @override
   Stream<FormBlocState<D, E>> mapEventToState(FormBlocEvent event) async* {
     if (event is FormChangedEvent) {
-      if (isPure())
+      if (isPure()) {
         yield FormPureState<D, E>();
-      else
+      } else {
         yield isValid() ? FormValidState<D, E>() : FormInvalidState<D, E>();
+      }
     }
     if (event is FormSubmitEvent) {
       if (!validate()) {

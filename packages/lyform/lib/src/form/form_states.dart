@@ -21,11 +21,13 @@ class FormLoadingState<D, E> extends FormBlocState<D, E> {
 }
 
 class FormSuccessState<D, E> extends FormBlocState<D, E> {
-  final D data;
   const FormSuccessState(this.data) : super();
+
+  final D data;
 }
 
 class FormErrorState<D, E> extends FormBlocState<D, E> {
-  final E error;
   const FormErrorState(this.error) : super();
+
+  final E error;
 }
