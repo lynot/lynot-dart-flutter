@@ -1,4 +1,7 @@
 # LynoT Dart/Flutter packages
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?label=license)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/lynotofficial/lynot-dart-flutter/branch/main/graph/badge.svg?token=RTBS8EX4GQ)](https://codecov.io/gh/lynotofficial/lynot-dart-flutter)
@@ -17,3 +20,23 @@
 
 [![Version](https://img.shields.io/pub/v/lyform?label=LyForm)](https://pub.dev/packages/lyform)
 [![Version](https://img.shields.io/pub/v/flutter_lyform?label=Flutter%20LyForm)](https://pub.dev/packages/flutter_lyform)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/70nybl4nc0"><img src="https://avatars.githubusercontent.com/u/34517439?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tony Raul Blanco Fernandez</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=70nybl4nc0" title="Code">💻</a> <a href="#maintenance-70nybl4nc0" title="Maintenance">🚧</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
