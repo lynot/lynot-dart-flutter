@@ -9,7 +9,7 @@ part 'form_states.dart';
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   FormBloc() : super(const FormPureState()) {
     for (final input in inputs) {
-      input.stream.listen((_) => _change());
+      input.stream.listen((_) => change());
     }
     on<FormChangedEvent>((event, emit) {
       if (isPure()) {
@@ -18,6 +18,14 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
         emit(isValid() ? FormValidState<D, E>() : FormInvalidState<D, E>());
       }
     });
+
+    on<FormResetEvent>(
+      (event, emit) {
+        for (final input in inputs) {
+          input.pure(input.pureValue);
+        }
+      },
+    );
 
     on<FormSubmitEvent>((event, emit) async {
       _validateInputs();
@@ -65,12 +73,17 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     }
   }
 
-  void _change() {
+  void change() {
     add(const FormChangedEvent());
   }
 
   ///Submit form
   void submit() {
     add(const FormSubmitEvent());
+  }
+
+  ///Reset form
+  void reset() {
+    add(const FormResetEvent());
   }
 }
