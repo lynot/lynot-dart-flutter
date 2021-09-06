@@ -9,7 +9,7 @@ part 'form_states.dart';
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   FormBloc() : super(const FormPureState()) {
     for (final input in inputs) {
-      input.stream.listen((_) => change());
+      input.stream.listen((_) => _change());
     }
     on<FormChangedEvent>((event, emit) {
       if (isPure()) {
@@ -18,10 +18,11 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
         emit(isValid() ? FormValidState<D, E>() : FormInvalidState<D, E>());
       }
     });
+
     on<FormSubmitEvent>((event, emit) async {
-      if (!validate()) {
+      _validateInputs();
+      if (!isValid()) {
         emit(FormInvalidState<D, E>());
-        return;
       } else {
         emit(FormLoadingState<D, E>());
         emit(await onSubmmit());
@@ -29,28 +30,46 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     });
   }
 
+  @override
+  void onTransition(Transition<FormBlocEvent, FormBlocState<D, E>> transition) {
+    super.onTransition(transition);
+    if (transition.nextState is FormSuccessState) {
+      _setPureInputs();
+    }
+  }
+
   List<InputBloc> get inputs;
   Future<FormBlocState<D, E>> onSubmmit();
 
+  ///Are every input Valid?
   bool isValid() {
     return inputs.every((input) => input.isValid);
   }
 
+  ///Are every input Pure?
   bool isPure() {
     return inputs.every((input) => input.isPure);
   }
 
-  bool validate() {
+  ///Validate all inputs and return [true] if they all are valids.
+  void _validateInputs() {
     for (final input in inputs) {
       input.validate();
     }
-    return isValid();
   }
 
-  void change() {
+  ///Use this if you whant to set all input as pure using they current value. Useful when a success submmit happens.
+  void _setPureInputs() {
+    for (final input in inputs) {
+      input.pure(input.value);
+    }
+  }
+
+  void _change() {
     add(const FormChangedEvent());
   }
 
+  ///Submit form
   void submit() {
     add(const FormSubmitEvent());
   }

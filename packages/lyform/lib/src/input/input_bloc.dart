@@ -47,6 +47,8 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   bool get isValid => !isPure && state.error == null || isPure && isOptional;
   bool get isInvalid => !isValid;
 
+  T get value => state.value;
+
   void dirty(T value) {
     add(DirtyEvent(value));
   }
