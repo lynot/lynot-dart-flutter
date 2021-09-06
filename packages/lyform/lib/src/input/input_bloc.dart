@@ -58,7 +58,7 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   void validate() {
     if (validationType == ValidationType.always ||
         (validationType == ValidationType.explicit)) {
-      final error = isPure ? null : _findError(state.value);
+      final error = _findError(state.value);
       emit(InputBlocState<T>(state.value, error));
     }
   }
