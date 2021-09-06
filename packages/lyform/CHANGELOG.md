@@ -1,3 +1,12 @@
+## 0.1.4
+
+ - **FEAT**: Set inputs pure when on success submit.
+ - **FEAT**: migrate to bloc 7.2 and new on<Event> API.
+ - **CHORE**: publish packages.
+ - **CHORE**: add contributors to packages.
+ - **CHORE**: improve readmes.
+ - **CHORE**: add linter rules and other things for improve the monorepo system.
+
 ## 0.1.3
 
  - **FEAT**: migrate to bloc 7.2 and new on<Event> API.
