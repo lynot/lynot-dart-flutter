@@ -1,3 +1,7 @@
+## 0.2.1
+
+ - **FEAT**: add reset event to form bloc.
+
 ## 0.2.0+1
 
  - **FIX**: validation on pure inputs.
