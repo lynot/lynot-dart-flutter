@@ -1,3 +1,7 @@
+## 0.2.0+1
+
+ - **FIX**: validation on pure inputs.
+
 ## 0.2.0
 
 > Note: This release has breaking changes.
