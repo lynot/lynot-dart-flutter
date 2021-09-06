@@ -15,7 +15,6 @@ enum ValidationType {
 class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   InputBloc({
     required this.pureValue,
-    this.isOptional = false,
     ValidationType? validationType,
     this.validators = const [],
   })  : validationType = validationType ??
@@ -42,9 +41,8 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   T pureValue;
   final ValidationType validationType;
 
-  bool isOptional;
   bool get isPure => pureValue == state.value;
-  bool get isValid => !isPure && state.error == null || isPure && isOptional;
+  bool get isValid => state.error == null;
   bool get isInvalid => !isValid;
 
   T get value => state.value;
