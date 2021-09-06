@@ -1,3 +1,9 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**: correct behavior of optional inputs.
+
 ## 0.1.4
 
  - **FEAT**: Set inputs pure when on success submit.
