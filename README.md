@@ -21,6 +21,10 @@
 [![Version](https://img.shields.io/pub/v/flutter_lyform?label=Flutter%20LyForm)](https://pub.dev/packages/flutter_lyform)
 [![Version](https://img.shields.io/pub/v/lyform_validators?label=LyForm%20Validators)](https://pub.dev/packages/lyform_validators)
 
+## Sponsored with 💖 by
+
+[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

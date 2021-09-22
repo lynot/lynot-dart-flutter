@@ -16,6 +16,10 @@
 
 Flutter package to implement forms in an easy, fast and effective way using the [lyform](https://pub.dev/packages/lyform) and [flutter_bloc](https://pub.dev/packages/flutter_bloc) packages.
 
+## Sponsored with 💖 by
+
+[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

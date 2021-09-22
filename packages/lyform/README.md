@@ -16,6 +16,10 @@
 
 Dart package to implement forms in an easy, fast and effective way using the [bloc](https://pub.dev/packages/bloc) package.
 
+## Sponsored with 💖 by
+
+[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

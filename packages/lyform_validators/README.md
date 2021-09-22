@@ -16,6 +16,10 @@
 
 Dart package with a set of useful validators to use with the [lyform](https://pub.dev/packages/lyform) package.
 
+## Sponsored with 💖 by
+
+[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
