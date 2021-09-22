@@ -1,3 +1,18 @@
+## 0.3.0
+
+> Note: This release has breaking changes.
+
+ - **FIX**: validation on pure inputs.
+ - **FEAT**: implement DirectValueEvent.
+ - **FEAT**: add reset event to form bloc.
+ - **FEAT**: Set inputs pure when on success submit.
+ - **CHORE**: update dependencies.
+ - **CHORE**: publish packages.
+ - **CHORE**: publish packages.
+ - **CHORE**: publish packages.
+ - **CHORE**: publish packages.
+ - **BREAKING** **FIX**: correct behavior of optional inputs.
+
 ## 0.2.1
 
  - **FEAT**: add reset event to form bloc.
