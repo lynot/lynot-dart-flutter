@@ -28,3 +28,9 @@ class PureEvent<T> extends InputBlocEvent<T> {
 class ValidateEvent<T> extends InputBlocEvent<T> {
   ValidateEvent(T value) : super(value);
 }
+
+class DirectValueEvent<T> extends InputBlocEvent<T> {
+  DirectValueEvent(T value, this.error) : super(value);
+
+  String? error;
+}
