@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - **FEAT**: fix pubspec.yaml.
+
 ## 0.1.1
 
  - **FEAT**: add sponsor MeSirve.
