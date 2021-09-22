@@ -10,11 +10,11 @@
 [![Github Stars](https://img.shields.io/github/stars/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter/stargazers)
 [![Github Forks](https://img.shields.io/github/forks/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter/network/members)
 [![Github Watchers](https://img.shields.io/github/watchers/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter)
-[![GitHub contributors](https://img.shields.io/github/contributors/lynotofficial/lynot-dart-flutter?label=code%20contributors)](https://github.com/lynotofficial/lynot-dart-flutter/graphs/contributors)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+[![GitHub contributors](https://img.shields.io/github/contributors/lynotofficial/lynot-dart-flutter?label=code%20contributors)](https://github.com/lynotofficial/lynot-dart-flutter/graphs/contributors)
 
 ---
+
+Flutter package to implement forms in an easy, fast and effective way using the [lyform](https://pub.dev/packages/lyform) and [flutter_bloc](https://pub.dev/packages/flutter_bloc) packages.
 
 ## Contributors ✨
 
