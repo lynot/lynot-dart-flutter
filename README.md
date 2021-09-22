@@ -19,6 +19,7 @@
 
 [![Version](https://img.shields.io/pub/v/lyform?label=LyForm)](https://pub.dev/packages/lyform)
 [![Version](https://img.shields.io/pub/v/flutter_lyform?label=Flutter%20LyForm)](https://pub.dev/packages/flutter_lyform)
+[![Version](https://img.shields.io/pub/v/lyform_validators?label=LyForm%20Validators)](https://pub.dev/packages/lyform_validators)
 
 ## Contributors ✨
 
