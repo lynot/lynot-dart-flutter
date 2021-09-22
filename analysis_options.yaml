@@ -4,9 +4,9 @@ analyzer:
   exclude:
     - build/**
     - lib/generated_plugin_registrant.dart
-    - lib/**/*.config.dart
-    - lib/**/*.freezed.dart
     - lib/**/*.g.dart
+    - lib/**/*.freezed.dart
+    - lib/**/*.config.dart
   strong-mode:
     implicit-casts: false
   errors:
