@@ -11,7 +11,7 @@ class InputBlocState<T> {
     return (other is InputBlocState<T> &&
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value))) &&
-        (identical(other.error, value) ||
+        (identical(other.error, error) ||
             const DeepCollectionEquality().equals(other.error, error));
   }
 
