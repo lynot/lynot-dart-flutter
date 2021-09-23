@@ -2,7 +2,8 @@
   "files": [
     "README.md",
     "packages/flutter_lyform/README.md",
-    "packages/lyform/README.md"
+    "packages/lyform/README.md",
+    "packages/lyform_validators/README.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -21,7 +22,7 @@
       "login": "leynier",
       "name": "Leynier Gutiérrez González",
       "avatar_url": "https://avatars.githubusercontent.com/u/36774373?v=4",
-      "profile": "http://leynier.github.io",
+      "profile": "https://leynier.github.io",
       "contributions": [
         "code",
         "doc"
