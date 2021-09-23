@@ -26,6 +26,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "lagcleaner",
+      "name": "Leonel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45600122?v=4",
+      "profile": "https://github.com/lagcleaner",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
