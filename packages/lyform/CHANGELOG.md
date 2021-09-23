@@ -1,3 +1,9 @@
+## 0.3.1+1
+
+ - **FIX**: equals operator in InputBlocState<T>.
+ - **DOCS**: update packages/lyform/README.md [skip ci].
+ - **CHORE**: update readmes.
+
 ## 0.3.1
 
  - **FEAT**: add sponsor MeSirve.

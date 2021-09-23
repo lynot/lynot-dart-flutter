@@ -1,6 +1,6 @@
 name: flutter_lyform
 description: Flutter package to implement forms in an easy, fast and effective way using the lyform and flutter_bloc packages.
-version: 0.1.2
+version: 0.1.2+1
 homepage: https://github.com/lynotofficial/lynot-dart-flutter
 repository: https://github.com/lynotofficial/lynot-dart-flutter/tree/master/packages/flutter_lyform
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^7.3.0
-  lyform: ^0.3.1
+  lyform: ^0.3.1+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
