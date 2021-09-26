@@ -22,14 +22,15 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
                 ? ValidationType.always
                 : ValidationType.none),
         super(InputBlocState(pureValue)) {
-    on<DirectValueEvent<T>>((event, emit) {
-      emit(InputBlocState<T>(event.value, event.error));
-    });
     on<PureEvent<T>>((event, emit) {
       pureValue = event.value;
     });
     on<InputBlocEvent<T>>((event, emit) {
-      var error = event is DirectValueEvent<T> ? event.error : null;
+      if (event is DirectValueEvent<T>) {
+        emit(InputBlocState<T>(event.value, event.error));
+        return;
+      }
+      String? error;
       if (validationType == ValidationType.always ||
           (validationType == ValidationType.explicit &&
               event is ValidateEvent<T>)) {
