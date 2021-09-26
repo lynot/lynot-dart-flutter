@@ -1,3 +1,7 @@
+## 0.2.1
+
+ - **FEAT**: add nullable options.
+
 ## 0.2.0
 
 > Note: This release has breaking changes.
