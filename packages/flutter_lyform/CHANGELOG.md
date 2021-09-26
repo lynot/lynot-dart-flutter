@@ -1,3 +1,7 @@
+## 0.1.3
+
+ - **FEAT**: add toString methods to events and states.
+
 ## 0.1.2+3
 
  - Update a dependency to the latest release.

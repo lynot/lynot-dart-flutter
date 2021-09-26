@@ -1,3 +1,7 @@
+## 0.3.2
+
+ - **FEAT**: add toString methods to events and states.
+
 ## 0.3.1+3
 
  - **FIX**: add intermediate event on submit.
