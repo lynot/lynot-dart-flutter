@@ -15,22 +15,47 @@ abstract class InputBlocEvent<T> {
   @override
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() {
+    return 'InputBlocEvent($value)';
+  }
 }
 
 class DirtyEvent<T> extends InputBlocEvent<T> {
   DirtyEvent(T value) : super(value);
+
+  @override
+  String toString() {
+    return 'DirtyEvent($value)';
+  }
 }
 
 class PureEvent<T> extends InputBlocEvent<T> {
   PureEvent(T value) : super(value);
+
+  @override
+  String toString() {
+    return 'PureEvent($value)';
+  }
 }
 
 class ValidateEvent<T> extends InputBlocEvent<T> {
   ValidateEvent(T value) : super(value);
+
+  @override
+  String toString() {
+    return 'ValidateEvent($value)';
+  }
 }
 
 class _DirectValueEvent<T> extends InputBlocEvent<T> {
   _DirectValueEvent(T value, this.error) : super(value);
 
   String? error;
+
+  @override
+  String toString() {
+    return '_DirectValueEvent($value, $error)';
+  }
 }

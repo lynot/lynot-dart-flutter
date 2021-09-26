@@ -18,4 +18,9 @@ class InputBlocState<T> {
   @override
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() {
+    return 'InputBlocState($value, $error)';
+  }
 }

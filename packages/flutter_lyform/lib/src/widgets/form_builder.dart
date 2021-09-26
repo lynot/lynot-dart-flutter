@@ -29,28 +29,29 @@ class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
     return BlocBuilder<T, FormBlocState>(
       bloc: bloc,
       builder: (context, state) {
-        if (state is FormPureState && onPure != null) return onPure!.call();
-
-        if (state is FormValidState && onValid != null) return onValid!.call();
-
-        if (state is FormInvalidState && onInvalid != null) {
-          return onInvalid!.call();
-        }
-
-        if (state is FormLoadingState && onLoading != null) {
-          return onLoading!.call();
-        }
-
-        if (state is FormSuccessState && onSuccess != null) {
-          return onSuccess!.call(state.data);
-        }
-
-        if (state is FormErrorState && onError != null) {
-          return onError!.call(state.error);
-        }
-
-        return orElse();
+        return _build(context, state) ?? orElse();
       },
     );
+  }
+
+  Widget? _build(BuildContext context, FormBlocState state) {
+    if (state is FormPureState) {
+      return onPure?.call();
+    }
+    if (state is FormValidState) {
+      return onValid?.call();
+    }
+    if (state is FormInvalidState) {
+      return onInvalid?.call();
+    }
+    if (state is FormLoadingState) {
+      return onLoading?.call();
+    }
+    if (state is FormSuccessState) {
+      return onSuccess?.call(state.data);
+    }
+    if (state is FormErrorState) {
+      return onError?.call(state.error);
+    }
   }
 }
