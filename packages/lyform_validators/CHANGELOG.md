@@ -1,3 +1,7 @@
+## 0.2.3+2
+
+ - **FIX**: fix string required validator.
+
 ## 0.2.3+1
 
  - Update a dependency to the latest release.

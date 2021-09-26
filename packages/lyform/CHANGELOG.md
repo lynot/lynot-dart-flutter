@@ -1,3 +1,7 @@
+## 0.3.1+3
+
+ - **FIX**: add intermediate event on submit.
+
 ## 0.3.1+2
 
  - **FIX**: login of direct value event.
