@@ -1,3 +1,7 @@
+## 0.2.3
+
+ - **FEAT**: implement more string validators.
+
 ## 0.2.2
 
  - **FEAT**: implement int validators.
