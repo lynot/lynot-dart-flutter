@@ -1,3 +1,7 @@
+## 0.3.1+2
+
+ - **FIX**: login of direct value event.
+
 ## 0.3.1+1
 
  - **FIX**: equals operator in InputBlocState<T>.

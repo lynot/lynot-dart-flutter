@@ -1,3 +1,7 @@
+## 0.1.2+2
+
+ - Update a dependency to the latest release.
+
 ## 0.1.2+1
 
  - **DOCS**: update packages/flutter_lyform/README.md [skip ci].
