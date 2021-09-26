@@ -29,8 +29,8 @@ class ValidateEvent<T> extends InputBlocEvent<T> {
   ValidateEvent(T value) : super(value);
 }
 
-class DirectValueEvent<T> extends InputBlocEvent<T> {
-  DirectValueEvent(T value, this.error) : super(value);
+class _DirectValueEvent<T> extends InputBlocEvent<T> {
+  _DirectValueEvent(T value, this.error) : super(value);
 
   String? error;
 }

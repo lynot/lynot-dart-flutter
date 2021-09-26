@@ -26,7 +26,7 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
       pureValue = event.value;
     });
     on<InputBlocEvent<T>>((event, emit) {
-      if (event is DirectValueEvent<T>) {
+      if (event is _DirectValueEvent<T>) {
         emit(InputBlocState<T>(event.value, event.error));
         return;
       }
@@ -63,14 +63,14 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
     if (validationType == ValidationType.always ||
         (validationType == ValidationType.explicit)) {
       final error = _findError(state.value);
-      add(DirectValueEvent<T>(state.value, error));
+      add(_DirectValueEvent<T>(state.value, error));
     }
   }
 
   String? _findError(T value) {
-    return validators.fold(
-      null,
-      (previousValue, validator) => previousValue ?? validator(value),
-    );
+    return validators
+        .map((validator) => validator(value))
+        .where((error) => error != null && error.isNotEmpty)
+        .firstOrNull;
   }
 }

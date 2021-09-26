@@ -11,6 +11,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     for (final input in inputs) {
       input.stream.listen((_) => change());
     }
+
     on<FormChangedEvent>((event, emit) {
       if (isPure()) {
         emit(FormPureState<D, E>());
@@ -19,16 +20,18 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
       }
     });
 
-    on<FormResetEvent>(
-      (event, emit) {
-        for (final input in inputs) {
-          input.pure(input.pureValue);
-        }
-      },
-    );
+    on<FormResetEvent>((event, emit) {
+      for (final input in inputs) {
+        input.pure(input.pureValue);
+      }
+    });
 
     on<FormSubmitEvent>((event, emit) async {
       _validateInputs();
+      add(const _FormSubmitEvent());
+    });
+
+    on<_FormSubmitEvent>((event, emit) async {
       if (!isValid()) {
         emit(FormInvalidState<D, E>());
       } else {

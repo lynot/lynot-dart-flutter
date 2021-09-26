@@ -15,3 +15,7 @@ class FormResetEvent extends FormBlocEvent {
 class FormSubmitEvent extends FormBlocEvent {
   const FormSubmitEvent() : super();
 }
+
+class _FormSubmitEvent extends FormBlocEvent {
+  const _FormSubmitEvent() : super();
+}
