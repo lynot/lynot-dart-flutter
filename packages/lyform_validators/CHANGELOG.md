@@ -1,3 +1,7 @@
+## 0.2.2
+
+ - **FEAT**: implement int validators.
+
 ## 0.2.1
 
  - **FEAT**: add nullable options.
