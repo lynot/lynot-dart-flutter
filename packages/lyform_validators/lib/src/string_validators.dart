@@ -6,7 +6,7 @@ class StringValidator {
   static InputValidator<String?> required({
     required String errorMessage,
   }) {
-    return (value) => value != null && value.isEmpty ? errorMessage : null;
+    return (value) => value == null || value.isEmpty ? errorMessage : null;
   }
 
   static InputValidator<String?> lengthGreaterThan({
