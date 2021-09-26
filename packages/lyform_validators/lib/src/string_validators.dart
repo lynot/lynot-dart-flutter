@@ -3,27 +3,27 @@ import 'package:validators/validators.dart' as validators;
 
 class StringValidator {
   /// assert when [value] is [null] or is not empty
-  static InputValidator<String> required({
+  static InputValidator<String?> required({
     required String errorMessage,
   }) {
-    return (value) => value.isEmpty ? errorMessage : null;
+    return (value) => value != null && value.isEmpty ? errorMessage : null;
   }
 
-  static InputValidator<String> lengthGreaterThan({
+  static InputValidator<String?> lengthGreaterThan({
     required int len,
     required String errorMessage,
   }) {
-    return (value) => value.length > len ? null : errorMessage;
+    return (value) => value != null && value.length > len ? null : errorMessage;
   }
 
-  static InputValidator<String> lengthLowerThan({
+  static InputValidator<String?> lengthLowerThan({
     required int len,
     required String errorMessage,
   }) {
-    return (value) => value.length < len ? null : errorMessage;
+    return (value) => value != null && value.length < len ? null : errorMessage;
   }
 
-  static InputValidator<String> stringPasswordMatch({
+  static InputValidator<String?> stringPasswordMatch({
     required String Function() match,
     required String errorMessage,
   }) {
@@ -31,7 +31,7 @@ class StringValidator {
   }
 
   /// check if the string matches the comparison
-  static InputValidator<String> equals({
+  static InputValidator<String?> equals({
     required dynamic comparison,
     required String errorMessage,
   }) {
@@ -40,26 +40,31 @@ class StringValidator {
   }
 
   /// check if the string contains the seed
-  static InputValidator<String> contains({
+  static InputValidator<String?> contains({
     required dynamic seed,
     required String errorMessage,
   }) {
-    return (value) => !validators.contains(value, seed) ? errorMessage : null;
+    return (value) => value != null && !validators.contains(value, seed)
+        ? errorMessage
+        : null;
   }
 
   /// check if string [value] matches the [pattern].
-  static InputValidator<String> matches({
+  static InputValidator<String?> matches({
     required dynamic pattern,
     required String errorMessage,
   }) {
-    return (value) => !validators.matches(value, pattern) ? errorMessage : null;
+    return (value) => value != null && !validators.matches(value, pattern)
+        ? errorMessage
+        : null;
   }
 
   /// check if the string [value] is an email
-  static InputValidator<String> isEmail({
+  static InputValidator<String?> isEmail({
     required String errorMessage,
   }) {
-    return (value) => !validators.isEmail(value) ? errorMessage : null;
+    return (value) =>
+        value != null && !validators.isEmail(value) ? errorMessage : null;
   }
 
   /// check if the string [value] is a URL
@@ -70,7 +75,7 @@ class StringValidator {
   /// * [allowUnderscore] sets if underscores are allowed
   /// * [hostWhitelist] sets the list of allowed hosts
   /// * [hostBlacklist] sets the list of disallowed hosts
-  static InputValidator<String> isURL({
+  static InputValidator<String?> isURL({
     required String errorMessage,
     List<String?> protocols = const ['http', 'https', 'ftp'],
     bool requireTld = true,
@@ -95,7 +100,7 @@ class StringValidator {
   /// check if the string [value] is IP [version] 4 or 6
   ///
   /// * [version] is a String or an `int`.
-  static InputValidator<String> isIP({
+  static InputValidator<String?> isIP({
     /*<String | int>*/ required dynamic version,
     required String errorMessage,
   }) {

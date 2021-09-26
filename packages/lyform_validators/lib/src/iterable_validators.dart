@@ -1,9 +1,9 @@
 import 'package:lyform/lyform.dart';
 
 class IterableValidator {
-  static InputValidator<Iterable> notEmpty({
+  static InputValidator<Iterable?> notEmpty({
     required String errorMessage,
   }) {
-    return (value) => value.isEmpty ? errorMessage : null;
+    return (value) => value == null || value.isEmpty ? errorMessage : null;
   }
 }
