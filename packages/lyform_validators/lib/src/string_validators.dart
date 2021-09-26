@@ -3,34 +3,64 @@ import 'package:validators/validators.dart' as validators;
 
 class StringValidator {
   /// assert when [value] is [null] or is not empty
-  static String? required(String value) =>
-      value.isEmpty ? 'error_empty_input' : null;
+  static InputValidator<String> required({
+    required String errorMessage,
+  }) {
+    return (value) => value.isEmpty ? errorMessage : null;
+  }
 
-  static InputValidator<String> lengthGreaterThan(int len) =>
-      (value) => value.length > len ? null : 'error_too_short_input';
+  static InputValidator<String> lengthGreaterThan({
+    required int len,
+    required String errorMessage,
+  }) {
+    return (value) => value.length > len ? null : errorMessage;
+  }
 
-  static InputValidator<String> lengthLowerThan(int len) =>
-      (value) => value.length < len ? null : 'error_too_long_input';
+  static InputValidator<String> lengthLowerThan({
+    required int len,
+    required String errorMessage,
+  }) {
+    return (value) => value.length < len ? null : errorMessage;
+  }
 
-  static InputValidator<String> stringPasswordMatch(String Function() match) =>
-      (value) =>
-          value != match() ? 'error_confirm_password_no_match_input' : null;
+  static InputValidator<String> stringPasswordMatch({
+    required String Function() match,
+    required String errorMessage,
+  }) {
+    return (value) => value != match() ? errorMessage : null;
+  }
 
   /// check if the string matches the comparison
-  static InputValidator<String> equals(dynamic comparison) =>
-      (value) => !validators.equals(value, comparison) ? 'not_equals' : null;
+  static InputValidator<String> equals({
+    required dynamic comparison,
+    required String errorMessage,
+  }) {
+    return (value) =>
+        !validators.equals(value, comparison) ? errorMessage : null;
+  }
 
   /// check if the string contains the seed
-  static InputValidator<String> contains(dynamic seed) =>
-      (value) => !validators.contains(value, seed) ? 'not_contains' : null;
+  static InputValidator<String> contains({
+    required dynamic seed,
+    required String errorMessage,
+  }) {
+    return (value) => !validators.contains(value, seed) ? errorMessage : null;
+  }
 
   /// check if string [value] matches the [pattern].
-  static InputValidator<String> matches(dynamic pattern) =>
-      (value) => !validators.matches(value, pattern) ? 'not_matches' : null;
+  static InputValidator<String> matches({
+    required dynamic pattern,
+    required String errorMessage,
+  }) {
+    return (value) => !validators.matches(value, pattern) ? errorMessage : null;
+  }
 
   /// check if the string [value] is an email
-  static String? isEmail(String value) =>
-      !validators.isEmail(value) ? 'not_is_email' : null;
+  static InputValidator<String> isEmail({
+    required String errorMessage,
+  }) {
+    return (value) => !validators.isEmail(value) ? errorMessage : null;
+  }
 
   /// check if the string [value] is a URL
   ///
@@ -41,30 +71,36 @@ class StringValidator {
   /// * [hostWhitelist] sets the list of allowed hosts
   /// * [hostBlacklist] sets the list of disallowed hosts
   static InputValidator<String> isURL({
+    required String errorMessage,
     List<String?> protocols = const ['http', 'https', 'ftp'],
     bool requireTld = true,
     bool requireProtocol = false,
     bool allowUnderscore = false,
     List<String> hostWhitelist = const [],
     List<String> hostBlacklist = const [],
-  }) =>
-      (value) => !validators.isURL(
-            value,
-            protocols: protocols,
-            requireTld: requireTld,
-            requireProtocol: requireProtocol,
-            allowUnderscore: allowUnderscore,
-            hostWhitelist: hostWhitelist,
-            hostBlacklist: hostBlacklist,
-          )
-              ? 'not_is_url'
-              : null;
+  }) {
+    return (value) => !validators.isURL(
+          value,
+          protocols: protocols,
+          requireTld: requireTld,
+          requireProtocol: requireProtocol,
+          allowUnderscore: allowUnderscore,
+          hostWhitelist: hostWhitelist,
+          hostBlacklist: hostBlacklist,
+        )
+            ? errorMessage
+            : null;
+  }
 
   /// check if the string [value] is IP [version] 4 or 6
   ///
   /// * [version] is a String or an `int`.
-  static InputValidator<String> isIP([/*<String | int>*/ dynamic version]) =>
-      (value) => !validators.isIP(value, version) ? 'not_is_ip' : null;
+  static InputValidator<String> isIP({
+    /*<String | int>*/ required dynamic version,
+    required String errorMessage,
+  }) {
+    return (value) => !validators.isIP(value, version) ? errorMessage : null;
+  }
 
   // /// check if the string [value] is a fully qualified domain name (e.g. domain.com).
   // ///

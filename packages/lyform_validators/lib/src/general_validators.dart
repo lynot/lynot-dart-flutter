@@ -1,4 +1,9 @@
+import 'package:lyform/lyform.dart';
+
 class Validator {
-  static String? required(dynamic value) =>
-      value == null ? 'error_empty_input' : null;
+  static InputValidator<dynamic> required({
+    required String errorMessage,
+  }) {
+    return (value) => value == null ? errorMessage : null;
+  }
 }
