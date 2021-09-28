@@ -1,3 +1,8 @@
+## 0.3.3
+
+ - **FEAT**: implement "and" and "or" validators.
+ - **FEAT**: expose DirectValueEvent.
+
 ## 0.3.2
 
  - **FEAT**: add toString methods to events and states.
