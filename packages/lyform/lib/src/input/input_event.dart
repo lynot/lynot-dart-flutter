@@ -49,13 +49,13 @@ class ValidateEvent<T> extends InputBlocEvent<T> {
   }
 }
 
-class _DirectValueEvent<T> extends InputBlocEvent<T> {
-  _DirectValueEvent(T value, this.error) : super(value);
+class DirectValueEvent<T> extends InputBlocEvent<T> {
+  DirectValueEvent(T value, this.error) : super(value);
 
   String? error;
 
   @override
   String toString() {
-    return '_DirectValueEvent($value, $error)';
+    return 'DirectValueEvent($value, $error)';
   }
 }
