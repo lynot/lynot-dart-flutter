@@ -6,6 +6,12 @@ part 'input_states.dart';
 
 typedef InputValidator<T> = String? Function(T value);
 
+InputValidator<T> and<T>(Iterable<InputValidator<T>> vs) =>
+    (v) => vs.map((e) => e(v)).where((e) => e != null).firstOrNull;
+
+InputValidator<T> or<T>(Iterable<InputValidator<T>> vs) =>
+    (v) => vs.map((e) => e(v)).reduce((a, b) => b != null ? a : null);
+
 enum ValidationType {
   none,
   explicit,
