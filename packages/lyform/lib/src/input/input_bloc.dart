@@ -3,30 +3,22 @@ import 'package:collection/collection.dart';
 
 part 'input_event.dart';
 part 'input_states.dart';
-
-typedef InputValidator<T> = String? Function(T value);
-
-InputValidator<T> and<T>(Iterable<InputValidator<T>> vs) =>
-    (v) => vs.map((e) => e(v)).where((e) => e != null).firstOrNull;
-
-InputValidator<T> or<T>(Iterable<InputValidator<T>> vs) =>
-    (v) => vs.map((e) => e(v)).reduce((a, b) => b != null ? a : null);
-
-enum ValidationType {
-  none,
-  explicit,
-  always,
-}
+part 'input_validator.dart';
+part 'validation_type.dart';
 
 class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   InputBloc({
     required this.pureValue,
     ValidationType? validationType,
-    this.validators = const [],
+    BaseValidator<T>? validator,
+    @Deprecated("Use 'validator' instead of 'validators'")
+        List<InputValidator<T>> validators = const [],
   })  : validationType = validationType ??
-            (validators.isNotEmpty
+            (validator != null || validators.isNotEmpty
                 ? ValidationType.always
                 : ValidationType.none),
+        validator =
+            (validator ?? const EmptyValidator()) & ListValidator(validators),
         super(InputBlocState(pureValue)) {
     on<PureEvent<T>>((event, emit) {
       pureValue = event.value;
@@ -40,15 +32,15 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
       if (validationType == ValidationType.always ||
           (validationType == ValidationType.explicit &&
               event is ValidateEvent<T>)) {
-        error = _findError(event.value);
+        error = this.validator(event.value);
       }
       error = event.value == pureValue ? null : error;
       emit(InputBlocState<T>(event.value, error));
     });
   }
 
-  final List<InputValidator<T>> validators;
   T pureValue;
+  final BaseValidator<T> validator;
   final ValidationType validationType;
 
   bool get isPure => pureValue == state.value;
@@ -68,15 +60,8 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   void validate() {
     if (validationType == ValidationType.always ||
         (validationType == ValidationType.explicit)) {
-      final error = _findError(state.value);
+      final error = validator(value);
       add(DirectValueEvent<T>(state.value, error));
     }
-  }
-
-  String? _findError(T value) {
-    return validators
-        .map((validator) => validator(value))
-        .where((error) => error != null && error.isNotEmpty)
-        .firstOrNull;
   }
 }
