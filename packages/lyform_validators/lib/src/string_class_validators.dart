@@ -1,81 +1,81 @@
 import 'package:lyform/lyform.dart';
 import 'package:validators/validators.dart' as validators;
 
-class StringRequired extends Validator<String?> {
+class StringRequired extends Validator<String> {
   StringRequired(String message) : super(message);
 
   @override
-  String? call(String? value) => value == null ? message : null;
+  String? call(String value) => value == null ? message : null;
 }
 
-class StringLengthGreaterThan extends Validator<String?> {
+class StringLengthGreaterThan extends Validator<String> {
   StringLengthGreaterThan(String message, this.len) : super(message);
 
   final int len;
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       value != null && value.length > len ? null : message;
 }
 
-class StringLengthLowerThan extends Validator<String?> {
+class StringLengthLowerThan extends Validator<String> {
   StringLengthLowerThan(String message, this.len) : super(message);
 
   final int len;
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       value != null && value.length < len ? null : message;
 }
 
-class StringPasswordMatch extends Validator<String?> {
+class StringPasswordMatch extends Validator<String> {
   StringPasswordMatch(String message, this.match) : super(message);
 
   final String Function() match;
 
   @override
-  String? call(String? value) => value != match() ? message : null;
+  String? call(String value) => value != match() ? message : null;
 }
 
-class StringEquals extends Validator<String?> {
+class StringEquals extends Validator<String> {
   StringEquals(String message, this.comparison) : super(message);
 
   final dynamic comparison;
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       !validators.equals(value, comparison) ? message : null;
 }
 
-class StringContains extends Validator<String?> {
+class StringContains extends Validator<String> {
   StringContains(String message, this.seed) : super(message);
 
   final dynamic seed;
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       value != null && !validators.contains(value, seed) ? message : null;
 }
 
-class StringMatches extends Validator<String?> {
+class StringMatches extends Validator<String> {
   StringMatches(String message, this.pattern) : super(message);
 
   final dynamic pattern;
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       value != null && !validators.matches(value, pattern) ? message : null;
 }
 
-class StringIsEmail extends Validator<String?> {
+class StringIsEmail extends Validator<String> {
   StringIsEmail(String message) : super(message);
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       value != null && !validators.isEmail(value) ? message : null;
 }
 
-class StringIsURL extends Validator<String?> {
+class StringIsURL extends Validator<String> {
   StringIsURL(
     String message, {
     this.protocols = const ['http', 'https', 'ftp'],
@@ -94,7 +94,7 @@ class StringIsURL extends Validator<String?> {
   final List<String> hostBlacklist;
 
   @override
-  String? call(String? value) => !validators.isURL(
+  String? call(String value) => !validators.isURL(
         value,
         protocols: protocols,
         requireTld: requireTld,
@@ -107,17 +107,17 @@ class StringIsURL extends Validator<String?> {
           : null;
 }
 
-class StringIsIP extends Validator<String?> {
+class StringIsIP extends Validator<String> {
   StringIsIP(String message, this.version) : super(message);
 
   final dynamic version;
 
   @override
-  String? call(String? value) =>
+  String? call(String value) =>
       !validators.isIP(value, version) ? message : null;
 }
 
-class StringIsFQDN extends Validator<String?> {
+class StringIsFQDN extends Validator<String> {
   StringIsFQDN(
     String message, [
     this.requireTld = true,
@@ -128,88 +128,79 @@ class StringIsFQDN extends Validator<String?> {
   final bool allowUnderscores;
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isFQDN(value) ? message : null;
+  String? call(String value) => !validators.isFQDN(value) ? message : null;
 }
 
-class StringIsAlpha extends Validator<String?> {
+class StringIsAlpha extends Validator<String> {
   StringIsAlpha(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isAlpha(value) ? message : null;
+  String? call(String value) => !validators.isAlpha(value) ? message : null;
 }
 
-class StringIsNumeric extends Validator<String?> {
+class StringIsNumeric extends Validator<String> {
   StringIsNumeric(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isNumeric(value) ? message : null;
+  String? call(String value) => !validators.isNumeric(value) ? message : null;
 }
 
-class StringIsAlphanumeric extends Validator<String?> {
+class StringIsAlphanumeric extends Validator<String> {
   StringIsAlphanumeric(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isAlphanumeric(value) ? message : null;
+  String? call(String value) =>
+      !validators.isAlphanumeric(value) ? message : null;
 }
 
-class StringIsBase64 extends Validator<String?> {
+class StringIsBase64 extends Validator<String> {
   StringIsBase64(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isBase64(value) ? message : null;
+  String? call(String value) => !validators.isBase64(value) ? message : null;
 }
 
-class StringIsInt extends Validator<String?> {
+class StringIsInt extends Validator<String> {
   StringIsInt(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isInt(value) ? message : null;
+  String? call(String value) => !validators.isInt(value) ? message : null;
 }
 
-class StringIsFloat extends Validator<String?> {
+class StringIsFloat extends Validator<String> {
   StringIsFloat(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isFloat(value) ? message : null;
+  String? call(String value) => !validators.isFloat(value) ? message : null;
 }
 
-class StringIsHexadecimal extends Validator<String?> {
+class StringIsHexadecimal extends Validator<String> {
   StringIsHexadecimal(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isHexadecimal(value) ? message : null;
+  String? call(String value) =>
+      !validators.isHexadecimal(value) ? message : null;
 }
 
-class StringIsHexColor extends Validator<String?> {
+class StringIsHexColor extends Validator<String> {
   StringIsHexColor(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isHexColor(value) ? message : null;
+  String? call(String value) => !validators.isHexColor(value) ? message : null;
 }
 
-class StringIsLowercase extends Validator<String?> {
+class StringIsLowercase extends Validator<String> {
   StringIsLowercase(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isLowercase(value) ? message : null;
+  String? call(String value) => !validators.isLowercase(value) ? message : null;
 }
 
-class StringIsUppercase extends Validator<String?> {
+class StringIsUppercase extends Validator<String> {
   StringIsUppercase(String message) : super(message);
 
   @override
-  String? call(String? value) =>
-      value == null || !validators.isUppercase(value) ? message : null;
+  String? call(String value) => !validators.isUppercase(value) ? message : null;
 }
 
 // TODO: Finish implementation
@@ -221,7 +212,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 //   required int n,
 // }) {
-//   return (value) => value == null || !validators.isDivisibleBy(value, n)
+//   return (value) => !validators.isDivisibleBy(value, n)
 //       ? message
 //       : null;
 // }
@@ -239,7 +230,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required int min,
 //   int? max,
 // }) {
-//   return (value) => value == null || !validators.isLength(value, min, max)
+//   return (value) => !validators.isLength(value, min, max)
 //       ? message
 //       : null;
 // }
@@ -250,7 +241,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required int min,
 //   int? max,
 // }) {
-//   return (value) => value == null || !validators.isByteLength(value, min, max)
+//   return (value) => !validators.isByteLength(value, min, max)
 //       ? message
 //       : null;
 // }
@@ -260,7 +251,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 //   dynamic version,
 // }) {
-//   return (value) => value == null || !validators.isUUID(value, version)
+//   return (value) => !validators.isUUID(value, version)
 //       ? message
 //       : null;
 // }
@@ -270,7 +261,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isDate(value) ? message : null;
+//       !validators.isDate(value) ? message : null;
 // }
 
 // /// check if the string is a date that's after the specified date
@@ -281,7 +272,7 @@ class StringIsUppercase extends Validator<String?> {
 //   DateTime? date,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isAfter(value, date) ? message : null;
+//       !validators.isAfter(value, date) ? message : null;
 // }
 
 // /// check if the string is a date that's before the specified date
@@ -291,7 +282,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 //   DateTime? date,
 // }) {
-//   return (value) => value == null || !validators.isBefore(value, date)
+//   return (value) => !validators.isBefore(value, date)
 //       ? message
 //       : null;
 // }
@@ -302,7 +293,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required Iterable<String> values,
 // }) {
 //   return (value) =>
-//       value == null || !(validators.isIn(value, values) ?? false)
+//       !(validators.isIn(value, values) ?? false)
 //           ? message
 //           : null;
 // }
@@ -312,7 +303,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isCreditCard(value) ? message : null;
+//       !validators.isCreditCard(value) ? message : null;
 // }
 
 // // /// check if the string is an ISBN (version 10 or 13)
@@ -320,7 +311,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 //   dynamic version,
 // }) {
-//   return (value) => value == null || !validators.isISBN(value, version)
+//   return (value) => !validators.isISBN(value, version)
 //       ? message
 //       : null;
 // }
@@ -330,7 +321,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isJSON(value) ? message : null;
+//       !validators.isJSON(value) ? message : null;
 // }
 
 // /// check if the string contains one or more multibyte chars
@@ -338,7 +329,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isMultibyte(value) ? message : null;
+//       !validators.isMultibyte(value) ? message : null;
 // }
 
 // /// check if the string contains ASCII chars only
@@ -346,7 +337,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isAscii(value) ? message : null;
+//       !validators.isAscii(value) ? message : null;
 // }
 
 // /// check if the string contains any full-width chars
@@ -354,7 +345,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isFullWidth(value) ? message : null;
+//       !validators.isFullWidth(value) ? message : null;
 // }
 
 // /// check if the string contains any half-width chars
@@ -362,14 +353,14 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isHalfWidth(value) ? message : null;
+//       !validators.isHalfWidth(value) ? message : null;
 // }
 
 // /// check if the string contains a mixture of full and half-width chars
 // static InputValidator<String?> isVariableWidth({
 //   required String message,
 // }) {
-//   return (value) => value == null || !validators.isVariableWidth(value)
+//   return (value) => !validators.isVariableWidth(value)
 //       ? message
 //       : null;
 // }
@@ -378,7 +369,7 @@ class StringIsUppercase extends Validator<String?> {
 // static InputValidator<String?> isSurrogatePair({
 //   required String message,
 // }) {
-//   return (value) => value == null || !validators.isSurrogatePair(value)
+//   return (value) => !validators.isSurrogatePair(value)
 //       ? message
 //       : null;
 // }
@@ -388,7 +379,7 @@ class StringIsUppercase extends Validator<String?> {
 //   required String message,
 // }) {
 //   return (value) =>
-//       value == null || !validators.isMongoId(value) ? message : null;
+//       !validators.isMongoId(value) ? message : null;
 // }
 
 // static InputValidator<String?> isPostalCode({
