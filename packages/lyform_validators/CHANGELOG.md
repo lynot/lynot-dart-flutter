@@ -1,3 +1,9 @@
+## 0.3.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: export validators.
+
 ## 0.2.4
 
  - **FEAT**: implement class base validators.
