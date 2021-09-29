@@ -1,3 +1,7 @@
+## 0.5.0
+
+ - Bump "flutter_lyform" to `0.5.0`.
+
 ## 0.1.3+3
 
  - Update a dependency to the latest release.
