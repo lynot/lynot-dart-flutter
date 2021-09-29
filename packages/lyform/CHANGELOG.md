@@ -1,3 +1,9 @@
+## 0.5.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: remove functional validators.
+
 ## 0.4.0
 
 > Note: This release has breaking changes.
