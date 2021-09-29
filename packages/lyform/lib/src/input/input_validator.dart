@@ -1,17 +1,5 @@
 part of 'input_bloc.dart';
 
-typedef InputValidator<T> = String? Function(T value);
-
-// Function base logical operations
-
-InputValidator<T> and<T>(Iterable<InputValidator<T>> vs) =>
-    (v) => vs.map((e) => e(v)).where((e) => e != null).firstOrNull;
-
-InputValidator<T> or<T>(Iterable<InputValidator<T>> vs) =>
-    (v) => vs.map((e) => e(v)).reduce((a, b) => b != null ? a : null);
-
-// Class base logical operations
-
 abstract class BaseValidator<T> {
   const BaseValidator();
 
@@ -60,7 +48,7 @@ class OrValidator<T> extends BaseValidator<T> {
 class ListValidator<T> extends BaseValidator<T> {
   const ListValidator(this.validators);
 
-  final List<InputValidator<T>> validators;
+  final List<String? Function(T)> validators;
 
   @override
   String? call(T value) =>

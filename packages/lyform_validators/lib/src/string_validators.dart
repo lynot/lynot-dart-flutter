@@ -1,395 +1,395 @@
 import 'package:lyform/lyform.dart';
 import 'package:validators/validators.dart' as validators;
 
-class StringValidator {
-  /// assert when [value] is [null] or is not empty
-  static InputValidator<String?> required({
-    required String errorMessage,
-  }) {
-    return (value) => value == null || value.isEmpty ? errorMessage : null;
-  }
+class StringRequired extends Validator<String> {
+  StringRequired(String message) : super(message);
 
-  static InputValidator<String?> lengthGreaterThan({
-    required int len,
-    required String errorMessage,
-  }) {
-    return (value) => value != null && value.length > len ? null : errorMessage;
-  }
-
-  static InputValidator<String?> lengthLowerThan({
-    required int len,
-    required String errorMessage,
-  }) {
-    return (value) => value != null && value.length < len ? null : errorMessage;
-  }
-
-  static InputValidator<String?> stringPasswordMatch({
-    required String Function() match,
-    required String errorMessage,
-  }) {
-    return (value) => value != match() ? errorMessage : null;
-  }
-
-  /// check if the string matches the comparison
-  static InputValidator<String?> equals({
-    required dynamic comparison,
-    required String errorMessage,
-  }) {
-    return (value) =>
-        !validators.equals(value, comparison) ? errorMessage : null;
-  }
-
-  /// check if the string contains the seed
-  static InputValidator<String?> contains({
-    required dynamic seed,
-    required String errorMessage,
-  }) {
-    return (value) => value != null && !validators.contains(value, seed)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if string [value] matches the [pattern].
-  static InputValidator<String?> matches({
-    required dynamic pattern,
-    required String errorMessage,
-  }) {
-    return (value) => value != null && !validators.matches(value, pattern)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string [value] is an email
-  static InputValidator<String?> isEmail({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value != null && !validators.isEmail(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is a URL
-  ///
-  /// * [protocols] sets the list of allowed protocols
-  /// * [requireTld] sets if TLD is required
-  /// * [requireProtocol] is a `bool` that sets if protocol is required for validation
-  /// * [allowUnderscore] sets if underscores are allowed
-  /// * [hostWhitelist] sets the list of allowed hosts
-  /// * [hostBlacklist] sets the list of disallowed hosts
-  static InputValidator<String?> isURL({
-    required String errorMessage,
-    List<String?> protocols = const ['http', 'https', 'ftp'],
-    bool requireTld = true,
-    bool requireProtocol = false,
-    bool allowUnderscore = false,
-    List<String> hostWhitelist = const [],
-    List<String> hostBlacklist = const [],
-  }) {
-    return (value) => !validators.isURL(
-          value,
-          protocols: protocols,
-          requireTld: requireTld,
-          requireProtocol: requireProtocol,
-          allowUnderscore: allowUnderscore,
-          hostWhitelist: hostWhitelist,
-          hostBlacklist: hostBlacklist,
-        )
-            ? errorMessage
-            : null;
-  }
-
-  /// check if the string [value] is IP [version] 4 or 6
-  ///
-  /// * [version] is a String or an `int`.
-  static InputValidator<String?> isIP({
-    /*<String | int>*/ required dynamic version,
-    required String errorMessage,
-  }) {
-    return (value) => !validators.isIP(value, version) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is a fully qualified domain name (e.g. domain.com).
-  ///
-  /// * [requireTld] sets if TLD is required
-  /// * [allowUnderscore] sets if underscores are allowed
-  static InputValidator<String?> isFQDN({
-    required String errorMessage,
-    bool requireTld = true,
-    bool allowUnderscores = false,
-  }) {
-    return (value) =>
-        value == null || !validators.isFQDN(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] contains only letters (a-zA-Z).
-  static InputValidator<String?> isAlpha({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isAlpha(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] contains only numbers
-  static InputValidator<String?> isNumeric({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isNumeric(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] contains only letters and numbers
-  static InputValidator<String?> isAlphanumeric({
-    required String errorMessage,
-  }) {
-    return (value) => value == null || !validators.isAlphanumeric(value)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if a string [value] is base64 encoded
-  static InputValidator<String?> isBase64({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isBase64(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is an integer
-  static InputValidator<String?> isInt({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isInt(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is a float
-  static InputValidator<String?> isFloat({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isFloat(value) ? errorMessage : null;
-  }
-
-  /// check if the string  [value]is a hexadecimal number
-  static InputValidator<String?> isHexadecimal({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isHexadecimal(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is a hexadecimal color
-  static InputValidator<String?> isHexColor({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isHexColor(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is lowercase
-  static InputValidator<String?> isLowercase({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isLowercase(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is uppercase
-  static InputValidator<String?> isUppercase({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isUppercase(value) ? errorMessage : null;
-  }
-
-  /// check if the string [value] is a number that's divisible by another
-  ///
-  /// [n] is a String or an int.
-  static InputValidator<String?> isDivisibleBy({
-    required String errorMessage,
-    required int n,
-  }) {
-    return (value) => value == null || !validators.isDivisibleBy(value, n)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string [value] is null
-  static InputValidator<String?> isNull({
-    required String errorMessage,
-  }) {
-    return (value) => value != null ? errorMessage : null;
-  }
-
-  /// check if the length of the string [value] falls in a range
-  static InputValidator<String?> isLength({
-    required String errorMessage,
-    required int min,
-    int? max,
-  }) {
-    return (value) => value == null || !validators.isLength(value, min, max)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string's length (in bytes) falls in a range.
-  static InputValidator<String?> isByteLength({
-    required String errorMessage,
-    required int min,
-    int? max,
-  }) {
-    return (value) => value == null || !validators.isByteLength(value, min, max)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string is a UUID (version 3, 4 or 5).
-  static InputValidator<String?> isUUID({
-    required String errorMessage,
-    dynamic version,
-  }) {
-    return (value) => value == null || !validators.isUUID(value, version)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string is a date
-  static InputValidator<String?> isDate({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isDate(value) ? errorMessage : null;
-  }
-
-  /// check if the string is a date that's after the specified date
-  ///
-  /// If `date` is not passed, it defaults to now.
-  static InputValidator<String?> isAfter({
-    required String errorMessage,
-    DateTime? date,
-  }) {
-    return (value) =>
-        value == null || !validators.isAfter(value, date) ? errorMessage : null;
-  }
-
-  /// check if the string is a date that's before the specified date
-  ///
-  /// If `date` is not passed, it defaults to now.
-  static InputValidator<String?> isBefore({
-    required String errorMessage,
-    DateTime? date,
-  }) {
-    return (value) => value == null || !validators.isBefore(value, date)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string is in a array of allowed values
-  static InputValidator<String?> isIn({
-    required String errorMessage,
-    required Iterable<String> values,
-  }) {
-    return (value) =>
-        value == null || !(validators.isIn(value, values) ?? false)
-            ? errorMessage
-            : null;
-  }
-
-  /// check if the string is a credit card
-  static InputValidator<String?> isCreditCard({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isCreditCard(value) ? errorMessage : null;
-  }
-
-  // /// check if the string is an ISBN (version 10 or 13)
-  static InputValidator<String?> isISBN({
-    required String errorMessage,
-    dynamic version,
-  }) {
-    return (value) => value == null || !validators.isISBN(value, version)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string is valid JSON
-  static InputValidator<String?> isJSON({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isJSON(value) ? errorMessage : null;
-  }
-
-  /// check if the string contains one or more multibyte chars
-  static InputValidator<String?> isMultibyte({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isMultibyte(value) ? errorMessage : null;
-  }
-
-  /// check if the string contains ASCII chars only
-  static InputValidator<String?> isAscii({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isAscii(value) ? errorMessage : null;
-  }
-
-  /// check if the string contains any full-width chars
-  static InputValidator<String?> isFullWidth({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isFullWidth(value) ? errorMessage : null;
-  }
-
-  /// check if the string contains any half-width chars
-  static InputValidator<String?> isHalfWidth({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isHalfWidth(value) ? errorMessage : null;
-  }
-
-  /// check if the string contains a mixture of full and half-width chars
-  static InputValidator<String?> isVariableWidth({
-    required String errorMessage,
-  }) {
-    return (value) => value == null || !validators.isVariableWidth(value)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string contains any surrogate pairs chars
-  static InputValidator<String?> isSurrogatePair({
-    required String errorMessage,
-  }) {
-    return (value) => value == null || !validators.isSurrogatePair(value)
-        ? errorMessage
-        : null;
-  }
-
-  /// check if the string is a valid hex-encoded representation of a MongoDB ObjectId
-  static InputValidator<String?> isMongoId({
-    required String errorMessage,
-  }) {
-    return (value) =>
-        value == null || !validators.isMongoId(value) ? errorMessage : null;
-  }
-
-  static InputValidator<String?> isPostalCode({
-    required String errorMessage,
-    required String locale,
-    bool Function()? orElse,
-  }) {
-    return (value) => value == null ||
-            !validators.isPostalCode(
-              value,
-              locale,
-              orElse: orElse,
-            )
-        ? errorMessage
-        : null;
-  }
+  @override
+  String? call(String value) => value.isEmpty ? message : null;
 }
+
+class StringLengthGreaterThan extends Validator<String> {
+  StringLengthGreaterThan(String message, this.len) : super(message);
+
+  final int len;
+
+  @override
+  String? call(String value) => value.length > len ? null : message;
+}
+
+class StringLengthLowerThan extends Validator<String> {
+  StringLengthLowerThan(String message, this.len) : super(message);
+
+  final int len;
+
+  @override
+  String? call(String value) => value.length < len ? null : message;
+}
+
+class StringPasswordMatch extends Validator<String> {
+  StringPasswordMatch(String message, this.match) : super(message);
+
+  final String Function() match;
+
+  @override
+  String? call(String value) => value != match() ? message : null;
+}
+
+class StringEquals extends Validator<String> {
+  StringEquals(String message, this.comparison) : super(message);
+
+  final dynamic comparison;
+
+  @override
+  String? call(String value) =>
+      !validators.equals(value, comparison) ? message : null;
+}
+
+class StringContains extends Validator<String> {
+  StringContains(String message, this.seed) : super(message);
+
+  final dynamic seed;
+
+  @override
+  String? call(String value) =>
+      !validators.contains(value, seed) ? message : null;
+}
+
+class StringMatches extends Validator<String> {
+  StringMatches(String message, this.pattern) : super(message);
+
+  final dynamic pattern;
+
+  @override
+  String? call(String value) =>
+      !validators.matches(value, pattern) ? message : null;
+}
+
+class StringIsEmail extends Validator<String> {
+  StringIsEmail(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isEmail(value) ? message : null;
+}
+
+class StringIsURL extends Validator<String> {
+  StringIsURL(
+    String message, {
+    this.protocols = const ['http', 'https', 'ftp'],
+    this.requireTld = true,
+    this.requireProtocol = false,
+    this.allowUnderscore = false,
+    this.hostWhitelist = const [],
+    this.hostBlacklist = const [],
+  }) : super(message);
+
+  final List<String?> protocols;
+  final bool requireTld;
+  final bool requireProtocol;
+  final bool allowUnderscore;
+  final List<String> hostWhitelist;
+  final List<String> hostBlacklist;
+
+  @override
+  String? call(String value) => !validators.isURL(
+        value,
+        protocols: protocols,
+        requireTld: requireTld,
+        requireProtocol: requireProtocol,
+        allowUnderscore: allowUnderscore,
+        hostWhitelist: hostWhitelist,
+        hostBlacklist: hostBlacklist,
+      )
+          ? message
+          : null;
+}
+
+class StringIsIP extends Validator<String> {
+  StringIsIP(String message, this.version) : super(message);
+
+  final dynamic version;
+
+  @override
+  String? call(String value) =>
+      !validators.isIP(value, version) ? message : null;
+}
+
+class StringIsFQDN extends Validator<String> {
+  StringIsFQDN(
+    String message, [
+    this.requireTld = true,
+    this.allowUnderscores = false,
+  ]) : super(message);
+
+  final bool requireTld;
+  final bool allowUnderscores;
+
+  @override
+  String? call(String value) => !validators.isFQDN(value) ? message : null;
+}
+
+class StringIsAlpha extends Validator<String> {
+  StringIsAlpha(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isAlpha(value) ? message : null;
+}
+
+class StringIsNumeric extends Validator<String> {
+  StringIsNumeric(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isNumeric(value) ? message : null;
+}
+
+class StringIsAlphanumeric extends Validator<String> {
+  StringIsAlphanumeric(String message) : super(message);
+
+  @override
+  String? call(String value) =>
+      !validators.isAlphanumeric(value) ? message : null;
+}
+
+class StringIsBase64 extends Validator<String> {
+  StringIsBase64(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isBase64(value) ? message : null;
+}
+
+class StringIsInt extends Validator<String> {
+  StringIsInt(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isInt(value) ? message : null;
+}
+
+class StringIsFloat extends Validator<String> {
+  StringIsFloat(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isFloat(value) ? message : null;
+}
+
+class StringIsHexadecimal extends Validator<String> {
+  StringIsHexadecimal(String message) : super(message);
+
+  @override
+  String? call(String value) =>
+      !validators.isHexadecimal(value) ? message : null;
+}
+
+class StringIsHexColor extends Validator<String> {
+  StringIsHexColor(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isHexColor(value) ? message : null;
+}
+
+class StringIsLowercase extends Validator<String> {
+  StringIsLowercase(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isLowercase(value) ? message : null;
+}
+
+class StringIsUppercase extends Validator<String> {
+  StringIsUppercase(String message) : super(message);
+
+  @override
+  String? call(String value) => !validators.isUppercase(value) ? message : null;
+}
+
+// TODO: Finish implementation
+
+// /// check if the string [value] is a number that's divisible by another
+// ///
+// /// [n] is a String or an int.
+// static InputValidator<String?> isDivisibleBy({
+//   required String message,
+//   required int n,
+// }) {
+//   return (value) => !validators.isDivisibleBy(value, n)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string [value] is null
+// static InputValidator<String?> isNull({
+//   required String message,
+// }) {
+//   return (value) => value != null ? message : null;
+// }
+
+// /// check if the length of the string [value] falls in a range
+// static InputValidator<String?> isLength({
+//   required String message,
+//   required int min,
+//   int? max,
+// }) {
+//   return (value) => !validators.isLength(value, min, max)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string's length (in bytes) falls in a range.
+// static InputValidator<String?> isByteLength({
+//   required String message,
+//   required int min,
+//   int? max,
+// }) {
+//   return (value) => !validators.isByteLength(value, min, max)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string is a UUID (version 3, 4 or 5).
+// static InputValidator<String?> isUUID({
+//   required String message,
+//   dynamic version,
+// }) {
+//   return (value) => !validators.isUUID(value, version)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string is a date
+// static InputValidator<String?> isDate({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isDate(value) ? message : null;
+// }
+
+// /// check if the string is a date that's after the specified date
+// ///
+// /// If `date` is not passed, it defaults to now.
+// static InputValidator<String?> isAfter({
+//   required String message,
+//   DateTime? date,
+// }) {
+//   return (value) =>
+//       !validators.isAfter(value, date) ? message : null;
+// }
+
+// /// check if the string is a date that's before the specified date
+// ///
+// /// If `date` is not passed, it defaults to now.
+// static InputValidator<String?> isBefore({
+//   required String message,
+//   DateTime? date,
+// }) {
+//   return (value) => !validators.isBefore(value, date)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string is in a array of allowed values
+// static InputValidator<String?> isIn({
+//   required String message,
+//   required Iterable<String> values,
+// }) {
+//   return (value) =>
+//       !(validators.isIn(value, values) ?? false)
+//           ? message
+//           : null;
+// }
+
+// /// check if the string is a credit card
+// static InputValidator<String?> isCreditCard({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isCreditCard(value) ? message : null;
+// }
+
+// // /// check if the string is an ISBN (version 10 or 13)
+// static InputValidator<String?> isISBN({
+//   required String message,
+//   dynamic version,
+// }) {
+//   return (value) => !validators.isISBN(value, version)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string is valid JSON
+// static InputValidator<String?> isJSON({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isJSON(value) ? message : null;
+// }
+
+// /// check if the string contains one or more multibyte chars
+// static InputValidator<String?> isMultibyte({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isMultibyte(value) ? message : null;
+// }
+
+// /// check if the string contains ASCII chars only
+// static InputValidator<String?> isAscii({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isAscii(value) ? message : null;
+// }
+
+// /// check if the string contains any full-width chars
+// static InputValidator<String?> isFullWidth({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isFullWidth(value) ? message : null;
+// }
+
+// /// check if the string contains any half-width chars
+// static InputValidator<String?> isHalfWidth({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isHalfWidth(value) ? message : null;
+// }
+
+// /// check if the string contains a mixture of full and half-width chars
+// static InputValidator<String?> isVariableWidth({
+//   required String message,
+// }) {
+//   return (value) => !validators.isVariableWidth(value)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string contains any surrogate pairs chars
+// static InputValidator<String?> isSurrogatePair({
+//   required String message,
+// }) {
+//   return (value) => !validators.isSurrogatePair(value)
+//       ? message
+//       : null;
+// }
+
+// /// check if the string is a valid hex-encoded representation of a MongoDB ObjectId
+// static InputValidator<String?> isMongoId({
+//   required String message,
+// }) {
+//   return (value) =>
+//       !validators.isMongoId(value) ? message : null;
+// }
+
+// static InputValidator<String?> isPostalCode({
+//   required String message,
+//   required String locale,
+//   bool Function()? orElse,
+// }) {
+//   return (value) => value == null ||
+//           !validators.isPostalCode(
+//             value,
+//             locale,
+//             orElse: orElse,
+//           )
+//       ? message
+//       : null;
+// }

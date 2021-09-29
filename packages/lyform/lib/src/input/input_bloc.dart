@@ -11,14 +11,9 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
     required this.pureValue,
     ValidationType? validationType,
     BaseValidator<T>? validator,
-    @Deprecated("Use 'validator' instead of 'validators'")
-        List<InputValidator<T>> validators = const [],
   })  : validationType = validationType ??
-            (validator != null || validators.isNotEmpty
-                ? ValidationType.always
-                : ValidationType.none),
-        validator =
-            (validator ?? const EmptyValidator()) & ListValidator(validators),
+            (validator != null ? ValidationType.always : ValidationType.none),
+        validator = validator ?? const EmptyValidator(),
         super(InputBlocState(pureValue)) {
     on<PureEvent<T>>((event, emit) {
       pureValue = event.value;

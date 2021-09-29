@@ -1,48 +1,44 @@
 import 'package:lyform/lyform.dart';
 
-class IntValidator {
-  static InputValidator<int?> required({
-    required String errorMessage,
-  }) {
-    return (value) => value == null ? errorMessage : null;
-  }
+class IntGreaterThan extends Validator<int> {
+  IntGreaterThan(this.limit, String message) : super(message);
 
-  static InputValidator<int?> greaterThan({
-    required int limit,
-    required String errorMessage,
-  }) {
-    return (int? value) =>
-        value == null || (value <= limit) ? errorMessage : null;
-  }
+  final int limit;
 
-  static InputValidator<int?> greaterEqualThan({
-    required int limit,
-    required String errorMessage,
-  }) {
-    return (int? value) {
-      return value == null || (value < limit) ? errorMessage : null;
-    };
-  }
+  @override
+  String? call(int value) => (value <= limit) ? message : null;
+}
 
-  static InputValidator<int?> lesserThan({
-    required int limit,
-    required String errorMessage,
-  }) {
-    return (int? value) =>
-        value == null || (value >= limit) ? errorMessage : null;
-  }
+class IntGreaterEqualThan extends Validator<int> {
+  IntGreaterEqualThan(this.limit, String message) : super(message);
 
-  static InputValidator<int?> lesserEquealThan({
-    required int limit,
-    required String errorMessage,
-  }) {
-    return (int? value) =>
-        value == null || (value > limit) ? errorMessage : null;
-  }
+  final int limit;
 
-  static InputValidator<int?> nonNegative({
-    required String errorMessage,
-  }) {
-    return (value) => value == null || value >= 0 ? null : errorMessage;
-  }
+  @override
+  String? call(int value) => value < limit ? message : null;
+}
+
+class IntLesserThan extends Validator<int> {
+  IntLesserThan(this.limit, String message) : super(message);
+
+  final int limit;
+
+  @override
+  String? call(int value) => value >= limit ? message : null;
+}
+
+class IntLesserEquealThan extends Validator<int> {
+  IntLesserEquealThan(this.limit, String message) : super(message);
+
+  final int limit;
+
+  @override
+  String? call(int value) => value > limit ? message : null;
+}
+
+class IntNonNegative extends Validator<int> {
+  IntNonNegative(String message) : super(message);
+
+  @override
+  String? call(int value) => value >= 0 ? null : message;
 }
