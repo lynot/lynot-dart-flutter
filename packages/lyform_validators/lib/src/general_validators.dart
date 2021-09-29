@@ -1,6 +1,6 @@
 import 'package:lyform/lyform.dart';
 
-class Validator {
+class GeneralValidator {
   static InputValidator<dynamic> required({
     required String errorMessage,
   }) {

@@ -201,10 +201,17 @@ class StringValidator {
         value == null || !validators.isUppercase(value) ? errorMessage : null;
   }
 
-  // /// check if the string [value] is a number that's divisible by another
-  // ///
-  // /// [n] is a String or an int.
-  // bool isDivisibleBy(String value, n) {}
+  /// check if the string [value] is a number that's divisible by another
+  ///
+  /// [n] is a String or an int.
+  static InputValidator<String?> isDivisibleBy({
+    required String errorMessage,
+    required int n,
+  }) {
+    return (value) => value == null || !validators.isDivisibleBy(value, n)
+        ? errorMessage
+        : null;
+  }
 
   /// check if the string [value] is null
   static InputValidator<String?> isNull({
@@ -213,14 +220,37 @@ class StringValidator {
     return (value) => value != null ? errorMessage : null;
   }
 
-  // /// check if the length of the string [value] falls in a range
-  // bool isLength(String value, int min, [int? max]) {}
+  /// check if the length of the string [value] falls in a range
+  static InputValidator<String?> isLength({
+    required String errorMessage,
+    required int min,
+    int? max,
+  }) {
+    return (value) => value == null || !validators.isLength(value, min, max)
+        ? errorMessage
+        : null;
+  }
 
-  // /// check if the string's length (in bytes) falls in a range.
-  // bool isByteLength(String value, int min, [int? max]) {}
+  /// check if the string's length (in bytes) falls in a range.
+  static InputValidator<String?> isByteLength({
+    required String errorMessage,
+    required int min,
+    int? max,
+  }) {
+    return (value) => value == null || !validators.isByteLength(value, min, max)
+        ? errorMessage
+        : null;
+  }
 
-  // /// check if the string is a UUID (version 3, 4 or 5).
-  // bool isUUID(String? value, [version]) {}
+  /// check if the string is a UUID (version 3, 4 or 5).
+  static InputValidator<String?> isUUID({
+    required String errorMessage,
+    dynamic version,
+  }) {
+    return (value) => value == null || !validators.isUUID(value, version)
+        ? errorMessage
+        : null;
+  }
 
   /// check if the string is a date
   static InputValidator<String?> isDate({
@@ -230,18 +260,39 @@ class StringValidator {
         value == null || !validators.isDate(value) ? errorMessage : null;
   }
 
-  // /// check if the string is a date that's after the specified date
-  // ///
-  // /// If `date` is not passed, it defaults to now.
-  // bool isAfter(String? value, [date]) {}
+  /// check if the string is a date that's after the specified date
+  ///
+  /// If `date` is not passed, it defaults to now.
+  static InputValidator<String?> isAfter({
+    required String errorMessage,
+    DateTime? date,
+  }) {
+    return (value) =>
+        value == null || !validators.isAfter(value, date) ? errorMessage : null;
+  }
 
-  // /// check if the string is a date that's before the specified date
-  // ///
-  // /// If `date` is not passed, it defaults to now.
-  // bool isBefore(String? value, [date]) {}
+  /// check if the string is a date that's before the specified date
+  ///
+  /// If `date` is not passed, it defaults to now.
+  static InputValidator<String?> isBefore({
+    required String errorMessage,
+    DateTime? date,
+  }) {
+    return (value) => value == null || !validators.isBefore(value, date)
+        ? errorMessage
+        : null;
+  }
 
-  // /// check if the string is in a array of allowed values
-  // bool? isIn(String? value, values) {}
+  /// check if the string is in a array of allowed values
+  static InputValidator<String?> isIn({
+    required String errorMessage,
+    required Iterable<String> values,
+  }) {
+    return (value) =>
+        value == null || !(validators.isIn(value, values) ?? false)
+            ? errorMessage
+            : null;
+  }
 
   /// check if the string is a credit card
   static InputValidator<String?> isCreditCard({
@@ -252,7 +303,14 @@ class StringValidator {
   }
 
   // /// check if the string is an ISBN (version 10 or 13)
-  // bool isISBN(String? value, [version]) {}
+  static InputValidator<String?> isISBN({
+    required String errorMessage,
+    dynamic version,
+  }) {
+    return (value) => value == null || !validators.isISBN(value, version)
+        ? errorMessage
+        : null;
+  }
 
   /// check if the string is valid JSON
   static InputValidator<String?> isJSON({
@@ -320,5 +378,18 @@ class StringValidator {
         value == null || !validators.isMongoId(value) ? errorMessage : null;
   }
 
-  // bool isPostalCode(String? text, String locale, {bool orElse()?}) {}
+  static InputValidator<String?> isPostalCode({
+    required String errorMessage,
+    required String locale,
+    bool Function()? orElse,
+  }) {
+    return (value) => value == null ||
+            !validators.isPostalCode(
+              value,
+              locale,
+              orElse: orElse,
+            )
+        ? errorMessage
+        : null;
+  }
 }
