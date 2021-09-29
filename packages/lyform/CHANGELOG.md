@@ -1,3 +1,9 @@
+## 0.4.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: implement class base validator logic operations.
+
 ## 0.3.3
 
  - **FEAT**: implement "and" and "or" validators.

@@ -1,3 +1,7 @@
+## 0.2.4
+
+ - **FEAT**: implement class base validators.
+
 ## 0.2.3+4
 
  - Update a dependency to the latest release.
