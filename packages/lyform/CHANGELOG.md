@@ -1,3 +1,10 @@
+## 0.6.0
+
+> Note: This release has breaking changes.
+
+ - **CHORE**: publish packages.
+ - **BREAKING** **FEAT**: remove functional validators.
+
 ## 0.5.0
 
 > Note: This release has breaking changes.

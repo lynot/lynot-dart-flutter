@@ -1,3 +1,9 @@
+## 0.5.1
+
+ - **FEAT**: add example app.
+ - **FEAT**: add flutter text input extension.
+ - **CHORE**: update flutter_lyform.
+
 ## 0.5.0
 
  - Bump "flutter_lyform" to `0.5.0`.
