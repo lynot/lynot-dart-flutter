@@ -9,13 +9,13 @@ environment:
   flutter: '>=1.17.0'
 
 dependencies:
-  bloc: ^7.2.1
+  bloc: ^8.0.1
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.0
+  flutter_bloc: ^8.0.0
   lyform: ^0.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.7.2
-  mocktail: ^0.1.4
+  mocktail: ^0.2.0

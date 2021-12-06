@@ -8,10 +8,10 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  bloc: ^7.2.1
+  bloc: ^8.0.1
   collection: ^1.15.0
 
 dev_dependencies:
   lint: ^1.7.2
-  mocktail: ^0.1.4
-  test: ^1.17.12
+  mocktail: ^0.2.0
+  test: ^1.19.5

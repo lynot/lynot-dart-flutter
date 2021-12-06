@@ -17,7 +17,7 @@ scripts:
     run: melos exec -c 1 "flutter format ."
 
   test:format:
-    run: melos exec -c 1 "find . -name "*.dart" ! -name "*.g.dart" ! -name "*.freezed.dart" ! -name "generated_plugin_registrant.dart" ! -path '*/generated/*' ! -path './proto/*' | tr '\n' ' ' | xargs flutter format --set-exit-if-changed"
+    run: melos exec -c 1 'find . -name "*.dart" ! -name "*.g.dart" ! -name "*.freezed.dart" ! -name "generated_plugin_registrant.dart" ! -path "*/generated/*" ! -path "./proto/*" | tr "\n" " " | xargs flutter format --set-exit-if-changed'
 
   test:analyze:
     run: melos exec -c 1 "flutter analyze"
