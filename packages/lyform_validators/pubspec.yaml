@@ -1,6 +1,6 @@
 name: lyform_validators
 description: Dart package to implement forms in an easy, fast and effective way using the bloc package
-version: 0.5.0+1
+version: 0.5.1
 homepage: https://github.com/lynotofficial/lynot-dart-flutter
 repository: https://github.com/lynotofficial/lynot-dart-flutter/tree/master/packages/lyform_validators
 
@@ -8,7 +8,7 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  lyform: ^0.6.0
+  lyform: ^0.6.1
   validators: ^3.0.0
 
 dev_dependencies:

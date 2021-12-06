@@ -1,3 +1,11 @@
+## 0.5.2
+
+ - **FEAT**: update bloc to version 8.
+ - **FEAT**: add example app.
+ - **FEAT**: add flutter text input extension.
+ - **CHORE**: publish packages.
+ - **CHORE**: update flutter_lyform.
+
 ## 0.5.1
 
  - **FEAT**: add example app.

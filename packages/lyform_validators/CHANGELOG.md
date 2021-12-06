@@ -1,3 +1,8 @@
+## 0.5.1
+
+ - **FEAT**: update bloc to version 8.
+ - **CHORE**: publish packages.
+
 ## 0.5.0+1
 
  - Update a dependency to the latest release.

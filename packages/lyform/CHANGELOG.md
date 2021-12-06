@@ -1,3 +1,8 @@
+## 0.6.1
+
+ - **FEAT**: update bloc to version 8.
+ - **CHORE**: publish packages.
+
 ## 0.6.0
 
 > Note: This release has breaking changes.
