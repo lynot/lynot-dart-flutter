@@ -14,6 +14,7 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   })  : validationType = validationType ??
             (validator != null ? ValidationType.always : ValidationType.none),
         validator = validator ?? const EmptyValidator(),
+        _lastNotNull = pureValue,
         super(InputBlocState(pureValue)) {
     on<PureEvent<T>>((event, emit) {
       pureValue = event.value;
@@ -34,6 +35,8 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
     });
   }
 
+  T _lastNotNull;
+
   T pureValue;
   final BaseValidator<T> validator;
   final ValidationType validationType;
@@ -43,12 +46,15 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   bool get isInvalid => !isValid;
 
   T get value => state.value;
+  T get lastNotNull => _lastNotNull;
 
   void dirty(T value) {
+    _updateLast(value);
     add(DirtyEvent(value));
   }
 
   void pure(T value) {
+    _updateLast(value);
     add(PureEvent(value));
   }
 
@@ -57,6 +63,12 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
         (validationType == ValidationType.explicit)) {
       final error = validator(value);
       add(DirectValueEvent<T>(state.value, error));
+    }
+  }
+
+  void _updateLast(T value) {
+    if (value != null) {
+      _lastNotNull = value;
     }
   }
 }
