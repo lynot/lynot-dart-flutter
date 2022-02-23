@@ -75,7 +75,8 @@ class ExampleForm extends FormBloc<String, String> {
   List<InputBloc> get inputs => [name];
 
   @override
-  Future<FormBlocState<String, String>> onSubmmit() async {
-    return const FormSuccessState('Yeah!');
+  Stream<FormBlocState<String, String>> onSubmit() async* {
+    yield const FormLoadingState();
+    yield const FormSuccessState('Yeah!');
   }
 }
