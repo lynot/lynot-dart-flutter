@@ -77,6 +77,11 @@ class ExampleForm extends FormBloc<String, String> {
   @override
   Stream<FormBlocState<String, String>> onSubmit() async* {
     yield const FormLoadingState();
+    await Future.delayed(
+      const Duration(
+        seconds: 3,
+      ),
+    );
     yield const FormSuccessState('Yeah!');
   }
 }
