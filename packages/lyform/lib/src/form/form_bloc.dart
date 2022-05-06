@@ -29,10 +29,6 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
 
     on<FormSubmitEvent>((event, emit) async {
       _validateInputs();
-      add(const _FormSubmitEvent());
-    });
-
-    on<_FormSubmitEvent>((event, emit) async {
       if (!isValid()) {
         emit(FormInvalidState<D, E>());
       } else {
