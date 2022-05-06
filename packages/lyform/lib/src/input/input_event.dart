@@ -1,9 +1,10 @@
 part of 'input_bloc.dart';
 
 abstract class InputBlocEvent<T> {
-  InputBlocEvent(this.value);
+  InputBlocEvent(this.value, [this.debugName]);
 
   final T value;
+  final String? debugName;
 
   @override
   bool operator ==(dynamic other) {
@@ -18,44 +19,50 @@ abstract class InputBlocEvent<T> {
 
   @override
   String toString() {
-    return 'InputBlocEvent($value)';
+    final _debugName = debugName != null ? ', debugName: $debugName' : '';
+    return 'InputBlocEvent($value$_debugName)';
   }
 }
 
 class DirtyEvent<T> extends InputBlocEvent<T> {
-  DirtyEvent(T value) : super(value);
+  DirtyEvent(T value, [String? debugName]) : super(value, debugName);
 
   @override
   String toString() {
-    return 'DirtyEvent($value)';
+    final _debugName = debugName != null ? ', debugName: $debugName' : '';
+    return 'DirtyEvent($value,$_debugName)';
   }
 }
 
 class PureEvent<T> extends InputBlocEvent<T> {
-  PureEvent(T value) : super(value);
+  PureEvent(T value, [String? debugName]) : super(value, debugName);
 
   @override
   String toString() {
-    return 'PureEvent($value)';
+    final _debugName = debugName != null ? ', debugName: $debugName' : '';
+    return 'PureEvent($value$_debugName)';
   }
 }
 
 class ValidateEvent<T> extends InputBlocEvent<T> {
-  ValidateEvent(T value) : super(value);
+  ValidateEvent(T value, [String? debugName]) : super(value, debugName);
 
   @override
   String toString() {
-    return 'ValidateEvent($value)';
+    final _debugName = debugName != null ? ', debugName: $debugName' : '';
+    return 'ValidateEvent($value$_debugName)';
   }
 }
 
 class DirectValueEvent<T> extends InputBlocEvent<T> {
-  DirectValueEvent(T value, this.error) : super(value);
+  DirectValueEvent(T value, this.error, [String? debugName])
+      : super(value, debugName);
 
   String? error;
 
   @override
   String toString() {
-    return 'DirectValueEvent($value, $error)';
+    final _debugName = debugName != null ? ', debugName: $debugName' : '';
+    return 'DirectValueEvent($value, $error$_debugName)';
   }
 }

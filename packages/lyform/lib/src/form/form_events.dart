@@ -10,11 +10,14 @@ abstract class FormBlocEvent {
 }
 
 class FormChangedEvent extends FormBlocEvent {
-  const FormChangedEvent() : super();
+  const FormChangedEvent(this.debugName) : super();
+
+  final String? debugName;
 
   @override
   String toString() {
-    return 'FormChangedEvent()';
+    final _debugName = debugName == null ? '' : 'debugName: $debugName';
+    return 'FormChangedEvent($_debugName)';
   }
 }
 

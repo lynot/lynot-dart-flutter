@@ -1,10 +1,11 @@
 part of 'input_bloc.dart';
 
 class InputBlocState<T> {
-  InputBlocState(this.value, [this.error]);
+  InputBlocState(this.value, [this.error, this.debugName]);
 
   final T value;
   final String? error;
+  final String? debugName;
 
   @override
   bool operator ==(dynamic other) {
@@ -21,6 +22,7 @@ class InputBlocState<T> {
 
   @override
   String toString() {
-    return 'InputBlocState($value, $error)';
+    final _debugName = debugName != null ? ', debugName: $debugName' : '';
+    return 'InputBlocState($value, $error$_debugName)';
   }
 }

@@ -29,6 +29,10 @@ class FormInvalidState<D, E> extends FormBlocState<D, E> {
 
 class FormValidState<D, E> extends FormBlocState<D, E> {
   const FormValidState() : super();
+  @override
+  String toString() {
+    return 'FormValidState()';
+  }
 }
 
 class FormLoadingState<D, E> extends FormBlocState<D, E> {

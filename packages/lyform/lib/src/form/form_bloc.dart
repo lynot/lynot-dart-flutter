@@ -78,8 +78,8 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     }
   }
 
-  void change() {
-    add(const FormChangedEvent());
+  void change(String? debugName) {
+    add(FormChangedEvent(debugName));
   }
 
   ///Submit form
