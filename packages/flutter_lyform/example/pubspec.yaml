@@ -13,7 +13,12 @@ dependencies:
   flutter_bloc: ^8.0.0
   flutter_lyform:
     path: ../
+  lyform_validators:
+    path: ../../lyform_validators
     
+dependency_overrides:
+  lyform:
+    path: ../../lyform
 
 dev_dependencies:
   flutter_test:
