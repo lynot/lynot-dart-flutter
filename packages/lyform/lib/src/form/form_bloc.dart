@@ -9,7 +9,8 @@ part 'form_states.dart';
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   FormBloc() : super(const FormPureState()) {
     for (final input in inputs) {
-      input.stream.listen((_) => change());
+      _subscriptions
+          .add(input.stream.listen((input) => change(input.debugName)));
     }
 
     on<FormChangedEvent>((event, emit) {
@@ -28,10 +29,6 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
 
     on<FormSubmitEvent>((event, emit) async {
       _validateInputs();
-      add(const _FormSubmitEvent());
-    });
-
-    on<_FormSubmitEvent>((event, emit) async {
       if (!isValid()) {
         emit(FormInvalidState<D, E>());
       } else {
@@ -51,6 +48,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
 
   List<InputBloc> get inputs;
   Future<FormBlocState<D, E>> onSubmmit();
+  final _subscriptions = <StreamSubscription<InputBlocState<dynamic>>>[];
 
   ///Are every input Valid?
   bool isValid() {
@@ -76,8 +74,8 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     }
   }
 
-  void change() {
-    add(const FormChangedEvent());
+  void change(String? debugName) {
+    add(FormChangedEvent(debugName));
   }
 
   ///Submit form
@@ -88,5 +86,11 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   ///Reset form
   void reset() {
     add(const FormResetEvent());
+  }
+
+  @override
+  Future<void> close() async {
+    await Future.wait<void>(_subscriptions.map((s) => s.cancel()));
+    return super.close();
   }
 }

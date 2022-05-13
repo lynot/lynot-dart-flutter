@@ -11,16 +11,20 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
     required this.pureValue,
     ValidationType? validationType,
     BaseValidator<T>? validator,
+    this.debugName,
   })  : validationType = validationType ??
             (validator != null ? ValidationType.always : ValidationType.none),
         validator = validator ?? const EmptyValidator(),
-        super(InputBlocState(pureValue)) {
+        super(InputBlocState(pureValue, null, debugName)) {
     on<PureEvent<T>>((event, emit) {
       pureValue = event.value;
     });
     on<InputBlocEvent<T>>((event, emit) {
+      if (event.value == pureValue) {
+        return;
+      }
       if (event is DirectValueEvent<T>) {
-        emit(InputBlocState<T>(event.value, event.error));
+        emit(InputBlocState<T>(event.value, event.error, debugName));
         return;
       }
       String? error;
@@ -30,13 +34,14 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
         error = this.validator(event.value);
       }
       error = event.value == pureValue ? null : error;
-      emit(InputBlocState<T>(event.value, error));
+      emit(InputBlocState<T>(event.value, error, debugName));
     });
   }
 
   T pureValue;
   final BaseValidator<T> validator;
   final ValidationType validationType;
+  final String? debugName;
 
   bool get isPure => pureValue == state.value;
   bool get isValid => state.error == null;
@@ -45,18 +50,18 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   T get value => state.value;
 
   void dirty(T value) {
-    add(DirtyEvent(value));
+    add(DirtyEvent(value, debugName));
   }
 
   void pure(T value) {
-    add(PureEvent(value));
+    add(PureEvent(value, debugName));
   }
 
   void validate() {
     if (validationType == ValidationType.always ||
         (validationType == ValidationType.explicit)) {
       final error = validator(value);
-      add(DirectValueEvent<T>(state.value, error));
+      add(DirectValueEvent<T>(state.value, error, debugName));
     }
   }
 }
