@@ -8,22 +8,22 @@ scripts:
     run: melos exec -c 1 "lockpick sync ./"
 
   build:
-    run: melos exec -c 1 "flutter pub get && flutter pub run build_runner build"
+    run: melos exec -c 1 "dart pub get && dart pub run build_runner build"
 
   build:all:
-    run: melos exec -c 1 "flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs"
+    run: melos exec -c 1 "dart pub get && dart pub run build_runner build --delete-conflicting-outputs"
 
   format:
-    run: melos exec -c 1 "flutter format ."
+    run: melos exec -c 1 "dart format ."
 
   test:format:
-    run: melos exec -c 1 'find . -name "*.dart" ! -name "*.g.dart" ! -name "*.freezed.dart" ! -name "generated_plugin_registrant.dart" ! -path "*/generated/*" ! -path "./proto/*" | tr "\n" " " | xargs flutter format --set-exit-if-changed'
+    run: melos exec -c 1 "dart format --set-exit-if-changed"
 
   test:analyze:
-    run: melos exec -c 1 "flutter analyze"
+    run: melos exec -c 1 "dart analyze"
 
   test:only:
-    run: melos exec -c 1 "flutter test --no-pub --coverage"
+    run: melos exec -c 1 "dart test --no-pub --coverage"
 
   test:
     run: |
