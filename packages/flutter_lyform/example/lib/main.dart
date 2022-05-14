@@ -1,9 +1,13 @@
+import 'package:example/bloc_observer.dart';
+import 'package:example/profile_form/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_lyform/flutter_lyform.dart';
 
-void main() {
-  runApp(const App());
+Future<void> main() async {
+  await BlocOverrides.runZoned(
+    () async => runApp(const App()),
+    blocObserver: AppBlocObserver(),
+  );
 }
 
 class App extends StatelessWidget {
@@ -11,77 +15,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(child: FormWidget()),
-      ),
+    return const MaterialApp(
+      home: ProfilePage(),
     );
-  }
-}
-
-class FormWidget extends StatelessWidget {
-  FormWidget({
-    Key? key,
-  }) : super(key: key);
-
-  final nameController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<ExampleForm>(
-      create: (context) => ExampleForm(),
-      child: Builder(builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InputBlocBuilder<String>(
-                bloc: context.read<ExampleForm>().name,
-                builder: (context, state) {
-                  final bloc = context.read<ExampleForm>().name;
-                  return TextField(
-                    controller: nameController..setValue(state.value),
-                    onChanged: bloc.dirty,
-                    decoration: const InputDecoration(labelText: 'Name'),
-                  );
-                },
-              ),
-              FormBlocBuilder<ExampleForm>(
-                onValid: () => TextButton(
-                  child: const Text('Submit'),
-                  onPressed: () {},
-                ),
-                orElse: () => const TextButton(
-                  child: Text('Submit'),
-                  onPressed: null,
-                ),
-              ),
-            ],
-          ),
-        );
-      }),
-    );
-  }
-}
-
-class ExampleForm extends FormBloc<String, String> {
-  final name = InputBloc<String>(
-    pureValue: '',
-    validationType: ValidationType.none,
-  );
-
-  @override
-  List<InputBloc> get inputs => [name];
-
-  @override
-  Stream<FormBlocState<String, String>> onSubmit() async* {
-    yield const FormLoadingState();
-    await Future.delayed(
-      const Duration(
-        seconds: 3,
-      ),
-    );
-    yield const FormSuccessState('Yeah!');
   }
 }
