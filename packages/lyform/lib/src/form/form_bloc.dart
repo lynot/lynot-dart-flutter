@@ -32,8 +32,9 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
       if (!isValid()) {
         emit(FormInvalidState<D, E>());
       } else {
-        emit(FormLoadingState<D, E>());
-        emit(await onSubmmit());
+        await for (final state in onSubmit()) {
+          emit(state);
+        }
       }
     });
   }
@@ -47,7 +48,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   }
 
   List<InputBloc> get inputs;
-  Future<FormBlocState<D, E>> onSubmmit();
+  Stream<FormBlocState<D, E>> onSubmit();
   final _subscriptions = <StreamSubscription<InputBlocState<dynamic>>>[];
 
   ///Are every input Valid?
