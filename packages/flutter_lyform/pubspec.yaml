@@ -5,17 +5,17 @@ homepage: https://github.com/lynotofficial/lynot-dart-flutter
 repository: https://github.com/lynotofficial/lynot-dart-flutter/tree/master/packages/flutter_lyform
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.16.2 <3.0.0'
   flutter: '>=1.17.0'
 
 dependencies:
-  bloc: ^8.0.1
+  bloc: ^8.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.0.1
   lyform: ^0.6.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.7.2
-  mocktail: ^0.2.0
+  lint: ^1.8.2
+  mocktail: ^0.3.0

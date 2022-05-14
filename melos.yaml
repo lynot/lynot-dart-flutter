@@ -42,7 +42,7 @@ scripts:
       remove_from_coverage -f coverage/lcov.info -r "\.freezed\.dart$","\.g\.dart$","\.config\.dart$","generated_plugin_registrant.dart$"
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.16.2 <3.0.0"
 
 dev_dependencies:
-  lint: ^1.7.2
+  lint: ^1.8.2

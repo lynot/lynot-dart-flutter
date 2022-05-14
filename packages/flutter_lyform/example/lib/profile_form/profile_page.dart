@@ -30,9 +30,11 @@ class ProfileView extends StatelessWidget {
     return FormBlocListener<ProfileForm, String, String>(
       bloc: context.read<ProfileForm>(),
       onSuccess: (value) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(value),
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(value),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -46,7 +48,9 @@ class ProfileView extends StatelessWidget {
                 return TextField(
                   onChanged: bloc.dirty,
                   decoration: InputDecoration(
-                      hintText: 'Email', errorText: state.error),
+                    hintText: 'Email',
+                    errorText: state.error,
+                  ),
                 );
               },
             ),

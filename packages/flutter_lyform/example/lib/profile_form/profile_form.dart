@@ -17,13 +17,14 @@ class ProfileForm extends FormBloc<String, String> {
     debugName: 'name',
   );
   final age = InputBloc<int>(
-      pureValue: 0,
-      validationType: ValidationType.always,
-      validator: IntGreaterThan(
-        0,
-        'Order in course must be greater or equal than 0.',
-      ),
-      debugName: 'age');
+    pureValue: 0,
+    validationType: ValidationType.always,
+    validator: IntGreaterThan(
+      0,
+      'Order in course must be greater or equal than 0.',
+    ),
+    debugName: 'age',
+  );
   final country = InputBloc<String?>(
     pureValue: null,
   );
