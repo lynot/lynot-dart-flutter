@@ -53,5 +53,6 @@ class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
     if (state is FormErrorState) {
       return onError?.call(state.error);
     }
+    return null;
   }
 }

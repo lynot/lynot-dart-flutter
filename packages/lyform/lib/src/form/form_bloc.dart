@@ -68,7 +68,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     }
   }
 
-  ///Use this if you whant to set all input as pure using they current value. Useful when a success submmit happens.
+  ///Use this if you whant to set all input as pure using they current value. Useful when a success submit happens.
   void _setPureInputs() {
     for (final input in inputs) {
       input.pure(input.value);

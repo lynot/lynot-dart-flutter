@@ -34,8 +34,8 @@ class ProfileForm extends FormBloc<String, String> {
   List<InputBloc> get inputs => [name, email, emailSubcription, country, age];
 
   @override
-  Future<FormBlocState<String, String>> onSubmmit() async {
+  Stream<FormBlocState<String, String>> onSubmit() async* {
     await Future<void>.delayed(const Duration(seconds: 3));
-    return const FormSuccessState('Profile save successfully.');
+    yield const FormSuccessState('Profile save successfully.');
   }
 }

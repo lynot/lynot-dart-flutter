@@ -38,12 +38,3 @@ class FormSubmitEvent extends FormBlocEvent {
     return 'FormSubmitEvent()';
   }
 }
-
-class _FormSubmitEvent extends FormBlocEvent {
-  const _FormSubmitEvent() : super();
-
-  @override
-  String toString() {
-    return '_FormSubmitEvent()';
-  }
-}
