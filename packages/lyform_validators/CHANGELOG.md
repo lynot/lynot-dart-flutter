@@ -1,3 +1,7 @@
+## 0.5.2
+
+ - **FEAT**: add nullable string validators.
+
 ## 0.5.1
 
  - **FEAT**: update bloc to version 8.

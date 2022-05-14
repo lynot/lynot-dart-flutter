@@ -1,3 +1,9 @@
+## 0.5.3
+
+ - **FIX**: errors by previous merge.
+ - **FEAT**: improve example.
+ - **FEAT**: add windows folder in example.
+
 ## 0.5.2
 
  - **FEAT**: update bloc to version 8.

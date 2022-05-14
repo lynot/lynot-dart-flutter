@@ -1,3 +1,14 @@
+## 0.7.0
+
+> Note: This release has breaking changes.
+
+ - **FIX**: errors by previous merge.
+ - **FIX**: execute the `onLoading` method.
+ - **FIX**: close all `inputs` subscriptions.
+ - **FEAT**: improve debug.
+ - **FEAT**: add last not null property.
+ - **BREAKING** **FEAT**: make on submit a stream.
+
 ## 0.6.1
 
  - **FEAT**: update bloc to version 8.
