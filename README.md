@@ -10,7 +10,7 @@
 [![Github Forks](https://img.shields.io/github/forks/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter/network/members)
 [![Github Watchers](https://img.shields.io/github/watchers/lynotofficial/lynot-dart-flutter?style=flat&logo=github)](https://github.com/lynotofficial/lynot-dart-flutter)
 [![GitHub contributors](https://img.shields.io/github/contributors/lynotofficial/lynot-dart-flutter?label=code%20contributors)](https://github.com/lynotofficial/lynot-dart-flutter/graphs/contributors)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
@@ -38,6 +38,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://leynier.github.io"><img src="https://avatars.githubusercontent.com/u/36774373?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leynier Gutiérrez González</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=leynier" title="Code">💻</a> <a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=leynier" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/lagcleaner"><img src="https://avatars.githubusercontent.com/u/45600122?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leonel</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=lagcleaner" title="Code">💻</a> <a href="https://github.com/lynotofficial/lynot-dart-flutter/issues?q=author%3Alagcleaner" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/cbermudez97"><img src="https://avatars.githubusercontent.com/u/43155355?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlos Bermudez Porto</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=cbermudez97" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/yeikel16"><img src="https://avatars.githubusercontent.com/u/26438532?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yeikel Uriarte Arteaga</b></sub></a><br /><a href="https://github.com/lynotofficial/lynot-dart-flutter/commits?author=yeikel16" title="Code">💻</a> <a href="https://github.com/lynotofficial/lynot-dart-flutter/issues?q=author%3Ayeikel16" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
