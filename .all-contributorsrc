@@ -37,6 +37,25 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "cbermudez97",
+      "name": "Carlos Bermudez Porto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43155355?v=4",
+      "profile": "https://github.com/cbermudez97",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "yeikel16",
+      "name": "Yeikel Uriarte Arteaga",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26438532?v=4",
+      "profile": "https://github.com/yeikel16",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
