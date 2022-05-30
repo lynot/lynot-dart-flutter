@@ -12,8 +12,7 @@ class ProfileForm extends FormBloc<String, String> {
   final name = InputBloc<String>(
     pureValue: '',
     validationType: ValidationType.always,
-    validator: StringRequired('Password is required.') &
-        StringLengthGreaterThan('Name must be at least 6 characters.', 6),
+    validator: StringRequired('Name is required.'),
     debugName: 'name',
   );
   final age = InputBloc<int>(
@@ -28,11 +27,9 @@ class ProfileForm extends FormBloc<String, String> {
   final country = InputBloc<String?>(
     pureValue: null,
   );
-  final emailSubcription =
-      InputBloc<bool>(pureValue: false, debugName: 'emailSubcription');
 
   @override
-  List<InputBloc> get inputs => [name, email, emailSubcription, country, age];
+  List<InputBloc> get inputs => [name, email, country, age];
 
   @override
   Stream<FormBlocState<String, String>> onSubmit() async* {

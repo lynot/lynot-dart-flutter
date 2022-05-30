@@ -32,6 +32,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
       if (!isValid()) {
         emit(FormInvalidState<D, E>());
       } else {
+        emit(FormLoadingState<D, E>());
         await for (final state in onSubmit()) {
           emit(state);
         }

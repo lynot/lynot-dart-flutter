@@ -8,13 +8,13 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProfileForm(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Profile Form'),
-        ),
-        body: const ProfileView(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile Form'),
+      ),
+      body: BlocProvider(
+        create: (context) => ProfileForm(),
+        child: const ProfileView(),
       ),
     );
   }
@@ -76,7 +76,7 @@ class ProfileView extends StatelessWidget {
                 return TextField(
                   onChanged: bloc.dirty,
                   decoration: InputDecoration(
-                    hintText: 'Contry',
+                    hintText: 'Country',
                     errorText: state.error,
                   ),
                 );
@@ -98,6 +98,7 @@ class ProfileView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             FormBlocBuilder<ProfileForm>(
+              bloc: context.read<ProfileForm>(),
               onLoading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
