@@ -13,7 +13,6 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_lyform: ^0.5.3
   lyform_validators: ^0.5.2
-
 dev_dependencies:
   lint: ^1.8.2
 

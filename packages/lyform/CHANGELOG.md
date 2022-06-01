@@ -1,3 +1,11 @@
+## 0.7.1
+
+ - **FIX**: melos config and migrate to dart 2.17.1.
+ - **FIX**: emit pure state.
+ - **FIX**: onLoading is not executed #11.
+ - **DOCS**: update packages/lyform/README.md [skip ci].
+ - **DOCS**: update packages/lyform/README.md [skip ci].
+
 ## 0.7.0
 
 > Note: This release has breaking changes.
