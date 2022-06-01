@@ -1,3 +1,10 @@
+## 0.5.4
+
+ - **PERF**: fix some error in the example.
+ - **FIX**: melos config and migrate to dart 2.17.1.
+ - **DOCS**: update packages/flutter_lyform/README.md [skip ci].
+ - **DOCS**: update packages/flutter_lyform/README.md [skip ci].
+
 ## 0.5.3
 
  - **FIX**: errors by previous merge.
