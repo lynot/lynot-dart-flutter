@@ -2,7 +2,7 @@ import 'package:lyform/lyform.dart';
 import 'package:validators/validators.dart' as validators;
 
 class NullableStringLengthGreaterThan extends Validator<String?> {
-  NullableStringLengthGreaterThan(String message, this.len) : super(message);
+  NullableStringLengthGreaterThan(super.message, this.len);
 
   final int len;
 
@@ -15,7 +15,7 @@ class NullableStringLengthGreaterThan extends Validator<String?> {
 }
 
 class NullableStringLengthLowerThan extends Validator<String?> {
-  NullableStringLengthLowerThan(String message, this.len) : super(message);
+  NullableStringLengthLowerThan(super.message, this.len);
 
   final int len;
 
@@ -28,7 +28,7 @@ class NullableStringLengthLowerThan extends Validator<String?> {
 }
 
 class NullableStringPasswordMatch extends Validator<String?> {
-  NullableStringPasswordMatch(String message, this.match) : super(message);
+  NullableStringPasswordMatch(super.message, this.match);
 
   final String Function() match;
 
@@ -41,7 +41,7 @@ class NullableStringPasswordMatch extends Validator<String?> {
 }
 
 class NullableStringEquals extends Validator<String?> {
-  NullableStringEquals(String message, this.comparison) : super(message);
+  NullableStringEquals(super.message, this.comparison);
 
   final dynamic comparison;
 
@@ -54,7 +54,7 @@ class NullableStringEquals extends Validator<String?> {
 }
 
 class NullableStringContains extends Validator<String?> {
-  NullableStringContains(String message, this.seed) : super(message);
+  NullableStringContains(super.message, this.seed);
 
   final dynamic seed;
 
@@ -67,7 +67,7 @@ class NullableStringContains extends Validator<String?> {
 }
 
 class NullableStringMatches extends Validator<String?> {
-  NullableStringMatches(String message, this.pattern) : super(message);
+  NullableStringMatches(super.message, this.pattern);
 
   final dynamic pattern;
 
@@ -80,7 +80,7 @@ class NullableStringMatches extends Validator<String?> {
 }
 
 class NullableStringIsEmail extends Validator<String?> {
-  NullableStringIsEmail(String message) : super(message);
+  NullableStringIsEmail(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -92,14 +92,14 @@ class NullableStringIsEmail extends Validator<String?> {
 
 class NullableStringIsURL extends Validator<String?> {
   NullableStringIsURL(
-    String message, {
+    super.message, {
     this.protocols = const ['http', 'https', 'ftp'],
     this.requireTld = true,
     this.requireProtocol = false,
     this.allowUnderscore = false,
     this.hostWhitelist = const [],
     this.hostBlacklist = const [],
-  }) : super(message);
+  });
 
   final List<String?> protocols;
   final bool requireTld;
@@ -125,7 +125,7 @@ class NullableStringIsURL extends Validator<String?> {
 }
 
 class NullableStringIsIP extends Validator<String?> {
-  NullableStringIsIP(String message, this.version) : super(message);
+  NullableStringIsIP(super.message, this.version);
 
   final dynamic version;
 
@@ -139,10 +139,10 @@ class NullableStringIsIP extends Validator<String?> {
 
 class NullableStringIsFQDN extends Validator<String?> {
   NullableStringIsFQDN(
-    String message, [
+    super.message, [
     this.requireTld = true,
     this.allowUnderscores = false,
-  ]) : super(message);
+  ]);
 
   final bool requireTld;
   final bool allowUnderscores;
@@ -156,7 +156,7 @@ class NullableStringIsFQDN extends Validator<String?> {
 }
 
 class NullableStringIsAlpha extends Validator<String?> {
-  NullableStringIsAlpha(String message) : super(message);
+  NullableStringIsAlpha(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -167,7 +167,7 @@ class NullableStringIsAlpha extends Validator<String?> {
 }
 
 class NullableStringIsNumeric extends Validator<String?> {
-  NullableStringIsNumeric(String message) : super(message);
+  NullableStringIsNumeric(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -178,7 +178,7 @@ class NullableStringIsNumeric extends Validator<String?> {
 }
 
 class NullableStringIsAlphanumeric extends Validator<String?> {
-  NullableStringIsAlphanumeric(String message) : super(message);
+  NullableStringIsAlphanumeric(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -189,7 +189,7 @@ class NullableStringIsAlphanumeric extends Validator<String?> {
 }
 
 class NullableStringIsBase64 extends Validator<String?> {
-  NullableStringIsBase64(String message) : super(message);
+  NullableStringIsBase64(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -200,7 +200,7 @@ class NullableStringIsBase64 extends Validator<String?> {
 }
 
 class NullableStringIsInt extends Validator<String?> {
-  NullableStringIsInt(String message) : super(message);
+  NullableStringIsInt(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -211,7 +211,7 @@ class NullableStringIsInt extends Validator<String?> {
 }
 
 class NullableStringIsFloat extends Validator<String?> {
-  NullableStringIsFloat(String message) : super(message);
+  NullableStringIsFloat(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -222,7 +222,7 @@ class NullableStringIsFloat extends Validator<String?> {
 }
 
 class NullableStringIsHexadecimal extends Validator<String?> {
-  NullableStringIsHexadecimal(String message) : super(message);
+  NullableStringIsHexadecimal(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -233,7 +233,7 @@ class NullableStringIsHexadecimal extends Validator<String?> {
 }
 
 class NullableStringIsHexColor extends Validator<String?> {
-  NullableStringIsHexColor(String message) : super(message);
+  NullableStringIsHexColor(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -244,7 +244,7 @@ class NullableStringIsHexColor extends Validator<String?> {
 }
 
 class NullableStringIsLowercase extends Validator<String?> {
-  NullableStringIsLowercase(String message) : super(message);
+  NullableStringIsLowercase(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -255,7 +255,7 @@ class NullableStringIsLowercase extends Validator<String?> {
 }
 
 class NullableStringIsUppercase extends Validator<String?> {
-  NullableStringIsUppercase(String message) : super(message);
+  NullableStringIsUppercase(super.message);
 
   @override
   String? call(String? value) => value == null

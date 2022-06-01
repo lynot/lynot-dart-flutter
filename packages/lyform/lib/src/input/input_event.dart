@@ -25,7 +25,7 @@ abstract class InputBlocEvent<T> {
 }
 
 class DirtyEvent<T> extends InputBlocEvent<T> {
-  DirtyEvent(T value, [String? debugName]) : super(value, debugName);
+  DirtyEvent(super.value, [super.debugName]);
 
   @override
   String toString() {
@@ -35,7 +35,7 @@ class DirtyEvent<T> extends InputBlocEvent<T> {
 }
 
 class PureEvent<T> extends InputBlocEvent<T> {
-  PureEvent(T value, [String? debugName]) : super(value, debugName);
+  PureEvent(super.value, [super.debugName]);
 
   @override
   String toString() {
@@ -45,7 +45,7 @@ class PureEvent<T> extends InputBlocEvent<T> {
 }
 
 class ValidateEvent<T> extends InputBlocEvent<T> {
-  ValidateEvent(T value, [String? debugName]) : super(value, debugName);
+  ValidateEvent(super.value, [super.debugName]);
 
   @override
   String toString() {

@@ -2,14 +2,14 @@ import 'package:lyform/lyform.dart';
 import 'package:validators/validators.dart' as validators;
 
 class StringRequired extends Validator<String> {
-  StringRequired(String message) : super(message);
+  StringRequired(super.message);
 
   @override
   String? call(String value) => value.isEmpty ? message : null;
 }
 
 class StringLengthGreaterThan extends Validator<String> {
-  StringLengthGreaterThan(String message, this.len) : super(message);
+  StringLengthGreaterThan(super.message, this.len);
 
   final int len;
 
@@ -18,7 +18,7 @@ class StringLengthGreaterThan extends Validator<String> {
 }
 
 class StringLengthLowerThan extends Validator<String> {
-  StringLengthLowerThan(String message, this.len) : super(message);
+  StringLengthLowerThan(super.message, this.len);
 
   final int len;
 
@@ -27,7 +27,7 @@ class StringLengthLowerThan extends Validator<String> {
 }
 
 class StringPasswordMatch extends Validator<String> {
-  StringPasswordMatch(String message, this.match) : super(message);
+  StringPasswordMatch(super.message, this.match);
 
   final String Function() match;
 
@@ -36,7 +36,7 @@ class StringPasswordMatch extends Validator<String> {
 }
 
 class StringEquals extends Validator<String> {
-  StringEquals(String message, this.comparison) : super(message);
+  StringEquals(super.message, this.comparison);
 
   final dynamic comparison;
 
@@ -46,7 +46,7 @@ class StringEquals extends Validator<String> {
 }
 
 class StringContains extends Validator<String> {
-  StringContains(String message, this.seed) : super(message);
+  StringContains(super.message, this.seed);
 
   final dynamic seed;
 
@@ -56,7 +56,7 @@ class StringContains extends Validator<String> {
 }
 
 class StringMatches extends Validator<String> {
-  StringMatches(String message, this.pattern) : super(message);
+  StringMatches(super.message, this.pattern);
 
   final dynamic pattern;
 
@@ -66,7 +66,7 @@ class StringMatches extends Validator<String> {
 }
 
 class StringIsEmail extends Validator<String> {
-  StringIsEmail(String message) : super(message);
+  StringIsEmail(super.message);
 
   @override
   String? call(String value) => !validators.isEmail(value) ? message : null;
@@ -74,14 +74,14 @@ class StringIsEmail extends Validator<String> {
 
 class StringIsURL extends Validator<String> {
   StringIsURL(
-    String message, {
+    super.message, {
     this.protocols = const ['http', 'https', 'ftp'],
     this.requireTld = true,
     this.requireProtocol = false,
     this.allowUnderscore = false,
     this.hostWhitelist = const [],
     this.hostBlacklist = const [],
-  }) : super(message);
+  });
 
   final List<String?> protocols;
   final bool requireTld;
@@ -105,7 +105,7 @@ class StringIsURL extends Validator<String> {
 }
 
 class StringIsIP extends Validator<String> {
-  StringIsIP(String message, this.version) : super(message);
+  StringIsIP(super.message, this.version);
 
   final dynamic version;
 
@@ -116,10 +116,10 @@ class StringIsIP extends Validator<String> {
 
 class StringIsFQDN extends Validator<String> {
   StringIsFQDN(
-    String message, [
+    super.message, [
     this.requireTld = true,
     this.allowUnderscores = false,
-  ]) : super(message);
+  ]);
 
   final bool requireTld;
   final bool allowUnderscores;
@@ -129,21 +129,21 @@ class StringIsFQDN extends Validator<String> {
 }
 
 class StringIsAlpha extends Validator<String> {
-  StringIsAlpha(String message) : super(message);
+  StringIsAlpha(super.message);
 
   @override
   String? call(String value) => !validators.isAlpha(value) ? message : null;
 }
 
 class StringIsNumeric extends Validator<String> {
-  StringIsNumeric(String message) : super(message);
+  StringIsNumeric(super.message);
 
   @override
   String? call(String value) => !validators.isNumeric(value) ? message : null;
 }
 
 class StringIsAlphanumeric extends Validator<String> {
-  StringIsAlphanumeric(String message) : super(message);
+  StringIsAlphanumeric(super.message);
 
   @override
   String? call(String value) =>
@@ -151,28 +151,28 @@ class StringIsAlphanumeric extends Validator<String> {
 }
 
 class StringIsBase64 extends Validator<String> {
-  StringIsBase64(String message) : super(message);
+  StringIsBase64(super.message);
 
   @override
   String? call(String value) => !validators.isBase64(value) ? message : null;
 }
 
 class StringIsInt extends Validator<String> {
-  StringIsInt(String message) : super(message);
+  StringIsInt(super.message);
 
   @override
   String? call(String value) => !validators.isInt(value) ? message : null;
 }
 
 class StringIsFloat extends Validator<String> {
-  StringIsFloat(String message) : super(message);
+  StringIsFloat(super.message);
 
   @override
   String? call(String value) => !validators.isFloat(value) ? message : null;
 }
 
 class StringIsHexadecimal extends Validator<String> {
-  StringIsHexadecimal(String message) : super(message);
+  StringIsHexadecimal(super.message);
 
   @override
   String? call(String value) =>
@@ -180,21 +180,21 @@ class StringIsHexadecimal extends Validator<String> {
 }
 
 class StringIsHexColor extends Validator<String> {
-  StringIsHexColor(String message) : super(message);
+  StringIsHexColor(super.message);
 
   @override
   String? call(String value) => !validators.isHexColor(value) ? message : null;
 }
 
 class StringIsLowercase extends Validator<String> {
-  StringIsLowercase(String message) : super(message);
+  StringIsLowercase(super.message);
 
   @override
   String? call(String value) => !validators.isLowercase(value) ? message : null;
 }
 
 class StringIsUppercase extends Validator<String> {
-  StringIsUppercase(String message) : super(message);
+  StringIsUppercase(super.message);
 
   @override
   String? call(String value) => !validators.isUppercase(value) ? message : null;

@@ -6,8 +6,8 @@ class InputBlocBuilder<T> extends StatelessWidget {
   const InputBlocBuilder({
     required this.builder,
     required this.bloc,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Widget Function(BuildContext, InputBlocState<T>) builder;
   final InputBloc<T> bloc;

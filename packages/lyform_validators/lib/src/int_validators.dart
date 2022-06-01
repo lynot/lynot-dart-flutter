@@ -37,7 +37,7 @@ class IntLesserEquealThan extends Validator<int> {
 }
 
 class IntNonNegative extends Validator<int> {
-  IntNonNegative(String message) : super(message);
+  IntNonNegative(super.message);
 
   @override
   String? call(int value) => value >= 0 ? null : message;

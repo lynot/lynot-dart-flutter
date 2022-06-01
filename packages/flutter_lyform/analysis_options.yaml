@@ -1,4 +1,4 @@
-include: package:lint/analysis_options_package.yaml
+include: package:lint/analysis_options.yaml
 
 analyzer:
   exclude:
@@ -21,3 +21,5 @@ linter:
     prefer_function_declarations_over_variables: false
     prefer_single_quotes: true
     sort_constructors_first: true
+    unawaited_futures: true
+    use_super_parameters: true

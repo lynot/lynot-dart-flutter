@@ -7,16 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install NodeJS
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
 
       - name: Install lcov-result-merger
         run: npm i -g lcov-result-merger
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2
 
       - name: Install 'Remove from coverage'
         run: flutter pub global activate remove_from_coverage
@@ -32,12 +32,6 @@ jobs:
 
       - name: Run Coverage
         run: melos run coverage
-
-      # - name: Enforce a minimum code coverage threshold
-      #   uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
-      #   with:
-      #     path: "./coverage/lcov.info"
-      #     min_coverage: 80
 
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v1
