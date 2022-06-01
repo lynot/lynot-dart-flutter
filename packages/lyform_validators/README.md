@@ -18,7 +18,20 @@ Dart package with a set of useful validators to use with the [lyform](https://pu
 
 ## Sponsored with 💖 by
 
-[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://mesirve.app">
+        <img src="assets/mesirve.svg" width="250px"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://educup.io">
+        <img src="assets/educup.png" width="250px"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Contributors ✨
 

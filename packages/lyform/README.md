@@ -18,7 +18,20 @@ Dart package to implement forms in an easy, fast and effective way using the [bl
 
 ## Sponsored with 💖 by
 
-[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://mesirve.app">
+        <img src="assets/mesirve.svg" width="250px"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://educup.io">
+        <img src="assets/educup.png" width="250px"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Contributors ✨
 
