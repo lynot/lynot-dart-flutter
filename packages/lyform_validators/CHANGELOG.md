@@ -1,3 +1,9 @@
+## 0.5.3
+
+ - **FIX**: melos config and migrate to dart 2.17.1.
+ - **DOCS**: update packages/lyform_validators/README.md [skip ci].
+ - **DOCS**: update packages/lyform_validators/README.md [skip ci].
+
 ## 0.5.2
 
  - **FEAT**: add nullable string validators.
