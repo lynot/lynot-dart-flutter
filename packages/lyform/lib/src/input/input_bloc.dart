@@ -22,7 +22,7 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
       emit(InputBlocState<T>(event.value, null, debugName));
     });
     on<InputBlocEvent<T>>((event, emit) {
-      if (event.value == pureValue) {
+      if (event.value == pureValue && event.value is! bool) {
         return;
       }
       if (event is DirectValueEvent<T>) {
