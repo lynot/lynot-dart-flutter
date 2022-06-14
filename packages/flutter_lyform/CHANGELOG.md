@@ -1,3 +1,7 @@
+## 0.5.5
+
+ - **CHORE**: upgrade lyform dependency to 0.7.2
+
 ## 0.5.4
 
  - **PERF**: fix some error in the example.
