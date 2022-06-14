@@ -1,3 +1,7 @@
+## 0.5.4
+
+ - **CHORE**: upgrade lyform dependency to 0.7.2
+
 ## 0.5.3
 
  - **FIX**: melos config and migrate to dart 2.17.1.
