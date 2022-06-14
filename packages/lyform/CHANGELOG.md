@@ -1,3 +1,7 @@
+## 0.7.2
+
+ - fix(lyform): not changing when input is of type bool
+
 ## 0.7.1
 
  - **FIX**: melos config and migrate to dart 2.17.1.
