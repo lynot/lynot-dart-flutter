@@ -1,6 +1,6 @@
 ## 0.7.2
 
- - fix(lyform): not changing when input is of type bool
+ - **FIX**: not changing when input is of type bool
 
 ## 0.7.1
 
