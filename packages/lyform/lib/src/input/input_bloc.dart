@@ -21,21 +21,22 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
       pureValue = event.value;
       emit(InputBlocState<T>(event.value, null, debugName));
     });
-    on<InputBlocEvent<T>>((event, emit) {
-      if (event.value == pureValue && event.value is! bool) {
-        return;
-      }
-      if (event is DirectValueEvent<T>) {
-        emit(InputBlocState<T>(event.value, event.error, debugName));
-        return;
-      }
-      String? error;
-      if (validationType == ValidationType.always ||
-          (validationType == ValidationType.explicit &&
-              event is ValidateEvent<T>)) {
-        error = this.validator(event.value);
-      }
-      error = event.value == pureValue ? null : error;
+
+    on<DirectValueEvent<T>>((event, emit) {
+      emit(InputBlocState<T>(event.value, event.error, debugName));
+    });
+
+    on<ValidateEvent<T>>((event, emit) {
+      final error = validationType != ValidationType.none
+          ? this.validator(event.value)
+          : null;
+      emit(InputBlocState<T>(event.value, error, debugName));
+    });
+
+    on<DirtyEvent<T>>((event, emit) {
+      final error = validationType == ValidationType.always
+          ? this.validator(event.value)
+          : null;
       emit(InputBlocState<T>(event.value, error, debugName));
     });
   }
@@ -65,8 +66,7 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   }
 
   void validate() {
-    if (validationType == ValidationType.always ||
-        (validationType == ValidationType.explicit)) {
+    if (validationType != ValidationType.none) {
       final error = validator(value);
       add(DirectValueEvent<T>(state.value, error, debugName));
     }

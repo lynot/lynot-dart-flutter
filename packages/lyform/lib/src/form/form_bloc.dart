@@ -9,15 +9,18 @@ part 'form_states.dart';
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   FormBloc() : super(const FormPureState()) {
     for (final input in inputs) {
-      _subscriptions
-          .add(input.stream.listen((input) => change(input.debugName)));
+      _subscriptions.add(
+        input.stream.listen((input) => change(input.debugName)),
+      );
     }
 
     on<FormChangedEvent>((event, emit) {
       if (isPure()) {
         emit(FormPureState<D, E>());
+      } else if (isValid()) {
+        emit(FormValidState<D, E>());
       } else {
-        emit(isValid() ? FormValidState<D, E>() : FormInvalidState<D, E>());
+        emit(FormInvalidState<D, E>());
       }
     });
 
@@ -52,24 +55,25 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   Stream<FormBlocState<D, E>> onSubmit();
   final _subscriptions = <StreamSubscription<InputBlocState<dynamic>>>[];
 
-  ///Are every input Valid?
+  /// Are every input Valid?
   bool isValid() {
     return inputs.every((input) => input.isValid);
   }
 
-  ///Are every input Pure?
+  /// Are every input Pure?
   bool isPure() {
     return inputs.every((input) => input.isPure);
   }
 
-  ///Validate all inputs and return [true] if they all are valids.
+  /// Validate all inputs and return [true] if they all are valids.
   void _validateInputs() {
     for (final input in inputs) {
       input.validate();
     }
   }
 
-  ///Use this if you whant to set all input as pure using they current value. Useful when a success submit happens.
+  /// Use this if you whant to set all input as pure using they current value.
+  /// Useful when a success submit happens.
   void _setPureInputs() {
     for (final input in inputs) {
       input.pure(input.value);
@@ -80,12 +84,12 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     add(FormChangedEvent(debugName));
   }
 
-  ///Submit form
+  /// Submit form
   void submit() {
     add(const FormSubmitEvent());
   }
 
-  ///Reset form
+  /// Reset form
   void reset() {
     add(const FormResetEvent());
   }
