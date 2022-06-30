@@ -1,3 +1,7 @@
+## 0.7.3
+
+ - **REFACTOR**: improvement implementation of input bloc.
+
 ## 0.7.2
 
  - **FIX**: not changing when input is of type bool
