@@ -27,12 +27,12 @@
   <tr>
     <td align="center">
       <a href="https://mesirve.app">
-        <img src="assets/mesirve.svg" width="250px"/>
+        <img src="https://raw.githubusercontent.com/lynot/lynot-dart-flutter/master/assets/mesirve.svg" width="250px"/>
       </a>
     </td>
     <td align="center">
       <a href="https://educup.io">
-        <img src="assets/educup.png" width="250px"/>
+        <img src="https://raw.githubusercontent.com/lynot/lynot-dart-flutter/master/assets/educup.png" width="250px"/>
       </a>
     </td>
   </tr>
