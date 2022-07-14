@@ -20,3 +20,22 @@ class InputBlocBuilder<T> extends StatelessWidget {
     );
   }
 }
+
+class InputCubitBuilder<T> extends StatelessWidget {
+  const InputCubitBuilder({
+    required this.builder,
+    required this.bloc,
+    super.key,
+  });
+
+  final Widget Function(BuildContext, InputCubitState<T>) builder;
+  final InputCubit<T> bloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<InputCubit<T>, InputCubitState<T>>(
+      bloc: bloc,
+      builder: builder,
+    );
+  }
+}
