@@ -1,3 +1,7 @@
+## 0.5.7
+
+ - **FEAT**: implement input cubit builder.
+
 ## 0.5.6
 
  - **CHORE**: upgrade lyform dependency to 0.7.3

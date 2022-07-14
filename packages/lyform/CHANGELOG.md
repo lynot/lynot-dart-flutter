@@ -1,3 +1,7 @@
+## 0.7.4
+
+ - **FEAT**: implement input base and input cubit.
+
 ## 0.7.3
 
  - **REFACTOR**: improvement implementation of input bloc.
