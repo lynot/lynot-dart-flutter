@@ -1,3 +1,7 @@
+## 0.7.4+2
+
+ - **FIX**: add started event to form bloc.
+
 ## 0.7.4+1
 
  - **FIX**: change implementation of input dirty.
