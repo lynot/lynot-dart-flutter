@@ -1,3 +1,7 @@
+## 0.7.4+1
+
+ - **FIX**: change implementation of input dirty.
+
 ## 0.7.4
 
  - **FEAT**: implement input base and input cubit.
