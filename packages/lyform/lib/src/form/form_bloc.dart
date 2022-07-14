@@ -8,11 +8,13 @@ part 'form_states.dart';
 
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   FormBloc() : super(const FormPureState()) {
-    for (final input in inputs) {
-      _subscriptions.add(
-        input.stream.listen((input) => change(input.debugName)),
-      );
-    }
+    on<FormStartedEvent>((event, emit) {
+      for (final input in inputs) {
+        _subscriptions.add(
+          input.stream.listen((input) => change(input.debugName)),
+        );
+      }
+    });
 
     on<FormChangedEvent>((event, emit) {
       if (isPure()) {
@@ -41,6 +43,8 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
         }
       }
     });
+
+    add(const FormStartedEvent());
   }
 
   @override

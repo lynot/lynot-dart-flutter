@@ -9,6 +9,15 @@ abstract class FormBlocEvent {
   }
 }
 
+class FormStartedEvent extends FormBlocEvent {
+  const FormStartedEvent();
+
+  @override
+  String toString() {
+    return 'FormStartedEvent()';
+  }
+}
+
 class FormChangedEvent extends FormBlocEvent {
   const FormChangedEvent(this.debugName) : super();
 
