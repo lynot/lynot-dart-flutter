@@ -1,3 +1,7 @@
+## 0.7.5
+
+ - **FEAT**: add onInit method to override behavior on started event.
+
 ## 0.7.4+2
 
  - **FIX**: add started event to form bloc.
