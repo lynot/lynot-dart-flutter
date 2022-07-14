@@ -65,8 +65,7 @@ class InputCubit<T> extends Cubit<InputCubitState<T>>
   void dirty(T value) {
     final pureValue = state.pureValue;
     final lastNotNullValue = value ?? state.lastNotNullValue;
-    final error =
-        validationType == ValidationType.always ? validator(value) : null;
+    final error = state.error;
     final debugName = state.debugName;
     emit(
       InputCubitState<T>(
@@ -77,6 +76,9 @@ class InputCubit<T> extends Cubit<InputCubitState<T>>
         debugName: debugName,
       ),
     );
+    if (validationType == ValidationType.always) {
+      validate();
+    }
   }
 
   @override
