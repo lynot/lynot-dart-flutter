@@ -9,11 +9,7 @@ part 'form_states.dart';
 abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   FormBloc() : super(const FormPureState()) {
     on<FormStartedEvent>((event, emit) {
-      for (final input in inputs) {
-        _subscriptions.add(
-          input.stream.listen((input) => change(input.debugName)),
-        );
-      }
+      onInit();
     });
 
     on<FormChangedEvent>((event, emit) {
@@ -58,6 +54,15 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   List<InputBase> get inputs;
   Stream<FormBlocState<D, E>> onSubmit();
   final _subscriptions = <StreamSubscription<InputBaseState<dynamic>>>[];
+
+  /// Called when the form is started.
+  void onInit() {
+    for (final input in inputs) {
+      _subscriptions.add(
+        input.stream.listen((input) => change(input.debugName)),
+      );
+    }
+  }
 
   /// Are every input Valid?
   bool isValid() {
