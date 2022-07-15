@@ -1,3 +1,7 @@
+## 0.5.7+5
+
+ - **FIX**: rename input cubit to input bloc meanwhile.
+
 ## 0.5.7+4
 
  - **FIX**: rename input cubit to input bloc meanwhile.
