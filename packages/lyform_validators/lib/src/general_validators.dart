@@ -1,7 +1,7 @@
 import 'package:lyform/lyform.dart';
 
-class Required<T> extends Validator<T> {
-  Required(super.message);
+class LyRequired<T> extends LyValidator<T> {
+  LyRequired(super.message);
 
   @override
   String? call(T value) => value == null ? message : null;

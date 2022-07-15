@@ -1,8 +1,8 @@
 import 'package:lyform/lyform.dart';
 import 'package:validators/validators.dart' as validators;
 
-class NullableStringLengthGreaterThan extends Validator<String?> {
-  NullableStringLengthGreaterThan(super.message, this.len);
+class LyNullableStringLengthGreaterThan extends LyValidator<String?> {
+  LyNullableStringLengthGreaterThan(super.message, this.len);
 
   final int len;
 
@@ -14,8 +14,8 @@ class NullableStringLengthGreaterThan extends Validator<String?> {
           : message;
 }
 
-class NullableStringLengthLowerThan extends Validator<String?> {
-  NullableStringLengthLowerThan(super.message, this.len);
+class LyNullableStringLengthLowerThan extends LyValidator<String?> {
+  LyNullableStringLengthLowerThan(super.message, this.len);
 
   final int len;
 
@@ -27,8 +27,8 @@ class NullableStringLengthLowerThan extends Validator<String?> {
           : message;
 }
 
-class NullableStringPasswordMatch extends Validator<String?> {
-  NullableStringPasswordMatch(super.message, this.match);
+class LyNullableStringPasswordMatch extends LyValidator<String?> {
+  LyNullableStringPasswordMatch(super.message, this.match);
 
   final String Function() match;
 
@@ -40,8 +40,8 @@ class NullableStringPasswordMatch extends Validator<String?> {
           : null;
 }
 
-class NullableStringEquals extends Validator<String?> {
-  NullableStringEquals(super.message, this.comparison);
+class LyNullableStringEquals extends LyValidator<String?> {
+  LyNullableStringEquals(super.message, this.comparison);
 
   final dynamic comparison;
 
@@ -53,8 +53,8 @@ class NullableStringEquals extends Validator<String?> {
           : null;
 }
 
-class NullableStringContains extends Validator<String?> {
-  NullableStringContains(super.message, this.seed);
+class LyNullableStringContains extends LyValidator<String?> {
+  LyNullableStringContains(super.message, this.seed);
 
   final dynamic seed;
 
@@ -66,8 +66,8 @@ class NullableStringContains extends Validator<String?> {
           : null;
 }
 
-class NullableStringMatches extends Validator<String?> {
-  NullableStringMatches(super.message, this.pattern);
+class LyNullableStringMatches extends LyValidator<String?> {
+  LyNullableStringMatches(super.message, this.pattern);
 
   final dynamic pattern;
 
@@ -79,8 +79,8 @@ class NullableStringMatches extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsEmail extends Validator<String?> {
-  NullableStringIsEmail(super.message);
+class LyNullableStringIsEmail extends LyValidator<String?> {
+  LyNullableStringIsEmail(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -90,8 +90,8 @@ class NullableStringIsEmail extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsURL extends Validator<String?> {
-  NullableStringIsURL(
+class LyNullableStringIsURL extends LyValidator<String?> {
+  LyNullableStringIsURL(
     super.message, {
     this.protocols = const ['http', 'https', 'ftp'],
     this.requireTld = true,
@@ -124,8 +124,8 @@ class NullableStringIsURL extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsIP extends Validator<String?> {
-  NullableStringIsIP(super.message, this.version);
+class LyNullableStringIsIP extends LyValidator<String?> {
+  LyNullableStringIsIP(super.message, this.version);
 
   final dynamic version;
 
@@ -137,8 +137,8 @@ class NullableStringIsIP extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsFQDN extends Validator<String?> {
-  NullableStringIsFQDN(
+class LyNullableStringIsFQDN extends LyValidator<String?> {
+  LyNullableStringIsFQDN(
     super.message, [
     this.requireTld = true,
     this.allowUnderscores = false,
@@ -155,8 +155,8 @@ class NullableStringIsFQDN extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsAlpha extends Validator<String?> {
-  NullableStringIsAlpha(super.message);
+class LyNullableStringIsAlpha extends LyValidator<String?> {
+  LyNullableStringIsAlpha(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -166,8 +166,8 @@ class NullableStringIsAlpha extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsNumeric extends Validator<String?> {
-  NullableStringIsNumeric(super.message);
+class LyNullableStringIsNumeric extends LyValidator<String?> {
+  LyNullableStringIsNumeric(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -177,8 +177,8 @@ class NullableStringIsNumeric extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsAlphanumeric extends Validator<String?> {
-  NullableStringIsAlphanumeric(super.message);
+class LyNullableStringIsAlphanumeric extends LyValidator<String?> {
+  LyNullableStringIsAlphanumeric(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -188,8 +188,8 @@ class NullableStringIsAlphanumeric extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsBase64 extends Validator<String?> {
-  NullableStringIsBase64(super.message);
+class LyNullableStringIsBase64 extends LyValidator<String?> {
+  LyNullableStringIsBase64(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -199,8 +199,8 @@ class NullableStringIsBase64 extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsInt extends Validator<String?> {
-  NullableStringIsInt(super.message);
+class LyNullableStringIsInt extends LyValidator<String?> {
+  LyNullableStringIsInt(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -210,8 +210,8 @@ class NullableStringIsInt extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsFloat extends Validator<String?> {
-  NullableStringIsFloat(super.message);
+class LyNullableStringIsFloat extends LyValidator<String?> {
+  LyNullableStringIsFloat(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -221,8 +221,8 @@ class NullableStringIsFloat extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsHexadecimal extends Validator<String?> {
-  NullableStringIsHexadecimal(super.message);
+class LyNullableStringIsHexadecimal extends LyValidator<String?> {
+  LyNullableStringIsHexadecimal(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -232,8 +232,8 @@ class NullableStringIsHexadecimal extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsHexColor extends Validator<String?> {
-  NullableStringIsHexColor(super.message);
+class LyNullableStringIsHexColor extends LyValidator<String?> {
+  LyNullableStringIsHexColor(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -243,8 +243,8 @@ class NullableStringIsHexColor extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsLowercase extends Validator<String?> {
-  NullableStringIsLowercase(super.message);
+class LyNullableStringIsLowercase extends LyValidator<String?> {
+  LyNullableStringIsLowercase(super.message);
 
   @override
   String? call(String? value) => value == null
@@ -254,8 +254,8 @@ class NullableStringIsLowercase extends Validator<String?> {
           : null;
 }
 
-class NullableStringIsUppercase extends Validator<String?> {
-  NullableStringIsUppercase(super.message);
+class LyNullableStringIsUppercase extends LyValidator<String?> {
+  LyNullableStringIsUppercase(super.message);
 
   @override
   String? call(String? value) => value == null

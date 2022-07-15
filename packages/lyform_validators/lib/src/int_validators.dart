@@ -1,7 +1,7 @@
 import 'package:lyform/lyform.dart';
 
-class IntGreaterThan extends Validator<int> {
-  IntGreaterThan(this.limit, String message) : super(message);
+class LyIntGreaterThan extends LyValidator<int> {
+  LyIntGreaterThan(this.limit, String message) : super(message);
 
   final int limit;
 
@@ -9,8 +9,8 @@ class IntGreaterThan extends Validator<int> {
   String? call(int value) => (value <= limit) ? message : null;
 }
 
-class IntGreaterEqualThan extends Validator<int> {
-  IntGreaterEqualThan(this.limit, String message) : super(message);
+class LyIntGreaterEqualThan extends LyValidator<int> {
+  LyIntGreaterEqualThan(this.limit, String message) : super(message);
 
   final int limit;
 
@@ -18,8 +18,8 @@ class IntGreaterEqualThan extends Validator<int> {
   String? call(int value) => value < limit ? message : null;
 }
 
-class IntLesserThan extends Validator<int> {
-  IntLesserThan(this.limit, String message) : super(message);
+class LyIntLesserThan extends LyValidator<int> {
+  LyIntLesserThan(this.limit, String message) : super(message);
 
   final int limit;
 
@@ -27,8 +27,8 @@ class IntLesserThan extends Validator<int> {
   String? call(int value) => value >= limit ? message : null;
 }
 
-class IntLesserEquealThan extends Validator<int> {
-  IntLesserEquealThan(this.limit, String message) : super(message);
+class LyIntLesserEquealThan extends LyValidator<int> {
+  LyIntLesserEquealThan(this.limit, String message) : super(message);
 
   final int limit;
 
@@ -36,8 +36,8 @@ class IntLesserEquealThan extends Validator<int> {
   String? call(int value) => value > limit ? message : null;
 }
 
-class IntNonNegative extends Validator<int> {
-  IntNonNegative(super.message);
+class LyIntNonNegative extends LyValidator<int> {
+  LyIntNonNegative(super.message);
 
   @override
   String? call(int value) => value >= 0 ? null : message;

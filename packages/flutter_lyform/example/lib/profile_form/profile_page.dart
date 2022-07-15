@@ -27,7 +27,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBlocListener<ProfileForm, String, String>(
+    return LyFormListener<ProfileForm, String, String>(
       bloc: context.read<ProfileForm>(),
       onSuccess: (value) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -41,8 +41,8 @@ class ProfileView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InputBlocBuilder<String>(
-              bloc: context.read<ProfileForm>().email,
+            LyInputBuilder<String>(
+              lyInput: context.read<ProfileForm>().email,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().email;
                 return TextField(
@@ -55,8 +55,8 @@ class ProfileView extends StatelessWidget {
               },
             ),
             const SizedBox(height: 16),
-            InputBlocBuilder<String>(
-              bloc: context.read<ProfileForm>().name,
+            LyInputBuilder<String>(
+              lyInput: context.read<ProfileForm>().name,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().name;
                 return TextField(
@@ -69,8 +69,8 @@ class ProfileView extends StatelessWidget {
               },
             ),
             const SizedBox(height: 16),
-            InputBlocBuilder<String?>(
-              bloc: context.read<ProfileForm>().country,
+            LyInputBuilder<String?>(
+              lyInput: context.read<ProfileForm>().country,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().country;
                 return TextField(
@@ -82,8 +82,8 @@ class ProfileView extends StatelessWidget {
                 );
               },
             ),
-            InputBlocBuilder<int>(
-              bloc: context.read<ProfileForm>().age,
+            LyInputBuilder<int>(
+              lyInput: context.read<ProfileForm>().age,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().age;
                 return TextField(
@@ -97,7 +97,7 @@ class ProfileView extends StatelessWidget {
               },
             ),
             const SizedBox(height: 16),
-            FormBlocBuilder<ProfileForm>(
+            LyFormBuilder<ProfileForm>(
               bloc: context.read<ProfileForm>(),
               onLoading: () => const Center(
                 child: CircularProgressIndicator(),

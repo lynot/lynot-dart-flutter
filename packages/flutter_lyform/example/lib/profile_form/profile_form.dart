@@ -1,42 +1,42 @@
 import 'package:flutter_lyform/flutter_lyform.dart';
 import 'package:lyform_validators/lyform_validators.dart';
 
-class ProfileForm extends FormBloc<String, String> {
-  final email = InputBloc<String>(
+class ProfileForm extends LyForm<String, String> {
+  final email = LyInput<String>(
     pureValue: '',
-    validationType: ValidationType.always,
-    validator: StringRequired('Email is required.') &
-        StringIsEmail('Email is not valid.'),
+    validationType: LyValidationType.always,
+    validator: LyStringRequired('Email is required.') &
+        LyStringIsEmail('Email is not valid.'),
     debugName: 'email',
   );
 
-  final name = InputBloc<String>(
+  final name = LyInput<String>(
     pureValue: '',
-    validationType: ValidationType.always,
-    validator: StringRequired('Name is required.'),
+    validationType: LyValidationType.always,
+    validator: LyStringRequired('Name is required.'),
     debugName: 'name',
   );
 
-  final age = InputBloc<int>(
+  final age = LyInput<int>(
     pureValue: 0,
-    validationType: ValidationType.always,
-    validator: IntGreaterThan(
+    validationType: LyValidationType.always,
+    validator: LyIntGreaterThan(
       0,
       'Order in course must be greater or equal than 0.',
     ),
     debugName: 'age',
   );
 
-  final country = InputBloc<String?>(
+  final country = LyInput<String?>(
     pureValue: null,
   );
 
   @override
-  List<InputBloc> get inputs => [name, email, country, age];
+  List<LyInput> get inputs => [name, email, country, age];
 
   @override
-  Stream<FormBlocState<String, String>> onSubmit() async* {
+  Stream<LyFormState<String, String>> onSubmit() async* {
     await Future<void>.delayed(const Duration(seconds: 3));
-    yield const FormSuccessState('Profile save successfully.');
+    yield const LyFormSuccessState('Profile save successfully.');
   }
 }
