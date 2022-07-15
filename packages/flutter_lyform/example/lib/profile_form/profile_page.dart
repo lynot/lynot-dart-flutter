@@ -41,7 +41,7 @@ class ProfileView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InputCubitBuilder<String>(
+            InputBlocBuilder<String>(
               bloc: context.read<ProfileForm>().email,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().email;
@@ -55,7 +55,7 @@ class ProfileView extends StatelessWidget {
               },
             ),
             const SizedBox(height: 16),
-            InputCubitBuilder<String>(
+            InputBlocBuilder<String>(
               bloc: context.read<ProfileForm>().name,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().name;
@@ -69,7 +69,7 @@ class ProfileView extends StatelessWidget {
               },
             ),
             const SizedBox(height: 16),
-            InputCubitBuilder<String?>(
+            InputBlocBuilder<String?>(
               bloc: context.read<ProfileForm>().country,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().country;
@@ -82,7 +82,7 @@ class ProfileView extends StatelessWidget {
                 );
               },
             ),
-            InputCubitBuilder<int>(
+            InputBlocBuilder<int>(
               bloc: context.read<ProfileForm>().age,
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().age;

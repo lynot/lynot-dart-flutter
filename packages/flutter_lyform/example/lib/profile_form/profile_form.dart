@@ -2,7 +2,7 @@ import 'package:flutter_lyform/flutter_lyform.dart';
 import 'package:lyform_validators/lyform_validators.dart';
 
 class ProfileForm extends FormBloc<String, String> {
-  final email = InputCubit<String>(
+  final email = InputBloc<String>(
     pureValue: '',
     validationType: ValidationType.always,
     validator: StringRequired('Email is required.') &
@@ -10,14 +10,14 @@ class ProfileForm extends FormBloc<String, String> {
     debugName: 'email',
   );
 
-  final name = InputCubit<String>(
+  final name = InputBloc<String>(
     pureValue: '',
     validationType: ValidationType.always,
     validator: StringRequired('Name is required.'),
     debugName: 'name',
   );
 
-  final age = InputCubit<int>(
+  final age = InputBloc<int>(
     pureValue: 0,
     validationType: ValidationType.always,
     validator: IntGreaterThan(
@@ -27,12 +27,12 @@ class ProfileForm extends FormBloc<String, String> {
     debugName: 'age',
   );
 
-  final country = InputCubit<String?>(
+  final country = InputBloc<String?>(
     pureValue: null,
   );
 
   @override
-  List<InputBase> get inputs => [name, email, country, age];
+  List<InputBloc> get inputs => [name, email, country, age];
 
   @override
   Stream<FormBlocState<String, String>> onSubmit() async* {
