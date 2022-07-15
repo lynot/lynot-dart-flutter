@@ -1,3 +1,7 @@
+## 0.7.6
+
+ - Bump "lyform" to `0.7.6`.
+
 ## 0.7.5
 
  - **FEAT**: add onInit method to override behavior on started event.
