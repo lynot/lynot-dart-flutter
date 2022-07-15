@@ -9,7 +9,7 @@ import 'package:lyform/lyform.dart';
 /// {@endtemplate}
 class Required<T> extends Validator<T> {
   /// {@macro required_validators}
-  Required(String message) : super(message);
+  Required(super.message);
 
   @override
   String? call(T value) => value == null ? message : null;

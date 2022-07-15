@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?label=license)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/pub/v/flutter_lyform)](https://pub.dev/packages/flutter_lyform)
-[![codecov](https://codecov.io/gh/lynotofficial/lynot-dart-flutter/branch/main/graph/badge.svg?token=RTBS8EX4GQ)](https://codecov.io/gh/lynotofficial/lynot-dart-flutter)
+[![codecov](https://codecov.io/gh/lynotofficial/lynot-dart-flutter/branch/master/graph/badge.svg?token=RTBS8EX4GQ)](https://codecov.io/gh/lynotofficial/lynot-dart-flutter)
 [![Test](https://github.com/lynotofficial/lynot-dart-flutter/actions/workflows/test.yml/badge.svg)](https://github.com/lynotofficial/lynot-dart-flutter/actions/workflows/test.yml)
 [![Melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos) [![Lint](https://img.shields.io/badge/style-lint-4BC0F.svg)](https://pub.dev/packages/lint)
 [![Last commit](https://img.shields.io/github/last-commit/lynotofficial/lynot-dart-flutter.svg?style=flat)](https://github.com/lynotofficial/lynot-dart-flutter/commits)
@@ -18,7 +18,20 @@ Flutter package to implement forms in an easy, fast and effective way using the 
 
 ## Sponsored with 💖 by
 
-[![MeSirve](https://mesirve.app/icons/Icon-192.png)](https://mesirve.app)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://mesirve.app">
+        <img src="https://raw.githubusercontent.com/lynot/lynot-dart-flutter/master/assets/mesirve.svg" width="250px"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://educup.io">
+        <img src="https://raw.githubusercontent.com/lynot/lynot-dart-flutter/master/assets/educup.png" width="250px"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Contributors ✨
 

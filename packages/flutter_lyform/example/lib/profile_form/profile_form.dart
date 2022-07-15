@@ -9,12 +9,14 @@ class ProfileForm extends FormBloc<String, String> {
         StringIsEmail('Email is not valid.'),
     debugName: 'email',
   );
+
   final name = InputBloc<String>(
     pureValue: '',
     validationType: ValidationType.always,
     validator: StringRequired('Name is required.'),
     debugName: 'name',
   );
+
   final age = InputBloc<int>(
     pureValue: 0,
     validationType: ValidationType.always,
@@ -24,6 +26,7 @@ class ProfileForm extends FormBloc<String, String> {
     ),
     debugName: 'age',
   );
+
   final country = InputBloc<String?>(
     pureValue: null,
   );

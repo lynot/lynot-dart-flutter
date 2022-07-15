@@ -4,7 +4,7 @@ import 'package:lyform/lyform.dart';
 
 class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
   const FormBlocBuilder({
-    Key? key,
+    super.key,
     this.bloc,
     this.onPure,
     this.onValid,
@@ -13,7 +13,7 @@ class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
     this.onSuccess,
     this.onError,
     required this.orElse,
-  }) : super(key: key);
+  });
 
   final T? bloc;
   final Widget Function()? onPure;

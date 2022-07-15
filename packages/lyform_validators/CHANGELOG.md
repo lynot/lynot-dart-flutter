@@ -1,3 +1,37 @@
+## 0.5.5+5
+
+ - Update a dependency to the latest release.
+
+## 0.5.5+4
+
+ - Update a dependency to the latest release.
+
+## 0.5.5+3
+
+ - Update a dependency to the latest release.
+
+## 0.5.5+2
+
+ - Update a dependency to the latest release.
+
+## 0.5.5+1
+
+ - Update a dependency to the latest release.
+
+## 0.5.5
+
+ - **CHORE**: upgrade lyform dependency to 0.7.3
+
+## 0.5.4
+
+ - **CHORE**: upgrade lyform dependency to 0.7.2
+
+## 0.5.3
+
+ - **FIX**: melos config and migrate to dart 2.17.1.
+ - **DOCS**: update packages/lyform_validators/README.md [skip ci].
+ - **DOCS**: update packages/lyform_validators/README.md [skip ci].
+
 ## 0.5.2
 
  - **FEAT**: add nullable string validators.

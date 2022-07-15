@@ -1,9 +1,17 @@
 part of 'input_bloc.dart';
 
 class InputBlocState<T> {
-  InputBlocState(this.value, [this.error, this.debugName]);
+  InputBlocState({
+    required this.value,
+    required this.pureValue,
+    required this.lastNotNullValue,
+    this.error,
+    this.debugName,
+  });
 
   final T value;
+  final T pureValue;
+  final T lastNotNullValue;
   final String? error;
   final String? debugName;
 
@@ -13,7 +21,16 @@ class InputBlocState<T> {
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value))) &&
         (identical(other.error, error) ||
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error)) &&
+        (identical(other.debugName, debugName) ||
+            const DeepCollectionEquality()
+                .equals(other.debugName, debugName)) &&
+        (identical(other.pureValue, pureValue) ||
+            const DeepCollectionEquality()
+                .equals(other.pureValue, pureValue)) &&
+        (identical(other.lastNotNullValue, lastNotNullValue) ||
+            const DeepCollectionEquality()
+                .equals(other.lastNotNullValue, lastNotNullValue));
   }
 
   @override

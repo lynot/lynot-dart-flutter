@@ -7,23 +7,44 @@ scripts:
   sync:
     run: melos exec -c 1 "lockpick sync ./"
 
-  build:
-    run: melos exec -c 1 "dart pub get && dart pub run build_runner build"
+  format:dart:
+    run: melos exec --no-flutter "dart format ."
 
-  build:all:
-    run: melos exec -c 1 "dart pub get && dart pub run build_runner build --delete-conflicting-outputs"
+  format:flutter:
+    run: melos exec --flutter "flutter format ."
 
   format:
-    run: melos exec -c 1 "dart format ."
+    run: |
+      melos run format:dart
+      melos run format:flutter
+
+  fix:
+    run: melos exec "dart fix --apply"
+
+  test:format:dart:
+    run: melos exec --no-flutter"dart format --set-exit-if-changed ."
+
+  test:format:flutter:
+    run: melos exec --flutter --depends-on="flutter_test" "flutter format --set-exit-if-changed ."
 
   test:format:
-    run: melos exec -c 1 "dart format --set-exit-if-changed"
+    run: |
+      melos run test:format:dart
+      melos run test:format:flutter
+
+  test:analyze:dart:
+    run: melos exec --no-flutter "dart analyze"
+
+  test:analyze:flutter:
+    run: melos exec --flutter "flutter analyze"
 
   test:analyze:
-    run: melos exec -c 1 "dart analyze"
+    run: |
+      melos run test:analyze:dart
+      melos run test:analyze:flutter
 
   test:only:
-    run: melos exec -c 1 "dart test --no-pub --coverage"
+    run: melos exec --dir-exists="test" -c 1 "flutter test --coverage"
 
   test:
     run: |
@@ -39,10 +60,7 @@ scripts:
   coverage:
     run: |
       lcov-result-merger "packages/**/coverage/lcov.info" coverage/lcov.info
-      remove_from_coverage -f coverage/lcov.info -r "\.freezed\.dart$","\.g\.dart$","\.config\.dart$","generated_plugin_registrant.dart$"
 
-environment:
-  sdk: ">=2.16.2 <3.0.0"
-
-dev_dependencies:
-  lint: ^1.8.2
+command:
+  bootstrap:
+    usePubspecOverrides: true

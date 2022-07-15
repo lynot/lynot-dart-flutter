@@ -6,42 +6,24 @@ part 'input_states.dart';
 part 'input_validator.dart';
 part 'validation_type.dart';
 
-class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
+class InputBloc<T> extends Cubit<InputBlocState<T>> {
   InputBloc({
-    required this.pureValue,
+    required T pureValue,
     ValidationType? validationType,
     BaseValidator<T>? validator,
     this.debugName,
   })  : validationType = validationType ??
             (validator != null ? ValidationType.always : ValidationType.none),
         validator = validator ?? const EmptyValidator(),
-        _lastNotNull = pureValue,
-        super(InputBlocState(pureValue, null, debugName)) {
-    on<PureEvent<T>>((event, emit) {
-      pureValue = event.value;
-    });
-    on<InputBlocEvent<T>>((event, emit) {
-      if (event.value == pureValue) {
-        return;
-      }
-      if (event is DirectValueEvent<T>) {
-        emit(InputBlocState<T>(event.value, event.error, debugName));
-        return;
-      }
-      String? error;
-      if (validationType == ValidationType.always ||
-          (validationType == ValidationType.explicit &&
-              event is ValidateEvent<T>)) {
-        error = this.validator(event.value);
-      }
-      error = event.value == pureValue ? null : error;
-      emit(InputBlocState<T>(event.value, error, debugName));
-    });
-  }
+        super(
+          InputBlocState(
+            value: pureValue,
+            pureValue: pureValue,
+            lastNotNullValue: pureValue,
+            debugName: debugName,
+          ),
+        );
 
-  T _lastNotNull;
-
-  T pureValue;
   final BaseValidator<T> validator;
   final ValidationType validationType;
   final String? debugName;
@@ -51,29 +33,58 @@ class InputBloc<T> extends Bloc<InputBlocEvent<T>, InputBlocState<T>> {
   bool get isInvalid => !isValid;
 
   T get value => state.value;
-  T get lastNotNull => _lastNotNull;
+  T get pureValue => state.pureValue;
+  T get lastNotNullValue => state.lastNotNullValue;
 
   void dirty(T value) {
-    _updateLast(value);
-    add(DirtyEvent(value, debugName));
-  }
-
-  void pure(T value) {
-    _updateLast(value);
-    add(PureEvent(value, debugName));
-  }
-
-  void validate() {
-    if (validationType == ValidationType.always ||
-        (validationType == ValidationType.explicit)) {
-      final error = validator(value);
-      add(DirectValueEvent<T>(state.value, error, debugName));
+    final pureValue = state.pureValue;
+    final lastNotNullValue = value ?? state.lastNotNullValue;
+    final error = state.error;
+    final debugName = state.debugName;
+    emit(
+      InputBlocState<T>(
+        value: value,
+        pureValue: pureValue,
+        lastNotNullValue: lastNotNullValue,
+        error: error,
+        debugName: debugName,
+      ),
+    );
+    if (validationType == ValidationType.always) {
+      validate();
     }
   }
 
-  void _updateLast(T value) {
-    if (value != null) {
-      _lastNotNull = value;
+  void pure(T value) {
+    final pureValue = value;
+    final lastNotNullValue = value ?? state.lastNotNullValue;
+    final debugName = state.debugName;
+    emit(
+      InputBlocState<T>(
+        value: value,
+        pureValue: pureValue,
+        lastNotNullValue: lastNotNullValue,
+        debugName: debugName,
+      ),
+    );
+  }
+
+  void validate() {
+    if (validationType != ValidationType.none) {
+      final value = state.value;
+      final pureValue = state.pureValue;
+      final lastNotNullValue = state.lastNotNullValue;
+      final error = validator(state.value);
+      final debugName = state.debugName;
+      emit(
+        InputBlocState<T>(
+          value: value,
+          pureValue: pureValue,
+          lastNotNullValue: lastNotNullValue,
+          error: error,
+          debugName: debugName,
+        ),
+      );
     }
   }
 }

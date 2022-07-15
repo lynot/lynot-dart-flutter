@@ -1,3 +1,43 @@
+## 0.7.6+1
+
+ - **FIX**: rename input cubit to input bloc meanwhile.
+
+## 0.7.6
+
+ - Bump "lyform" to `0.7.6`.
+
+## 0.7.5
+
+ - **FEAT**: add onInit method to override behavior on started event.
+
+## 0.7.4+2
+
+ - **FIX**: add started event to form bloc.
+
+## 0.7.4+1
+
+ - **FIX**: change implementation of input dirty.
+
+## 0.7.4
+
+ - **FEAT**: implement input base and input cubit.
+
+## 0.7.3
+
+ - **REFACTOR**: improvement implementation of input bloc.
+
+## 0.7.2
+
+ - **FIX**: not changing when input is of type bool
+
+## 0.7.1
+
+ - **FIX**: melos config and migrate to dart 2.17.1.
+ - **FIX**: emit pure state.
+ - **FIX**: onLoading is not executed #11.
+ - **DOCS**: update packages/lyform/README.md [skip ci].
+ - **DOCS**: update packages/lyform/README.md [skip ci].
+
 ## 0.7.0
 
 > Note: This release has breaking changes.

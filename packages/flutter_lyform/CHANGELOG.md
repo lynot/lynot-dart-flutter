@@ -1,3 +1,42 @@
+## 0.5.7+5
+
+ - **FIX**: rename input cubit to input bloc meanwhile.
+
+## 0.5.7+4
+
+ - **FIX**: rename input cubit to input bloc meanwhile.
+
+## 0.5.7+3
+
+ - Update a dependency to the latest release.
+
+## 0.5.7+2
+
+ - Update a dependency to the latest release.
+
+## 0.5.7+1
+
+ - Update a dependency to the latest release.
+
+## 0.5.7
+
+ - **FEAT**: implement input cubit builder.
+
+## 0.5.6
+
+ - **CHORE**: upgrade lyform dependency to 0.7.3
+
+## 0.5.5
+
+ - **CHORE**: upgrade lyform dependency to 0.7.2
+
+## 0.5.4
+
+ - **PERF**: fix some error in the example.
+ - **FIX**: melos config and migrate to dart 2.17.1.
+ - **DOCS**: update packages/flutter_lyform/README.md [skip ci].
+ - **DOCS**: update packages/flutter_lyform/README.md [skip ci].
+
 ## 0.5.3
 
  - **FIX**: errors by previous merge.

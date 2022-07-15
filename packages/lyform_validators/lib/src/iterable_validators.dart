@@ -8,7 +8,7 @@ import 'package:lyform/lyform.dart';
 /// {@endtemplate}
 class IterableNotEmtpy extends Validator<Iterable> {
   /// {@macro iterable_validators}
-  IterableNotEmtpy(String message) : super(message);
+  IterableNotEmtpy(super.message);
 
   @override
   String? call(Iterable value) => value.isEmpty ? message : null;

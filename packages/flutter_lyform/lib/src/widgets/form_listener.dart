@@ -4,7 +4,7 @@ import 'package:lyform/lyform.dart';
 
 class FormBlocListener<T extends FormBloc<D, E>, D, E> extends StatelessWidget {
   const FormBlocListener({
-    Key? key,
+    super.key,
     required this.child,
     this.bloc,
     this.onPure,
@@ -13,7 +13,7 @@ class FormBlocListener<T extends FormBloc<D, E>, D, E> extends StatelessWidget {
     this.onLoading,
     this.onSuccess,
     this.onError,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final T? bloc;

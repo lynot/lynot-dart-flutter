@@ -8,7 +8,7 @@ import 'package:validators/validators.dart' as validators;
 /// {@endtemplate}
 class StringRequired extends Validator<String> {
   /// {@macro string_required_validator}
-  StringRequired(String message) : super(message);
+  StringRequired(super.message);
 
   @override
   String? call(String value) => value.isEmpty ? message : null;
@@ -30,7 +30,7 @@ class StringRequired extends Validator<String> {
 /// {@endtemplate}
 class StringLengthGreaterThan extends Validator<String> {
   /// {@macro string_length_greater_than_validator}
-  StringLengthGreaterThan(String message, this.len) : super(message);
+  StringLengthGreaterThan(super.message, this.len);
 
   /// The minimum length of the string.
   final int len;
@@ -54,7 +54,7 @@ class StringLengthGreaterThan extends Validator<String> {
 /// {@endtemplate}
 class StringLengthLowerThan extends Validator<String> {
   /// {@macro string_length_lower_than_validator}
-  StringLengthLowerThan(String message, this.len) : super(message);
+  StringLengthLowerThan(super.message, this.len);
 
   /// The length to compare the value to.
   final int len;
@@ -75,7 +75,7 @@ class StringLengthLowerThan extends Validator<String> {
 /// {@endtemplate}
 class StringPasswordMatch extends Validator<String> {
   /// {@macro string_password_match_validator}
-  StringPasswordMatch(String message, this.match) : super(message);
+  StringPasswordMatch(super.message, this.match);
 
   /// The function that returns the value to compare the value to.
   final String Function() match;
@@ -96,7 +96,7 @@ class StringPasswordMatch extends Validator<String> {
 /// {@endtemplate}
 class StringEquals extends Validator<String> {
   /// {@macro string_equals_validator}
-  StringEquals(String message, this.comparison) : super(message);
+  StringEquals(super.message, this.comparison);
 
   /// The value to compare the value to.
   final dynamic comparison;
@@ -120,7 +120,7 @@ class StringEquals extends Validator<String> {
 /// {@endtemplate}
 class StringContains extends Validator<String> {
   /// {@macro string_contains_validator}
-  StringContains(String message, this.seed) : super(message);
+  StringContains(super.message, this.seed);
 
   /// The value to compare the value to.
   final dynamic seed;
@@ -144,7 +144,7 @@ class StringContains extends Validator<String> {
 /// {@endtemplate}
 class StringMatches extends Validator<String> {
   /// {@macro string_matches_validator}
-  StringMatches(String message, this.pattern) : super(message);
+  StringMatches(super.message, this.pattern);
 
   /// The regular expression to match the value against.
   final dynamic pattern;
@@ -168,7 +168,7 @@ class StringMatches extends Validator<String> {
 /// {@endtemplate}
 class StringIsEmail extends Validator<String> {
   /// {@macro string_is_email_validator}
-  StringIsEmail(String message) : super(message);
+  StringIsEmail(super.message);
 
   @override
   String? call(String value) => !validators.isEmail(value) ? message : null;
@@ -189,14 +189,14 @@ class StringIsEmail extends Validator<String> {
 class StringIsURL extends Validator<String> {
   /// {@macro string_is_url_validator}
   StringIsURL(
-    String message, {
+    super.message, {
     this.protocols = const ['http', 'https', 'ftp'],
     this.requireTld = true,
     this.requireProtocol = false,
     this.allowUnderscore = false,
     this.hostWhitelist = const [],
     this.hostBlacklist = const [],
-  }) : super(message);
+  });
 
   /// The protocols to allow.
   final List<String?> protocols;
@@ -244,7 +244,7 @@ class StringIsURL extends Validator<String> {
 /// {@endtemplate}
 class StringIsIP extends Validator<String> {
   /// {@macro string_is_ip_validator}
-  StringIsIP(String message, this.version) : super(message);
+  StringIsIP(super.message, this.version);
 
   final dynamic version;
 
@@ -268,10 +268,10 @@ class StringIsIP extends Validator<String> {
 class StringIsFQDN extends Validator<String> {
   /// {@macro string_is_fqdn_validator}
   StringIsFQDN(
-    String message, [
+    super.message, [
     this.requireTld = true,
     this.allowUnderscores = false,
-  ]) : super(message);
+  ]);
 
   /// Whether to require a top-level domain.
   final bool requireTld;
@@ -297,7 +297,7 @@ class StringIsFQDN extends Validator<String> {
 /// {@endtemplate}
 class StringIsAlpha extends Validator<String> {
   /// {@macro string_is_alpha_validator}
-  StringIsAlpha(String message) : super(message);
+  StringIsAlpha(super.message);
 
   @override
   String? call(String value) => !validators.isAlpha(value) ? message : null;
@@ -317,7 +317,7 @@ class StringIsAlpha extends Validator<String> {
 /// {@endtemplate}
 class StringIsNumeric extends Validator<String> {
   /// {@macro string_is_numeric_validator}
-  StringIsNumeric(String message) : super(message);
+  StringIsNumeric(super.message);
 
   @override
   String? call(String value) => !validators.isNumeric(value) ? message : null;
@@ -337,7 +337,7 @@ class StringIsNumeric extends Validator<String> {
 /// {@endtemplate}
 class StringIsAlphanumeric extends Validator<String> {
   /// {@macro string_is_alphanumeric_validator}
-  StringIsAlphanumeric(String message) : super(message);
+  StringIsAlphanumeric(super.message);
 
   @override
   String? call(String value) =>
@@ -358,7 +358,7 @@ class StringIsAlphanumeric extends Validator<String> {
 /// {@endtemplate}
 class StringIsBase64 extends Validator<String> {
   /// {@macro string_is_base64_validator}
-  StringIsBase64(String message) : super(message);
+  StringIsBase64(super.message);
 
   @override
   String? call(String value) => !validators.isBase64(value) ? message : null;
@@ -378,7 +378,7 @@ class StringIsBase64 extends Validator<String> {
 /// {@endtemplate}
 class StringIsInt extends Validator<String> {
   /// {@macro string_is_int_validator}
-  StringIsInt(String message) : super(message);
+  StringIsInt(super.message);
 
   @override
   String? call(String value) => !validators.isInt(value) ? message : null;
@@ -398,7 +398,7 @@ class StringIsInt extends Validator<String> {
 /// {@endtemplate}
 class StringIsFloat extends Validator<String> {
   /// {@macro string_is_float_validator}
-  StringIsFloat(String message) : super(message);
+  StringIsFloat(super.message);
 
   @override
   String? call(String value) => !validators.isFloat(value) ? message : null;
@@ -419,7 +419,7 @@ class StringIsFloat extends Validator<String> {
 /// {@endtemplate}
 class StringIsHexadecimal extends Validator<String> {
   /// {@macro string_is_hexadecimal_validator}
-  StringIsHexadecimal(String message) : super(message);
+  StringIsHexadecimal(super.message);
 
   @override
   String? call(String value) =>
@@ -440,7 +440,7 @@ class StringIsHexadecimal extends Validator<String> {
 /// {@endtemplate}
 class StringIsHexColor extends Validator<String> {
   /// {@macro string_is_hexcolor_validator}
-  StringIsHexColor(String message) : super(message);
+  StringIsHexColor(super.message);
 
   @override
   String? call(String value) => !validators.isHexColor(value) ? message : null;
@@ -460,7 +460,7 @@ class StringIsHexColor extends Validator<String> {
 /// {@endtemplate}
 class StringIsLowercase extends Validator<String> {
   /// {@macro string_is_lower_case_validator}
-  StringIsLowercase(String message) : super(message);
+  StringIsLowercase(super.message);
 
   @override
   String? call(String value) => !validators.isLowercase(value) ? message : null;
@@ -480,7 +480,7 @@ class StringIsLowercase extends Validator<String> {
 /// {@endtemplate}
 class StringIsUppercase extends Validator<String> {
   /// {@macro string_is_upper_case_validator}
-  StringIsUppercase(String message) : super(message);
+  StringIsUppercase(super.message);
 
   @override
   String? call(String value) => !validators.isUppercase(value) ? message : null;
