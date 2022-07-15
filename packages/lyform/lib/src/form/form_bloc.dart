@@ -29,7 +29,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     });
 
     on<FormSubmitEvent>((event, emit) async {
-      _validateInputs();
+      validate();
       if (!isValid()) {
         emit(FormInvalidState<D, E>());
       } else {
@@ -51,9 +51,9 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
     }
   }
 
-  List<InputBase> get inputs;
+  List<InputBloc> get inputs;
   Stream<FormBlocState<D, E>> onSubmit();
-  final _subscriptions = <StreamSubscription<InputBaseState<dynamic>>>[];
+  final _subscriptions = <StreamSubscription<InputBlocState<dynamic>>>[];
 
   /// Called when the form is started.
   void onInit() {
@@ -75,7 +75,7 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   }
 
   /// Validate all inputs and return [true] if they all are valids.
-  void _validateInputs() {
+  void validate() {
     for (final input in inputs) {
       input.validate();
     }
@@ -101,10 +101,6 @@ abstract class FormBloc<D, E> extends Bloc<FormBlocEvent, FormBlocState<D, E>> {
   /// Reset form
   void reset() {
     add(const FormResetEvent());
-  }
-
-  void validate() {
-    _validateInputs();
   }
 
   @override

@@ -1,32 +1,23 @@
 part of 'input_bloc.dart';
 
-abstract class InputBaseState<T> {
-  InputBaseState({
+class InputBlocState<T> {
+  InputBlocState({
     required this.value,
+    required this.pureValue,
+    required this.lastNotNullValue,
     this.error,
     this.debugName,
   });
 
   final T value;
-  final String? error;
-  final String? debugName;
-}
-
-class InputCubitState<T> extends InputBaseState<T> {
-  InputCubitState({
-    required super.value,
-    required this.pureValue,
-    required this.lastNotNullValue,
-    super.error,
-    super.debugName,
-  });
-
   final T pureValue;
   final T lastNotNullValue;
+  final String? error;
+  final String? debugName;
 
   @override
   bool operator ==(dynamic other) {
-    return (other is InputCubitState<T> &&
+    return (other is InputBlocState<T> &&
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value))) &&
         (identical(other.error, error) ||
@@ -40,30 +31,6 @@ class InputCubitState<T> extends InputBaseState<T> {
         (identical(other.lastNotNullValue, lastNotNullValue) ||
             const DeepCollectionEquality()
                 .equals(other.lastNotNullValue, lastNotNullValue));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
-
-  @override
-  String toString() {
-    final _debugName = debugName != null ? ', debugName: $debugName' : '';
-    return 'InputCubitState($value, $error$_debugName)';
-  }
-}
-
-class InputBlocState<T> extends InputBaseState<T> {
-  InputBlocState(T value, [String? error, String? debugName])
-      : super(value: value, error: error, debugName: debugName);
-
-  @override
-  bool operator ==(dynamic other) {
-    return (other is InputBlocState<T> &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value))) &&
-        (identical(other.error, error) ||
-            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
