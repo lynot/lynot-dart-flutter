@@ -35,7 +35,7 @@ class LyInput<T> extends Cubit<LyInputState<T>> {
   final LyValidationType validationType;
   final String? debugName;
 
-  bool get isPure => state.pureValue == state.value;
+  bool get isPure => state.pureValue == state.value && isValid;
   bool get isValid => state.error == null;
   bool get isInvalid => state.error != null;
 
