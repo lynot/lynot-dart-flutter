@@ -6,9 +6,9 @@ import 'package:lyform/lyform.dart';
 /// If the provided list in `value` is empty then it will be invalid and
 /// will return the error message, otherwise it returns null.
 /// {@endtemplate}
-class IterableNotEmtpy extends Validator<Iterable> {
+class LyIterableNotEmtpy extends LyValidator<Iterable> {
   /// {@macro iterable_validators}
-  IterableNotEmtpy(super.message);
+  LyIterableNotEmtpy(super.message);
 
   @override
   String? call(Iterable value) => value.isEmpty ? message : null;

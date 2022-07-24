@@ -14,9 +14,9 @@ import 'package:lyform/lyform.dart';
 ///
 /// ```
 /// {@endtemplate}
-class IntGreaterThan extends Validator<int> {
+class LyIntGreaterThan extends LyValidator<int> {
   /// {@macro int_greater_than_validators}
-  IntGreaterThan(this.limit, String message) : super(message);
+  LyIntGreaterThan(this.limit, String message) : super(message);
 
   /// The limit to compare the value to.
   final int limit;
@@ -37,8 +37,9 @@ class IntGreaterThan extends Validator<int> {
 /// final result = validation(10);
 /// print(result); // Must be greater than or equal to 11
 /// ```
-class IntGreaterEqualThan extends Validator<int> {
-  IntGreaterEqualThan(this.limit, String message) : super(message);
+class LyIntGreaterEqualThan extends LyValidator<int> {
+  /// {@macro int_greater_equal_than_validators}
+  LyIntGreaterEqualThan(this.limit, String message) : super(message);
 
   /// The limit to compare the value to.
   final int limit;
@@ -59,9 +60,9 @@ class IntGreaterEqualThan extends Validator<int> {
 /// final result = validation(15);
 /// print(result); // Must be less than 11
 /// ```
-class IntLesserThan extends Validator<int> {
+class LyIntLesserThan extends LyValidator<int> {
   /// {@macro int_less_than_validators}
-  IntLesserThan(this.limit, String message) : super(message);
+  LyIntLesserThan(this.limit, String message) : super(message);
 
   /// The limit to compare the value to.
   final int limit;
@@ -82,9 +83,9 @@ class IntLesserThan extends Validator<int> {
 /// final result = validation(10);
 /// print(result); // Must be less than or equal to 8
 /// ```
-class IntLesserEquealThan extends Validator<int> {
+class LyIntLesserEquealThan extends LyValidator<int> {
   /// {@macro int_less_equal_than_validators}
-  IntLesserEquealThan(this.limit, String message) : super(message);
+  LyIntLesserEquealThan(this.limit, String message) : super(message);
 
   /// The limit to compare the value to.
   final int limit;
@@ -105,9 +106,9 @@ class IntLesserEquealThan extends Validator<int> {
 /// final result = validation(-1);
 /// print(result); // Must be non negative
 /// ```
-class IntNonNegative extends Validator<int> {
+class LyIntNonNegative extends LyValidator<int> {
   /// {@macro int_non_negative_validators}
-  IntNonNegative(super.message);
+  LyIntNonNegative(super.message);
 
   @override
   String? call(int value) => value >= 0 ? null : message;

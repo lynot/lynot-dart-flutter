@@ -1,7 +1,7 @@
-part of 'input_bloc.dart';
+part of 'ly_input.dart';
 
-class InputBlocState<T> {
-  InputBlocState({
+class LyInputState<T> {
+  LyInputState({
     required this.value,
     required this.pureValue,
     required this.lastNotNullValue,
@@ -17,7 +17,7 @@ class InputBlocState<T> {
 
   @override
   bool operator ==(dynamic other) {
-    return (other is InputBlocState<T> &&
+    return (other is LyInputState<T> &&
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value))) &&
         (identical(other.error, error) ||
@@ -40,6 +40,6 @@ class InputBlocState<T> {
   @override
   String toString() {
     final _debugName = debugName != null ? ', debugName: $debugName' : '';
-    return 'InputBlocState($value, $error$_debugName)';
+    return 'LyInputState($value, $error$_debugName)';
   }
 }

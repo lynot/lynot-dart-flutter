@@ -1,4 +1,4 @@
 library lyform;
 
-export 'src/form/form_bloc.dart';
-export 'src/input/input_bloc.dart';
+export 'src/ly_form/ly_form.dart';
+export 'src/ly_input/ly_input.dart';

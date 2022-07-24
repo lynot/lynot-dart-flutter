@@ -7,9 +7,9 @@ import 'package:lyform/lyform.dart';
 /// will return the error [message], otherwise it returns null.
 ///
 /// {@endtemplate}
-class Required<T> extends Validator<T> {
+class LyRequired<T> extends LyValidator<T> {
   /// {@macro required_validators}
-  Required(super.message);
+  LyRequired(super.message);
 
   @override
   String? call(T value) => value == null ? message : null;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lyform/lyform.dart';
 
-class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
-  const FormBlocBuilder({
+class LyFormBuilder<T extends LyForm> extends StatelessWidget {
+  const LyFormBuilder({
     super.key,
     this.bloc,
     this.onPure,
@@ -26,7 +26,7 @@ class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<T, FormBlocState>(
+    return BlocBuilder<T, LyFormState>(
       bloc: bloc,
       builder: (context, state) {
         return _build(context, state) ?? orElse();
@@ -34,23 +34,18 @@ class FormBlocBuilder<T extends FormBloc> extends StatelessWidget {
     );
   }
 
-  Widget? _build(BuildContext context, FormBlocState state) {
-    if (state is FormPureState) {
+  Widget? _build(BuildContext context, LyFormState state) {
+    if (state is LyFormPureState) {
       return onPure?.call();
-    }
-    if (state is FormValidState) {
+    } else if (state is LyFormValidState) {
       return onValid?.call();
-    }
-    if (state is FormInvalidState) {
+    } else if (state is LyFormInvalidState) {
       return onInvalid?.call();
-    }
-    if (state is FormLoadingState) {
+    } else if (state is LyFormLoadingState) {
       return onLoading?.call();
-    }
-    if (state is FormSuccessState) {
+    } else if (state is LyFormSuccessState) {
       return onSuccess?.call(state.data);
-    }
-    if (state is FormErrorState) {
+    } else if (state is LyFormErrorState) {
       return onError?.call(state.error);
     }
     return null;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lyform/lyform.dart';
 
-class FormBlocListener<T extends FormBloc<D, E>, D, E> extends StatelessWidget {
-  const FormBlocListener({
+class LyFormListener<T extends LyForm<D, E>, D, E> extends StatelessWidget {
+  const LyFormListener({
     super.key,
     required this.child,
     this.bloc,
@@ -13,6 +13,7 @@ class FormBlocListener<T extends FormBloc<D, E>, D, E> extends StatelessWidget {
     this.onLoading,
     this.onSuccess,
     this.onError,
+    this.onAll,
   });
 
   final Widget child;
@@ -23,30 +24,27 @@ class FormBlocListener<T extends FormBloc<D, E>, D, E> extends StatelessWidget {
   final void Function()? onLoading;
   final void Function(D data)? onSuccess;
   final void Function(E error)? onError;
+  final void Function(LyFormState<D, E>)? onAll;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<T, FormBlocState<D, E>>(
+    return BlocListener<T, LyFormState<D, E>>(
       bloc: bloc,
       listener: (context, state) {
-        if (state is FormPureState<D, E>) {
+        if (state is LyFormPureState<D, E>) {
           onPure?.call();
-        }
-        if (state is FormValidState<D, E>) {
+        } else if (state is LyFormValidState<D, E>) {
           onValid?.call();
-        }
-        if (state is FormInvalidState<D, E>) {
+        } else if (state is LyFormInvalidState<D, E>) {
           onInvalid?.call();
-        }
-        if (state is FormLoadingState<D, E>) {
+        } else if (state is LyFormLoadingState<D, E>) {
           onLoading?.call();
-        }
-        if (state is FormSuccessState<D, E>) {
+        } else if (state is LyFormSuccessState<D, E>) {
           onSuccess?.call(state.data);
-        }
-        if (state is FormErrorState<D, E>) {
+        } else if (state is LyFormErrorState<D, E>) {
           onError?.call(state.error);
         }
+        onAll?.call(state);
       },
       child: child,
     );

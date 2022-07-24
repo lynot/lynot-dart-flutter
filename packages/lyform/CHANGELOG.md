@@ -1,3 +1,7 @@
+## 0.8.0
+
+ - Bump "lyform" to `0.8.0`.
+
 ## 0.7.6+1
 
  - **FIX**: rename input cubit to input bloc meanwhile.
