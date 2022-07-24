@@ -5,13 +5,13 @@ void main() {
   group('General Validators', () {
     group('Required', () {
       test('should return `null` when the `value` is not null', () {
-        final validation = Required<int>('Must be required');
+        final validation = LyRequired<int>('Must be required');
         final result = validation(15);
         expect(result, isNull);
       });
 
       test('should return a `message` when the `value` is null', () {
-        final validation = Required<int?>('Must be required');
+        final validation = LyRequired<int?>('Must be required');
         final result = validation(null);
         expect(result, 'Must be required');
       });
