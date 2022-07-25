@@ -1,3 +1,7 @@
+## 0.7.0
+
+ - **FEAT**: allow add and remove inputs.
+
 ## 0.6.0
 
 ## 0.5.7+5
