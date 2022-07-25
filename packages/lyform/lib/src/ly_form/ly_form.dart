@@ -6,7 +6,8 @@ import 'package:lyform/lyform.dart';
 part 'ly_form_events.dart';
 part 'ly_form_states.dart';
 
-abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
+abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
+    implements Iterable<LyInput<dynamic>> {
   LyForm() : super(const LyFormPureState()) {
     on<LyFormAddInputsEvent>((event, emit) async {
       await onAddInputsEvent(event, emit);
@@ -53,25 +54,25 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
   }
 
   Stream<LyFormState<D, E>> onSubmit();
-  final _inputs = <LyInput>[];
+  final _inputs = <LyInput<dynamic>>[];
   final _subscriptions = <StreamSubscription<LyInputState<dynamic>>>[];
 
-  LyInput operator [](int index) => _inputs[index];
+  LyInput<dynamic> operator [](int index) => _inputs[index];
+  @override
   int get length => _inputs.length;
-  Iterable<LyInput> get inputs => _inputs;
 
   /// Called when the form is started.
   Future<void> onAddInputsEvent(
     LyFormAddInputsEvent event,
     Emitter<LyFormState<D, E>> emit,
   ) async {
-    _inputs.clear();
     _inputs.addAll(event.inputs);
     for (final input in _inputs) {
       _subscriptions.add(
         input.stream.listen((input) => change(input.debugName)),
       );
     }
+    await onChangedEvent(emit);
   }
 
   /// Called when the form is changed.
@@ -118,6 +119,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
       event.index,
       event.input.stream.listen((input) => change(input.debugName)),
     );
+    await onChangedEvent(emit);
   }
 
   /// Called when the form is removed an input.
@@ -130,6 +132,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
     }
     _inputs.removeAt(event.index);
     await _subscriptions.removeAt(event.index).cancel();
+    await onChangedEvent(emit);
   }
 
   /// Called when the form transitions to the [LyFormPureState].
@@ -194,7 +197,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
   /// Add an input to the form.
   /// [index] is the index where the input will be added.
   /// [input] is the input to add.
-  void addInput(int index, LyInput input) {
+  void addInput(int index, LyInput<dynamic> input) {
     add(LyFormAddInputEvent(index, input));
   }
 
@@ -206,7 +209,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
 
   /// Add inputs to the form.
   /// [inputs] is the inputs to add.
-  void addInputs(List<LyInput> inputs) {
+  void addInputs(List<LyInput<dynamic>> inputs) {
     add(LyFormAddInputsEvent(inputs));
   }
 
@@ -215,4 +218,131 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
     await Future.wait<void>(_subscriptions.map((s) => s.cancel()));
     return super.close();
   }
+
+  @override
+  bool any(bool Function(LyInput<dynamic> element) test) => _inputs.any(test);
+
+  @override
+  Iterable<R> cast<R>() => _inputs.cast<R>();
+
+  @override
+  bool contains(Object? element) => _inputs.contains(element);
+
+  @override
+  LyInput<dynamic> elementAt(int index) => _inputs.elementAt(index);
+
+  @override
+  bool every(bool Function(LyInput<dynamic> element) test) =>
+      _inputs.every(test);
+
+  @override
+  Iterable<T> expand<T>(
+    Iterable<T> Function(LyInput<dynamic> element) toElements,
+  ) =>
+      _inputs.expand(toElements);
+
+  @override
+  LyInput<dynamic> get first => _inputs.first;
+
+  @override
+  LyInput<dynamic> firstWhere(
+    bool Function(LyInput<dynamic> element) test, {
+    LyInput<dynamic> Function()? orElse,
+  }) =>
+      _inputs.firstWhere(test, orElse: orElse);
+
+  @override
+  T fold<T>(
+    T initialValue,
+    T Function(T previousValue, LyInput<dynamic> element) combine,
+  ) =>
+      _inputs.fold(initialValue, combine);
+
+  @override
+  Iterable<LyInput<dynamic>> followedBy(Iterable<LyInput<dynamic>> other) =>
+      _inputs.followedBy(other);
+
+  @override
+  void forEach(void Function(LyInput<dynamic> element) action) =>
+      _inputs.forEach(action);
+
+  @override
+  bool get isEmpty => _inputs.isEmpty;
+
+  @override
+  bool get isNotEmpty => _inputs.isNotEmpty;
+
+  @override
+  Iterator<LyInput<dynamic>> get iterator => _inputs.iterator;
+
+  @override
+  String join([String separator = '']) => _inputs.join(separator);
+
+  @override
+  LyInput<dynamic> get last => _inputs.last;
+
+  @override
+  LyInput<dynamic> lastWhere(
+    bool Function(LyInput<dynamic> element) test, {
+    LyInput<dynamic> Function()? orElse,
+  }) =>
+      _inputs.lastWhere(test, orElse: orElse);
+
+  @override
+  Iterable<T> map<T>(T Function(LyInput<dynamic> e) toElement) =>
+      _inputs.map(toElement);
+
+  @override
+  LyInput<dynamic> reduce(
+    LyInput<dynamic> Function(
+      LyInput<dynamic> value,
+      LyInput<dynamic> element,
+    )
+        combine,
+  ) =>
+      _inputs.reduce(combine);
+
+  @override
+  LyInput<dynamic> get single => _inputs.single;
+
+  @override
+  LyInput<dynamic> singleWhere(
+    bool Function(LyInput<dynamic> element) test, {
+    LyInput<dynamic> Function()? orElse,
+  }) =>
+      _inputs.singleWhere(test, orElse: orElse);
+
+  @override
+  Iterable<LyInput<dynamic>> skip(int count) => _inputs.skip(count);
+
+  @override
+  Iterable<LyInput<dynamic>> skipWhile(
+    bool Function(LyInput<dynamic> value) test,
+  ) =>
+      _inputs.skipWhile(test);
+
+  @override
+  Iterable<LyInput<dynamic>> take(int count) => _inputs.take(count);
+
+  @override
+  Iterable<LyInput<dynamic>> takeWhile(
+    bool Function(LyInput<dynamic> value) test,
+  ) =>
+      _inputs.takeWhile(test);
+
+  @override
+  List<LyInput<dynamic>> toList({bool growable = true}) =>
+      _inputs.toList(growable: growable);
+
+  @override
+  Set<LyInput<dynamic>> toSet() => _inputs.toSet();
+
+  @override
+  Iterable<LyInput<dynamic>> where(
+    bool Function(LyInput<dynamic> element) test,
+  ) =>
+      _inputs.where(test);
+
+  @override
+  Iterable<T> whereType<T>() => _inputs.whereType<T>();
 }
