@@ -1,3 +1,7 @@
+## 0.9.1
+
+ - **FEAT**: make form an iterable of inputs.
+
 ## 0.9.0
 
  - **FIX**: validation when is pure value.
