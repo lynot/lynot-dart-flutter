@@ -8,7 +8,7 @@ environment:
   sdk: '>=2.17.1 <3.0.0'
 
 dependencies:
-  lyform: ^0.8.0
+  lyform: ^0.9.0
   validators: ^3.0.0
 
 dev_dependencies:

@@ -1,3 +1,8 @@
+## 0.9.0
+
+ - **FIX**: validation when is pure value.
+ - **FEAT**: allow add and remove inputs.
+
 ## 0.8.0
 
  - Bump "lyform" to `0.8.0`.
