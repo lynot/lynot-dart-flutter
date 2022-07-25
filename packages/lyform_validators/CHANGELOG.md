@@ -1,3 +1,7 @@
+## 0.7.1
+
+ - **CHORE:** upgrade dependencies
+
 ## 0.7.0
 
  - **CHORE**: upgrade dependencies
