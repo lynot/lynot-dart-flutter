@@ -9,12 +9,37 @@ abstract class LyFormEvent {
   }
 }
 
-class LyFormStartedEvent extends LyFormEvent {
-  const LyFormStartedEvent();
+class LyFormAddInputsEvent extends LyFormEvent {
+  const LyFormAddInputsEvent(this.inputs);
+
+  final List<LyInput> inputs;
 
   @override
   String toString() {
-    return 'LyFormStartedEvent()';
+    return 'LyFormAddInputsEvent()';
+  }
+}
+
+class LyFormAddInputEvent extends LyFormEvent {
+  const LyFormAddInputEvent(this.index, this.input);
+
+  final int index;
+  final LyInput input;
+
+  @override
+  String toString() {
+    return 'LyFormAddInputEvent()';
+  }
+}
+
+class LyFormRemoveInputEvent extends LyFormEvent {
+  const LyFormRemoveInputEvent(this.index);
+
+  final int index;
+
+  @override
+  String toString() {
+    return 'LyFormRemoveInputEvent()';
   }
 }
 

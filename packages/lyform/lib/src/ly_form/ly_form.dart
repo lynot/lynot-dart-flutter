@@ -8,8 +8,8 @@ part 'ly_form_states.dart';
 
 abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
   LyForm() : super(const LyFormPureState()) {
-    on<LyFormStartedEvent>((event, emit) async {
-      await onStartedEvent(emit);
+    on<LyFormAddInputsEvent>((event, emit) async {
+      await onAddInputsEvent(event, emit);
     });
 
     on<LyFormChangedEvent>((event, emit) async {
@@ -24,7 +24,13 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
       await onSubmitEvent(emit);
     });
 
-    add(const LyFormStartedEvent());
+    on<LyFormAddInputEvent>((event, emit) async {
+      await onAddInputEvent(event, emit);
+    });
+
+    on<LyFormRemoveInputEvent>((event, emit) async {
+      await onRemoveInputEvent(event, emit);
+    });
   }
 
   @override
@@ -46,13 +52,22 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
     }
   }
 
-  List<LyInput> get inputs;
   Stream<LyFormState<D, E>> onSubmit();
+  final _inputs = <LyInput>[];
   final _subscriptions = <StreamSubscription<LyInputState<dynamic>>>[];
 
+  LyInput operator [](int index) => _inputs[index];
+  int get length => _inputs.length;
+  Iterable<LyInput> get inputs => _inputs;
+
   /// Called when the form is started.
-  Future<void> onStartedEvent(Emitter<LyFormState<D, E>> emit) async {
-    for (final input in inputs) {
+  Future<void> onAddInputsEvent(
+    LyFormAddInputsEvent event,
+    Emitter<LyFormState<D, E>> emit,
+  ) async {
+    _inputs.clear();
+    _inputs.addAll(event.inputs);
+    for (final input in _inputs) {
       _subscriptions.add(
         input.stream.listen((input) => change(input.debugName)),
       );
@@ -72,7 +87,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
 
   /// Called when the form is reset.
   Future<void> onResetEvent(Emitter<LyFormState<D, E>> emit) async {
-    for (final input in inputs) {
+    for (final input in _inputs) {
       input.pure(input.pureValue);
     }
   }
@@ -88,6 +103,33 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
         emit(state);
       }
     }
+  }
+
+  /// Called when the form is added an input.
+  Future<void> onAddInputEvent(
+    LyFormAddInputEvent event,
+    Emitter<LyFormState<D, E>> emit,
+  ) async {
+    if (event.index < 0 || event.index > _inputs.length) {
+      throw Exception('Index out of range.');
+    }
+    _inputs.insert(event.index, event.input);
+    _subscriptions.insert(
+      event.index,
+      event.input.stream.listen((input) => change(input.debugName)),
+    );
+  }
+
+  /// Called when the form is removed an input.
+  Future<void> onRemoveInputEvent(
+    LyFormRemoveInputEvent event,
+    Emitter<LyFormState<D, E>> emit,
+  ) async {
+    if (event.index < 0 || event.index > _inputs.length) {
+      throw Exception('Index out of range.');
+    }
+    _inputs.removeAt(event.index);
+    await _subscriptions.removeAt(event.index).cancel();
   }
 
   /// Called when the form transitions to the [LyFormPureState].
@@ -112,17 +154,17 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
 
   /// Are every input Valid?
   bool isValid() {
-    return inputs.every((input) => input.isValid);
+    return _inputs.every((input) => input.isValid);
   }
 
   /// Are every input Pure?
   bool isPure() {
-    return inputs.every((input) => input.isPure);
+    return _inputs.every((input) => input.isPure);
   }
 
   /// Validate all inputs and return [true] if they all are valids.
   void validate() {
-    for (final input in inputs) {
+    for (final input in _inputs) {
       input.validate();
     }
   }
@@ -130,7 +172,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
   /// Use this if you whant to set all input as pure using they current value.
   /// Useful when a success submit happens.
   void _setPureInputs() {
-    for (final input in inputs) {
+    for (final input in _inputs) {
       input.pure(input.value);
     }
   }
@@ -147,6 +189,25 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>> {
   /// Reset form
   void reset() {
     add(const LyFormResetEvent());
+  }
+
+  /// Add an input to the form.
+  /// [index] is the index where the input will be added.
+  /// [input] is the input to add.
+  void addInput(int index, LyInput input) {
+    add(LyFormAddInputEvent(index, input));
+  }
+
+  /// Remove an input from the form.
+  /// [index] is the index where the input will be removed.
+  void removeInput(int index) {
+    add(LyFormRemoveInputEvent(index));
+  }
+
+  /// Add inputs to the form.
+  /// [inputs] is the inputs to add.
+  void addInputs(List<LyInput> inputs) {
+    add(LyFormAddInputsEvent(inputs));
   }
 
   @override

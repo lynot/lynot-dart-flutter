@@ -2,6 +2,10 @@ import 'package:flutter_lyform/flutter_lyform.dart';
 import 'package:lyform_validators/lyform_validators.dart';
 
 class ProfileForm extends LyForm<String, String> {
+  ProfileForm() {
+    addInputs([name, email, country, age]);
+  }
+
   final email = LyInput<String>(
     pureValue: '',
     validationType: LyValidationType.always,
@@ -30,9 +34,6 @@ class ProfileForm extends LyForm<String, String> {
   final country = LyInput<String?>(
     pureValue: null,
   );
-
-  @override
-  List<LyInput> get inputs => [name, email, country, age];
 
   @override
   Stream<LyFormState<String, String>> onSubmit() async* {
