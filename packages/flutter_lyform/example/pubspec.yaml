@@ -14,7 +14,7 @@ dependencies:
   flutter_lyform: ^0.7.2
   lyform_validators: ^0.7.2
 dev_dependencies:
-  lint: ^1.8.2
+  lint: ^1.10.0
 
 flutter:
   uses-material-design: true

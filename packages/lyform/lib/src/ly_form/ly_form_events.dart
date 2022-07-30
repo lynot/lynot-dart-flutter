@@ -42,8 +42,9 @@ class LyFormChangedEvent extends LyFormEvent {
 
   @override
   String toString() {
-    final _debugName = debugName == null ? '' : 'debugName: $debugName';
-    return 'LyFormChangedEvent($_debugName)';
+    final debugName =
+        this.debugName == null ? '' : 'debugName: ${this.debugName}';
+    return 'LyFormChangedEvent($debugName)';
   }
 }
 

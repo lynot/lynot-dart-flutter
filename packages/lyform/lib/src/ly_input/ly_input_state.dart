@@ -36,7 +36,8 @@ class LyInputState<T> {
 
   @override
   String toString() {
-    final _debugName = debugName != null ? ', debugName: $debugName' : '';
-    return 'LyInputState($value, $error$_debugName)';
+    final debugName =
+        this.debugName != null ? ', debugName: ${this.debugName}' : '';
+    return 'LyInputState($value, $error$debugName)';
   }
 }
