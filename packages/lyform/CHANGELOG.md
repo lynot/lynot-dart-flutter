@@ -1,3 +1,7 @@
+## 0.9.2
+
+ - **FEAT**: override `hashCode` and `==` in `LyFormState`.
+
 ## 0.9.1
 
  - **FEAT**: make form an iterable of inputs.
