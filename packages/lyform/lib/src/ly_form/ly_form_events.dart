@@ -4,9 +4,7 @@ abstract class LyFormEvent {
   const LyFormEvent();
 
   @override
-  String toString() {
-    return 'LyFormEvent()';
-  }
+  String toString() => 'LyFormEvent()';
 }
 
 class LyFormAddInputsEvent extends LyFormEvent {
@@ -15,9 +13,7 @@ class LyFormAddInputsEvent extends LyFormEvent {
   final List<LyInput> inputs;
 
   @override
-  String toString() {
-    return 'LyFormAddInputsEvent()';
-  }
+  String toString() => 'LyFormAddInputsEvent()';
 }
 
 class LyFormAddInputEvent extends LyFormEvent {
@@ -27,9 +23,7 @@ class LyFormAddInputEvent extends LyFormEvent {
   final LyInput input;
 
   @override
-  String toString() {
-    return 'LyFormAddInputEvent()';
-  }
+  String toString() => 'LyFormAddInputEvent()';
 }
 
 class LyFormRemoveInputEvent extends LyFormEvent {
@@ -38,9 +32,7 @@ class LyFormRemoveInputEvent extends LyFormEvent {
   final int index;
 
   @override
-  String toString() {
-    return 'LyFormRemoveInputEvent()';
-  }
+  String toString() => 'LyFormRemoveInputEvent()';
 }
 
 class LyFormChangedEvent extends LyFormEvent {
@@ -59,16 +51,12 @@ class LyFormResetEvent extends LyFormEvent {
   const LyFormResetEvent() : super();
 
   @override
-  String toString() {
-    return 'LyFormResetEvent()';
-  }
+  String toString() => 'LyFormResetEvent()';
 }
 
 class LyFormSubmitEvent extends LyFormEvent {
   const LyFormSubmitEvent() : super();
 
   @override
-  String toString() {
-    return 'LyFormSubmitEvent()';
-  }
+  String toString() => 'LyFormSubmitEvent()';
 }

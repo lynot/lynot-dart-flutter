@@ -4,65 +4,51 @@ abstract class LyFormState<D, E> {
   const LyFormState();
 
   @override
-  String toString() {
-    return 'LyFormState()';
-  }
+  String toString() => 'LyFormState()';
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! LyFormState) return false;
-    return true;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) || other is LyFormState;
 
   @override
   int get hashCode => runtimeType.hashCode;
 }
 
 class LyFormPureState<D, E> extends LyFormState<D, E> {
-  const LyFormPureState() : super();
+  const LyFormPureState();
 
   @override
-  String toString() {
-    return 'LyFormPureState()';
-  }
+  String toString() => 'LyFormPureState()';
 }
 
 class LyFormInvalidState<D, E> extends LyFormState<D, E> {
-  const LyFormInvalidState() : super();
+  const LyFormInvalidState();
 
   @override
-  String toString() {
-    return 'LyFormInvalidState()';
-  }
+  String toString() => 'LyFormInvalidState()';
 }
 
 class LyFormValidState<D, E> extends LyFormState<D, E> {
-  const LyFormValidState() : super();
+  const LyFormValidState();
+
   @override
-  String toString() {
-    return 'LyFormValidState()';
-  }
+  String toString() => 'LyFormValidState()';
 }
 
 class LyFormLoadingState<D, E> extends LyFormState<D, E> {
-  const LyFormLoadingState() : super();
+  const LyFormLoadingState();
 
   @override
-  String toString() {
-    return 'LyFormLoadingState()';
-  }
+  String toString() => 'LyFormLoadingState()';
 }
 
 class LyFormSuccessState<D, E> extends LyFormState<D, E> {
-  const LyFormSuccessState(this.data) : super();
+  const LyFormSuccessState(this.data);
 
   final D data;
 
   @override
-  String toString() {
-    return 'LyFormSuccessState($data)';
-  }
+  String toString() => 'LyFormSuccessState($data)';
 
   @override
   bool operator ==(Object other) =>
@@ -74,19 +60,16 @@ class LyFormSuccessState<D, E> extends LyFormState<D, E> {
 }
 
 class LyFormErrorState<D, E> extends LyFormState<D, E> {
-  const LyFormErrorState(this.error) : super();
+  const LyFormErrorState(this.error);
 
   final E error;
 
   @override
-  String toString() {
-    return 'LyFormErrorState($error)';
-  }
+  String toString() => 'LyFormErrorState($error)';
 
   @override
-  bool operator ==(Object other) {
-    return other is LyFormErrorState<D, E> && identical(error, other.error);
-  }
+  bool operator ==(Object other) =>
+      other is LyFormErrorState<D, E> && identical(error, other.error);
 
   @override
   int get hashCode =>

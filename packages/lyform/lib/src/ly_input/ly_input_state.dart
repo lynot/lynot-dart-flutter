@@ -16,22 +16,19 @@ class LyInputState<T> {
   final String? debugName;
 
   @override
-  bool operator ==(dynamic other) {
-    return (other is LyInputState<T> &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value))) &&
-        (identical(other.error, error) ||
-            const DeepCollectionEquality().equals(other.error, error)) &&
-        (identical(other.debugName, debugName) ||
-            const DeepCollectionEquality()
-                .equals(other.debugName, debugName)) &&
-        (identical(other.pureValue, pureValue) ||
-            const DeepCollectionEquality()
-                .equals(other.pureValue, pureValue)) &&
-        (identical(other.lastNotNullValue, lastNotNullValue) ||
-            const DeepCollectionEquality()
-                .equals(other.lastNotNullValue, lastNotNullValue));
-  }
+  bool operator ==(dynamic other) =>
+      (other is LyInputState<T> &&
+          (identical(other.value, value) ||
+              const DeepCollectionEquality().equals(other.value, value))) &&
+      (identical(other.error, error) ||
+          const DeepCollectionEquality().equals(other.error, error)) &&
+      (identical(other.debugName, debugName) ||
+          const DeepCollectionEquality().equals(other.debugName, debugName)) &&
+      (identical(other.pureValue, pureValue) ||
+          const DeepCollectionEquality().equals(other.pureValue, pureValue)) &&
+      (identical(other.lastNotNullValue, lastNotNullValue) ||
+          const DeepCollectionEquality()
+              .equals(other.lastNotNullValue, lastNotNullValue));
 
   @override
   int get hashCode =>
