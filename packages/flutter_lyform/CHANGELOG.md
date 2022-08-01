@@ -1,3 +1,9 @@
+## 0.8.1
+
+ - **CHORE**: upgrade `lyform` dependencies
+
+ - **FIX**: remove equality check of lyform states.
+
 ## 0.8.0
 
  - **CHORE**: upgrade `lyform` dependency

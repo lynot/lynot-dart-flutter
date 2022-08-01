@@ -1,3 +1,7 @@
+## 0.10.1
+
+ - **FIX**: remove equality check of lyform states.
+
 ## 0.10.0
 
  - **FIX**: include inputs in lyform states for add to equality checks.

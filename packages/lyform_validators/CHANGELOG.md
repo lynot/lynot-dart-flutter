@@ -1,3 +1,7 @@
+## 0.8.1
+
+ - **CHORE**: upgrade `lyform` dependencies
+
 ## 0.8.0
 
  - **CHORE**: upgrade `lyform` dependency
