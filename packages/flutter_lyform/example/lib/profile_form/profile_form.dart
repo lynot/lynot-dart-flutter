@@ -38,6 +38,6 @@ class ProfileForm extends LyForm<String, String> {
   @override
   Stream<LyFormState<String, String>> onSubmit() async* {
     await Future<void>.delayed(const Duration(seconds: 3));
-    yield const LyFormSuccessState('Profile save successfully.');
+    yield LyFormSuccessState('Profile save successfully.', this);
   }
 }
