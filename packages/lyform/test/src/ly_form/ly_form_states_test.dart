@@ -8,8 +8,8 @@ void main() {
     group('supports value equality in', () {
       test('LyFormPureState', () {
         expect(
-          LyFormPureState<Object, Object>(),
-          LyFormPureState<Object, Object>(),
+          LyFormPureState<Object, Object>([]),
+          LyFormPureState<Object, Object>([]),
         );
       });
 
@@ -17,8 +17,8 @@ void main() {
         'LyFormInvalidState',
         () {
           expect(
-            LyFormInvalidState<Object, Object>(),
-            equals(LyFormInvalidState<Object, Object>()),
+            LyFormInvalidState<Object, Object>([]),
+            equals(LyFormInvalidState<Object, Object>([])),
           );
         },
       );
@@ -27,8 +27,8 @@ void main() {
         'LyFormValidState',
         () {
           expect(
-            LyFormValidState<Object, Object>(),
-            equals(LyFormValidState<Object, Object>()),
+            LyFormValidState<Object, Object>([]),
+            equals(LyFormValidState<Object, Object>([])),
           );
         },
       );
@@ -37,8 +37,8 @@ void main() {
         'LyFormLoadingState',
         () {
           expect(
-            LyFormLoadingState<Object, Object>(),
-            equals(LyFormLoadingState<Object, Object>()),
+            LyFormLoadingState<Object, Object>([]),
+            equals(LyFormLoadingState<Object, Object>([])),
           );
         },
       );
@@ -47,8 +47,8 @@ void main() {
         'LyFormSuccessState',
         () {
           expect(
-            LyFormSuccessState<String, Object>('Success'),
-            equals(LyFormSuccessState<String, Object>('Success')),
+            LyFormSuccessState<String, Object>('Success', []),
+            equals(LyFormSuccessState<String, Object>('Success', [])),
           );
         },
       );
@@ -57,8 +57,8 @@ void main() {
         'LyFormErrorState',
         () {
           expect(
-            LyFormErrorState<Object, String>('Error'),
-            equals(LyFormErrorState<Object, String>('Error')),
+            LyFormErrorState<Object, String>('Error', []),
+            equals(LyFormErrorState<Object, String>('Error', [])),
           );
         },
       );
