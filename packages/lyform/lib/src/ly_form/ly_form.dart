@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:collection/collection.dart';
 import 'package:lyform/lyform.dart';
 
 part 'ly_form_events.dart';
@@ -9,7 +8,7 @@ part 'ly_form_states.dart';
 
 abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
     implements Iterable<LyInput<dynamic>> {
-  LyForm() : super(const LyFormPureState([])) {
+  LyForm() : super(const LyFormPureState()) {
     on<LyFormAddInputsEvent>((event, emit) async {
       await onAddInputsEvent(event, emit);
     });
@@ -79,11 +78,11 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   /// Called when the form is changed.
   Future<void> onChangedEvent(Emitter<LyFormState<D, E>> emit) async {
     if (isPure()) {
-      emit(LyFormPureState<D, E>(this));
+      emit(LyFormPureState<D, E>());
     } else if (isValid()) {
-      emit(LyFormValidState<D, E>(this));
+      emit(LyFormValidState<D, E>());
     } else {
-      emit(LyFormInvalidState<D, E>(this));
+      emit(LyFormInvalidState<D, E>());
     }
   }
 
@@ -98,9 +97,9 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   Future<void> onSubmitEvent(Emitter<LyFormState<D, E>> emit) async {
     validate();
     if (!isValid()) {
-      emit(LyFormInvalidState<D, E>(this));
+      emit(LyFormInvalidState<D, E>());
     } else {
-      emit(LyFormLoadingState<D, E>(this));
+      emit(LyFormLoadingState<D, E>());
       await for (final state in onSubmit()) {
         emit(state);
       }
