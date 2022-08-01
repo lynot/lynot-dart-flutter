@@ -1,3 +1,7 @@
+## 0.10.0
+
+ - **FIX**: include inputs in lyform states for add to equality checks.
+
 ## 0.9.2
 
  - **FEAT**: override `hashCode` and `==` in `LyFormState`.
