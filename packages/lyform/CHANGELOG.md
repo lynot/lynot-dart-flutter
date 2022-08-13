@@ -1,3 +1,7 @@
+## 0.11.1
+
+ - **FIX**: error in methods for return states quickly.
+
 ## 0.11.0
 
  - **FEAT**: improve equality of input and form states and make input a bloc.
