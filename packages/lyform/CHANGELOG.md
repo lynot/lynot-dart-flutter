@@ -1,3 +1,7 @@
+## 0.11.0
+
+ - **FEAT**: improve equality of input and form states and make input a bloc.
+
 ## 0.10.1
 
  - **FIX**: remove equality check of lyform states.

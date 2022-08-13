@@ -1,3 +1,7 @@
+## 0.9.0
+
+ - **FEAT**: improve equality of input and form states and make input a bloc.
+
 ## 0.8.1
 
  - **CHORE**: upgrade `lyform` dependencies
