@@ -371,16 +371,17 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   List<LyInputState<dynamic>> get inputStates =>
       map((i) => i.state.clone()).toList();
 
-  LyFormPureState<D, E> pure() => LyFormPureState(inputStates);
+  LyFormPureState<D, E> pure() => LyFormPureState<D, E>(inputStates);
 
-  LyFormInvalidState<D, E> invalid() => LyFormInvalidState(inputStates);
+  LyFormInvalidState<D, E> invalid() => LyFormInvalidState<D, E>(inputStates);
 
-  LyFormValidState<D, E> valid() => LyFormValidState(inputStates);
+  LyFormValidState<D, E> valid() => LyFormValidState<D, E>(inputStates);
 
-  LyFormLoadingState<D, E> loading() => LyFormLoadingState(inputStates);
+  LyFormLoadingState<D, E> loading() => LyFormLoadingState<D, E>(inputStates);
 
   LyFormSuccessState<D, E> success(D data) =>
-      LyFormSuccessState(data, inputStates);
+      LyFormSuccessState<D, E>(data, inputStates);
 
-  LyFormErrorState<D, E> error(E error) => LyFormErrorState(error, inputStates);
+  LyFormErrorState<D, E> error(E error) =>
+      LyFormErrorState<D, E>(error, inputStates);
 }
