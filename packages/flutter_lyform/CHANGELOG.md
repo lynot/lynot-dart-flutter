@@ -1,3 +1,7 @@
+## 0.11.0
+
+ - **CHORE**: upgrade lyform dependency
+
 ## 0.9.0
 
  - **FEAT**: improve equality of input and form states and make input a bloc.
