@@ -1,19 +1,20 @@
 part of 'ly_form.dart';
 
-abstract class LyFormEvent {
+abstract class LyFormEvent extends Equatable {
   const LyFormEvent();
 
   @override
-  String toString() => 'LyFormEvent()';
+  List<Object?> get props => [];
 }
 
 class LyFormAddInputsEvent extends LyFormEvent {
   const LyFormAddInputsEvent(this.inputs);
 
-  final List<LyInput> inputs;
+  final List<LyInput<dynamic>> inputs;
 
   @override
-  String toString() => 'LyFormAddInputsEvent()';
+  List<Object?> get props =>
+      inputs.expand((input) => input.state.props).toList();
 }
 
 class LyFormAddInputEvent extends LyFormEvent {
@@ -23,7 +24,7 @@ class LyFormAddInputEvent extends LyFormEvent {
   final LyInput input;
 
   @override
-  String toString() => 'LyFormAddInputEvent()';
+  List<Object?> get props => [index, ...input.state.props];
 }
 
 class LyFormRemoveInputEvent extends LyFormEvent {
@@ -32,32 +33,22 @@ class LyFormRemoveInputEvent extends LyFormEvent {
   final int index;
 
   @override
-  String toString() => 'LyFormRemoveInputEvent()';
+  List<Object?> get props => [index];
 }
 
 class LyFormChangedEvent extends LyFormEvent {
-  const LyFormChangedEvent(this.debugName) : super();
+  const LyFormChangedEvent(this.debugName);
 
   final String? debugName;
 
   @override
-  String toString() {
-    final debugName =
-        this.debugName == null ? '' : 'debugName: ${this.debugName}';
-    return 'LyFormChangedEvent($debugName)';
-  }
+  List<Object?> get props => [debugName];
 }
 
 class LyFormResetEvent extends LyFormEvent {
-  const LyFormResetEvent() : super();
-
-  @override
-  String toString() => 'LyFormResetEvent()';
+  const LyFormResetEvent();
 }
 
 class LyFormSubmitEvent extends LyFormEvent {
-  const LyFormSubmitEvent() : super();
-
-  @override
-  String toString() => 'LyFormSubmitEvent()';
+  const LyFormSubmitEvent();
 }

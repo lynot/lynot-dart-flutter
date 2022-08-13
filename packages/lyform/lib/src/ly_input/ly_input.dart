@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
+part 'ly_input_event.dart';
 part 'ly_input_state.dart';
 part 'ly_input_validator.dart';
 part 'ly_validation_type.dart';
 
-class LyInput<T> extends Cubit<LyInputState<T>> {
+class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   LyInput({
     required T pureValue,
     LyValidationType? validationType,
@@ -21,17 +24,100 @@ class LyInput<T> extends Cubit<LyInputState<T>> {
             (validator != null
                 ? LyValidationType.always
                 : LyValidationType.none),
-        validator = validator ?? const LyEmptyValidator(),
+        _validator = validator ?? const LyEmptyValidator(),
         super(
           LyInputState(
             value: pureValue,
-            pureValue: pureValue,
             lastNotNullValue: pureValue,
+            pureValue: pureValue,
+            debugName: debugName,
+          ),
+        ) {
+    on<LyInputDirtyEvent<T>>(
+      (event, emit) async {
+        await Future.delayed(Duration.zero);
+        final onPreDirtyResult = onPreDirty?.call(this, event.value) ?? true;
+        if (!onPreDirtyResult) {
+          return;
+        }
+        final lastNotNullValue = event.value ?? state.lastNotNullValue;
+        final pureValue = state.pureValue;
+        final error = state.error;
+        final debugName = state.debugName;
+        emit(
+          LyInputState<T>(
+            value: event.value,
+            lastNotNullValue: lastNotNullValue,
+            pureValue: pureValue,
+            error: error,
             debugName: debugName,
           ),
         );
+        if (validationType == LyValidationType.always) {
+          validate();
+        }
+        onPostDirty?.call(this, event.value);
+      },
+      transformer: sequential(),
+    );
 
-  final LyBaseValidator<T> validator;
+    on<LyInputPureEvent<T>>(
+      (event, emit) async {
+        await Future.delayed(Duration.zero);
+        final onPrePureResult = onPrePure?.call(this, event.value) ?? true;
+        if (!onPrePureResult) {
+          return;
+        }
+        final lastNotNullValue = event.value ?? state.lastNotNullValue;
+        final pureValue = event.value;
+        final debugName = state.debugName;
+        emit(
+          LyInputState<T>(
+            value: event.value,
+            lastNotNullValue: lastNotNullValue,
+            pureValue: pureValue,
+            debugName: debugName,
+          ),
+        );
+        if (validationType == LyValidationType.always) {
+          validate();
+        }
+        onPostPure?.call(this, event.value);
+      },
+      transformer: sequential(),
+    );
+
+    on<LyInputValidateEvent<T>>(
+      (event, emit) async {
+        await Future.delayed(Duration.zero);
+        final onPreValidateResult = onPreValidate?.call(this) ?? true;
+        if (!onPreValidateResult) {
+          return;
+        }
+        if (validationType != LyValidationType.none) {
+          final value = state.value;
+          final lastNotNullValue = state.lastNotNullValue;
+          final pureValue = state.pureValue;
+          final error = _validator(state.value);
+          final debugName = state.debugName;
+          emit(
+            LyInputState<T>(
+              value: value,
+              lastNotNullValue: lastNotNullValue,
+              pureValue: pureValue,
+              error: error,
+              debugName: debugName,
+            ),
+          );
+        }
+        onPostValidate?.call(this);
+      },
+      transformer: sequential(),
+    );
+  }
+
+  final LyBaseValidator<T> _validator;
+  LyBaseValidator<T> get validator => _validator;
   final LyValidationType validationType;
   final String? debugName;
 
@@ -40,8 +126,8 @@ class LyInput<T> extends Cubit<LyInputState<T>> {
   bool get isPure => isValid && state.pureValue == state.value;
 
   T get value => state.value;
-  T get pureValue => state.pureValue;
   T get lastNotNullValue => state.lastNotNullValue;
+  T get pureValue => state.pureValue;
 
   bool Function(LyInput<T> self, T value)? onPreDirty;
   bool Function(LyInput<T> self, T value)? onPostDirty;
@@ -50,73 +136,15 @@ class LyInput<T> extends Cubit<LyInputState<T>> {
   bool Function(LyInput<T> self)? onPreValidate;
   bool Function(LyInput<T> self)? onPostValidate;
 
-  bool dirty(T value) {
-    final onPreDirtyResult = onPreDirty?.call(this, value) ?? true;
-    if (!onPreDirtyResult) {
-      return false;
-    }
-    final pureValue = state.pureValue;
-    final lastNotNullValue = value ?? state.lastNotNullValue;
-    final error = state.error;
-    final debugName = state.debugName;
-    emit(
-      LyInputState<T>(
-        value: value,
-        pureValue: pureValue,
-        lastNotNullValue: lastNotNullValue,
-        error: error,
-        debugName: debugName,
-      ),
-    );
-    if (validationType == LyValidationType.always) {
-      validate();
-    }
-    return onPostDirty?.call(this, value) ?? true;
+  void dirty(T value) {
+    add(LyInputDirtyEvent(value));
   }
 
-  bool pure(T value) {
-    final onPrePureResult = onPrePure?.call(this, value) ?? true;
-    if (!onPrePureResult) {
-      return false;
-    }
-    final pureValue = value;
-    final lastNotNullValue = value ?? state.lastNotNullValue;
-    final debugName = state.debugName;
-    emit(
-      LyInputState<T>(
-        value: value,
-        pureValue: pureValue,
-        lastNotNullValue: lastNotNullValue,
-        debugName: debugName,
-      ),
-    );
-    if (validationType == LyValidationType.always) {
-      validate();
-    }
-    return onPostPure?.call(this, value) ?? true;
+  void pure(T value) {
+    add(LyInputPureEvent(value));
   }
 
-  bool validate() {
-    final onPreValidateResult = onPreValidate?.call(this) ?? true;
-    if (!onPreValidateResult) {
-      return false;
-    }
-    if (validationType != LyValidationType.none) {
-      final value = state.value;
-      final pureValue = state.pureValue;
-      final lastNotNullValue = state.lastNotNullValue;
-      final error = validator(state.value);
-      final debugName = state.debugName;
-      emit(
-        LyInputState<T>(
-          value: value,
-          pureValue: pureValue,
-          lastNotNullValue: lastNotNullValue,
-          error: error,
-          debugName: debugName,
-        ),
-      );
-    }
-    return onPostValidate?.call(this) ?? true;
+  void validate() {
+    add(const LyInputValidateEvent());
   }
 }
