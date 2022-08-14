@@ -3,32 +3,8 @@ import 'package:lyform/lyform.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('should support equality', () {
-    const inputState1 = LyInputState<String>(
-      value: '',
-      lastNotNullValue: '',
-      pureValue: '',
-      debugName: 'name',
-    );
-    const inputState2 = LyInputState<String>(
-      value: '',
-      lastNotNullValue: '',
-      pureValue: '',
-      debugName: 'name',
-    );
-    const inputState3 = LyInputState<String>(
-      value: '',
-      lastNotNullValue: '',
-      pureValue: '',
-      debugName: 'different name',
-    );
-
-    expect(inputState1, equals(inputState2));
-    expect(inputState1, isNot(equals(inputState3)));
-  });
-
   blocTest<LyInput<String>, LyInputState<String>>(
-    'should emit new state in every `drity` call',
+    'check that emit new state in every `drity` call',
     build: () => LyInput<String>(pureValue: ''),
     act: (input) => input
       ..dirty('ly')
@@ -53,4 +29,62 @@ void main() {
       ),
     ],
   );
+
+  blocTest<LyInput<String>, LyInputState<String>>(
+    'check that isPure is true',
+    build: () => LyInput<String>(
+      pureValue: '',
+    ),
+    act: (input) => input
+      ..dirty('ly')
+      ..dirty(''),
+    wait: const Duration(seconds: 1),
+    verify: (input) {
+      expect(input.isPure, isTrue);
+    },
+  );
+
+  blocTest<LyInput<String>, LyInputState<String>>(
+    'check that isPure is false',
+    build: () => LyInput<String>(
+      pureValue: '',
+    ),
+    act: (input) => input..dirty('ly'),
+    wait: const Duration(seconds: 1),
+    verify: (input) {
+      expect(input.isPure, isFalse);
+    },
+  );
+
+  blocTest<LyInput<String>, LyInputState<String>>(
+    'check that isValid is true when isPure is true',
+    build: () => LyInput<String>(
+      pureValue: '',
+      validationType: LyValidationType.always,
+      validator: const LyStringRequired('Is required.'),
+    ),
+    wait: const Duration(seconds: 1),
+    verify: (input) {
+      expect(input.isValid, isTrue);
+    },
+  );
+
+  blocTest<LyInput<String>, LyInputState<String>>(
+    'check pure event',
+    build: () => LyInput<String>(
+      pureValue: '',
+    ),
+    act: (input) => input..pure('ly'),
+    wait: const Duration(seconds: 1),
+    verify: (input) {
+      expect(input.pureValue, equals('ly'));
+    },
+  );
+}
+
+class LyStringRequired extends LyValidator<String> {
+  const LyStringRequired(super.message);
+
+  @override
+  String? call(String value) => value.isNotEmpty ? null : message;
 }

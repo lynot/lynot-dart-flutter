@@ -3,6 +3,7 @@ import 'package:lyform/lyform.dart';
 
 class LyStringRequired extends LyValidator<String> {
   const LyStringRequired(super.message);
+
   @override
   String? call(String value) => value.isNotEmpty ? null : message;
 }
@@ -28,7 +29,7 @@ class TestForm extends LyForm<String, String> {
 
 void main() {
   blocTest<TestForm, LyFormState>(
-    'should emit new state in every `drity` call',
+    'check that emit new state in every `drity` call',
     build: () => TestForm(),
     act: (form) {
       form.name.dirty('ly');
