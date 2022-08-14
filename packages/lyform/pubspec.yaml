@@ -8,7 +8,7 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  bloc: ^8.0.3
+  bloc: ^8.1.0
   bloc_concurrency: ^0.2.0
   collection: ^1.16.0
   equatable: ^2.0.3
