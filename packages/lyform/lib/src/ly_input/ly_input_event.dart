@@ -2,9 +2,6 @@ part of 'ly_input.dart';
 
 abstract class LyInputEvent<T> extends Equatable {
   const LyInputEvent();
-
-  @override
-  List<Object?> get props => [];
 }
 
 class LyInputPureEvent<T> extends LyInputEvent<T> {
@@ -27,4 +24,7 @@ class LyInputDirtyEvent<T> extends LyInputEvent<T> {
 
 class LyInputValidateEvent<T> extends LyInputEvent<T> {
   const LyInputValidateEvent();
+
+  @override
+  List<Object?> get props => [];
 }

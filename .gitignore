@@ -10,6 +10,13 @@
 .svn/
 lcov.info
 
+# Coverage
+coverage/
+/coverage/
+packages/lyform/coverage/*
+packages/flutter_lyform/coverage/*
+packages/lyform_validators/coverage/*
+
 # IntelliJ related
 *.iml
 *.ipr
