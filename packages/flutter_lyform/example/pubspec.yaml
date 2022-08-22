@@ -1,7 +1,7 @@
 name: example
 description: A Flutter example project for LyForm packages
 
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
-  flutter_lyform: ^0.11.1
-  lyform_validators: ^0.11.1
+  flutter_lyform: ^0.12.0
+  lyform_validators: ^0.12.0
 dev_dependencies:
   lint: ^1.10.0
 
