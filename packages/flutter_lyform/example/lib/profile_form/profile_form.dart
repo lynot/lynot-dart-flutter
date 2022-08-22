@@ -2,6 +2,10 @@ import 'package:flutter_lyform/flutter_lyform.dart';
 import 'package:lyform_validators/lyform_validators.dart';
 
 class ProfileForm extends LyForm<String, String> {
+  ProfileForm() {
+    addInputs([name, email, country, age]);
+  }
+
   final email = LyInput<String>(
     pureValue: '',
     validationType: LyValidationType.always,
@@ -32,11 +36,8 @@ class ProfileForm extends LyForm<String, String> {
   );
 
   @override
-  List<LyInput> get inputs => [name, email, country, age];
-
-  @override
   Stream<LyFormState<String, String>> onSubmit() async* {
     await Future<void>.delayed(const Duration(seconds: 3));
-    yield const LyFormSuccessState('Profile save successfully.');
+    yield success('Profile save successfully.');
   }
 }

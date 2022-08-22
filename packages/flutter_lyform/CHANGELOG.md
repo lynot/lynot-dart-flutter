@@ -1,3 +1,39 @@
+## 0.11.1
+
+ - **CHORE**: upgrade lyform dependency
+
+## 0.11.0
+
+ - **CHORE**: upgrade lyform dependency
+
+## 0.9.0
+
+ - **FEAT**: improve equality of input and form states and make input a bloc.
+
+## 0.8.1
+
+ - **CHORE**: upgrade `lyform` dependencies
+
+ - **FIX**: remove equality check of lyform states.
+
+## 0.8.0
+
+ - **CHORE**: upgrade `lyform` dependency
+
+ - **FIX**: fix example.
+
+## 0.7.2
+
+ - **CHORE**: upgrade `lyform` dependency
+
+## 0.7.1
+
+ - **CHORE**: upgrade dependencies
+
+## 0.7.0
+
+ - **FEAT**: allow add and remove inputs.
+
 ## 0.6.0
 
 ## 0.5.7+5

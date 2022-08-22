@@ -1,3 +1,32 @@
+## 0.11.1
+
+ - **FIX**: error in methods for return states quickly.
+
+## 0.11.0
+
+ - **FEAT**: improve equality of input and form states and make input a bloc.
+
+## 0.10.1
+
+ - **FIX**: remove equality check of lyform states.
+
+## 0.10.0
+
+ - **FIX**: include inputs in lyform states for add to equality checks.
+
+## 0.9.2
+
+ - **FEAT**: override `hashCode` and `==` in `LyFormState`.
+
+## 0.9.1
+
+ - **FEAT**: make form an iterable of inputs.
+
+## 0.9.0
+
+ - **FIX**: validation when is pure value.
+ - **FEAT**: allow add and remove inputs.
+
 ## 0.8.0
 
  - Bump "lyform" to `0.8.0`.

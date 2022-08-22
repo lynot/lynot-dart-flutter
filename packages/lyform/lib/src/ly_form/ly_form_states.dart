@@ -1,67 +1,44 @@
 part of 'ly_form.dart';
 
-abstract class LyFormState<D, E> {
-  const LyFormState();
+abstract class LyFormState<D, E> extends Equatable {
+  const LyFormState(this.inputs);
+
+  final List<LyInputState<dynamic>> inputs;
 
   @override
-  String toString() {
-    return 'LyFormState()';
-  }
+  List<Object?> get props => inputs.expand((input) => input.props).toList();
 }
 
 class LyFormPureState<D, E> extends LyFormState<D, E> {
-  const LyFormPureState() : super();
-
-  @override
-  String toString() {
-    return 'LyFormPureState()';
-  }
+  const LyFormPureState(super.inputs);
 }
 
 class LyFormInvalidState<D, E> extends LyFormState<D, E> {
-  const LyFormInvalidState() : super();
-
-  @override
-  String toString() {
-    return 'LyFormInvalidState()';
-  }
+  const LyFormInvalidState(super.inputs);
 }
 
 class LyFormValidState<D, E> extends LyFormState<D, E> {
-  const LyFormValidState() : super();
-  @override
-  String toString() {
-    return 'LyFormValidState()';
-  }
+  const LyFormValidState(super.inputs);
 }
 
 class LyFormLoadingState<D, E> extends LyFormState<D, E> {
-  const LyFormLoadingState() : super();
-
-  @override
-  String toString() {
-    return 'LyFormLoadingState()';
-  }
+  const LyFormLoadingState(super.inputs);
 }
 
 class LyFormSuccessState<D, E> extends LyFormState<D, E> {
-  const LyFormSuccessState(this.data) : super();
+  const LyFormSuccessState(this.data, super.inputs);
 
   final D data;
 
   @override
-  String toString() {
-    return 'LyFormSuccessState($data)';
-  }
+  List<Object?> get props => [data, ...super.props];
 }
 
 class LyFormErrorState<D, E> extends LyFormState<D, E> {
-  const LyFormErrorState(this.error) : super();
+  const LyFormErrorState(this.error, super.inputs);
 
   final E error;
 
   @override
-  String toString() {
-    return 'LyFormErrorState($error)';
-  }
+  List<Object?> get props => [error, ...super.props];
 }

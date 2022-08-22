@@ -1,45 +1,29 @@
 part of 'ly_input.dart';
 
-class LyInputState<T> {
-  LyInputState({
+class LyInputState<T> extends Equatable {
+  const LyInputState({
     required this.value,
-    required this.pureValue,
     required this.lastNotNullValue,
+    required this.pureValue,
     this.error,
     this.debugName,
   });
 
   final T value;
-  final T pureValue;
   final T lastNotNullValue;
+  final T pureValue;
   final String? error;
   final String? debugName;
 
   @override
-  bool operator ==(dynamic other) {
-    return (other is LyInputState<T> &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value))) &&
-        (identical(other.error, error) ||
-            const DeepCollectionEquality().equals(other.error, error)) &&
-        (identical(other.debugName, debugName) ||
-            const DeepCollectionEquality()
-                .equals(other.debugName, debugName)) &&
-        (identical(other.pureValue, pureValue) ||
-            const DeepCollectionEquality()
-                .equals(other.pureValue, pureValue)) &&
-        (identical(other.lastNotNullValue, lastNotNullValue) ||
-            const DeepCollectionEquality()
-                .equals(other.lastNotNullValue, lastNotNullValue));
-  }
+  List<Object?> get props =>
+      [value, lastNotNullValue, pureValue, error, debugName];
 
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
-
-  @override
-  String toString() {
-    final _debugName = debugName != null ? ', debugName: $debugName' : '';
-    return 'LyInputState($value, $error$_debugName)';
-  }
+  LyInputState<T> clone() => LyInputState<T>(
+        value: value,
+        lastNotNullValue: lastNotNullValue,
+        pureValue: pureValue,
+        error: error,
+        debugName: debugName,
+      );
 }

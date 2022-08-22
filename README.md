@@ -1,7 +1,7 @@
 # LynoT Dart/Flutter packages
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?label=license)](https://opensource.org/licenses/MIT)
-[![codecov](https://codecov.io/gh/lynotofficial/lynot-dart-flutter/branch/master/graph/badge.svg?token=RTBS8EX4GQ)](https://codecov.io/gh/lynotofficial/lynot-dart-flutter)
+[![codecov](https://codecov.io/gh/lynot/lynot-dart-flutter/branch/master/graph/badge.svg?token=1FR5DGPI6P)](https://codecov.io/gh/lynot/lynot-dart-flutter)
 [![Test](https://github.com/lynotofficial/lynot-dart-flutter/actions/workflows/test.yml/badge.svg)](https://github.com/lynotofficial/lynot-dart-flutter/actions/workflows/test.yml)
 [![Melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos) [![Lint](https://img.shields.io/badge/style-lint-4BC0F.svg)](https://pub.dev/packages/lint)
 [![Last commit](https://img.shields.io/github/last-commit/lynotofficial/lynot-dart-flutter.svg?style=flat)](https://github.com/lynotofficial/lynot-dart-flutter/commits)
