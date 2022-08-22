@@ -1,3 +1,7 @@
+## 0.12.0
+
+ - **FIX**: apply dirty instead of pure over inputs in reset event handler.
+
 ## 0.11.1
 
  - **FIX**: error in methods for return states quickly.
