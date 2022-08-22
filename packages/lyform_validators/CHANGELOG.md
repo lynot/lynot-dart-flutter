@@ -1,3 +1,7 @@
+## 0.12.0
+
+ - **CHORE**: upgrade lyform dependency
+
 ## 0.11.1
 
  - **CHORE**: upgrade lyform dependency
