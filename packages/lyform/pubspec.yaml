@@ -1,6 +1,6 @@
 name: lyform
 description: Dart package to implement forms in an easy, fast and effective way using the bloc package
-version: 0.11.1
+version: 0.12.0
 homepage: https://github.com/lynotofficial/lynot-dart-flutter
 repository: https://github.com/lynotofficial/lynot-dart-flutter/tree/master/packages/lyform
 
@@ -11,7 +11,7 @@ dependencies:
   bloc: ^8.1.0
   bloc_concurrency: ^0.2.0
   collection: ^1.16.0
-  equatable: ^2.0.3
+  equatable: ^2.0.5
 
 dev_dependencies:
   bloc_test: ^9.1.0

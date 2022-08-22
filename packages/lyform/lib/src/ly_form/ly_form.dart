@@ -111,7 +111,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   /// Called when the form is reset.
   Future<void> onResetEvent(Emitter<LyFormState<D, E>> emit) async {
     for (final input in _inputs) {
-      input.pure(input.pureValue);
+      input.dirty(input.pureValue);
     }
   }
 
