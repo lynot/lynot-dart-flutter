@@ -72,7 +72,7 @@ void main() {
   );
 
   blocTest<LyInput<String>, LyInputState<String>>(
-    'check that isInvalid is true',
+    'check that isInvalid is false when isPure is true',
     build: () => LyInput<String>(
       pureValue: '',
       validationType: LyValidationType.always,
@@ -81,7 +81,7 @@ void main() {
     wait: const Duration(seconds: 1),
     act: (bloc) => bloc.dirty(''),
     verify: (input) {
-      expect(input.isInvalid, isTrue);
+      expect(input.isInvalid, isFalse);
     },
   );
 
