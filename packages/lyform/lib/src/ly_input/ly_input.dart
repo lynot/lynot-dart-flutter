@@ -137,14 +137,14 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   bool Function(LyInput<T> self)? onPostValidate;
 
   void dirty(T value) {
-    add(LyInputDirtyEvent(value));
+    add(LyInputDirtyEvent<T>(value));
   }
 
   void pure(T value) {
-    add(LyInputPureEvent(value));
+    add(LyInputPureEvent<T>(value));
   }
 
   void validate() {
-    add(const LyInputValidateEvent());
+    add(LyInputValidateEvent<T>());
   }
 }

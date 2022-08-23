@@ -121,8 +121,14 @@ void main() {
       validationType: LyValidationType.always,
       validator: const LyStringRequired('Is required.'),
     ),
-    act: (input) => input..pure('ly'),
-    wait: const Duration(seconds: 1),
+    act: (input) => input.pure('ly'),
+    expect: () => [
+      const LyInputState(
+        value: 'ly',
+        lastNotNullValue: 'ly',
+        pureValue: 'ly',
+      )
+    ],
     verify: (input) {
       expect(input.pureValue, equals('ly'));
     },

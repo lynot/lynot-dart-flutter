@@ -2,9 +2,6 @@ part of 'ly_form.dart';
 
 abstract class LyFormEvent extends Equatable {
   const LyFormEvent();
-
-  @override
-  List<Object?> get props => [];
 }
 
 class LyFormAddInputsEvent extends LyFormEvent {
@@ -47,8 +44,14 @@ class LyFormChangedEvent extends LyFormEvent {
 
 class LyFormResetEvent extends LyFormEvent {
   const LyFormResetEvent();
+
+  @override
+  List<Object?> get props => [];
 }
 
 class LyFormSubmitEvent extends LyFormEvent {
   const LyFormSubmitEvent();
+
+  @override
+  List<Object?> get props => [];
 }
