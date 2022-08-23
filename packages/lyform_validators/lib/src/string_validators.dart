@@ -137,7 +137,7 @@ class LyStringContains extends LyValidator<String> {
 ///
 /// Example:
 /// ```dart
-/// final validator = StringMatches('Invalid email', r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
+/// final validator = StringMatches('Invalid email', r'^[a-zA-Z0-9]*$');
 /// final result = validation('laura@mgail');
 /// print(result); // Invalid email
 /// ```
@@ -237,8 +237,8 @@ class LyStringIsURL extends LyValidator<String> {
 ///
 /// Example:
 /// ```dart
-/// final validator = StringIsIP('Invalid IP');
-/// final result = validation('16.51.1', 'v4');
+/// final validator = StringIsIP('Invalid IP', '4');
+/// final result = validation('16.51.1');
 /// print(result); // Invalid IP
 /// ```
 /// {@endtemplate}
