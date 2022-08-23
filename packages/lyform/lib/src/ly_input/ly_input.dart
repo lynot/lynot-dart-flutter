@@ -98,7 +98,7 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
           final value = state.value;
           final lastNotNullValue = state.lastNotNullValue;
           final pureValue = state.pureValue;
-          final error = _validator(state.value);
+          final error = value != pureValue ? _validator(state.value) : null;
           final debugName = state.debugName;
           emit(
             LyInputState<T>(
@@ -121,10 +121,11 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   final LyValidationType validationType;
   final String? debugName;
 
-  bool get isValid => state.error?.isEmpty ?? true;
+  bool get isValid => isPure || (error?.isEmpty ?? true);
   bool get isInvalid => !isValid;
-  bool get isPure => isValid && state.pureValue == state.value;
+  bool get isPure => pureValue == value;
 
+  String? get error => state.error;
   T get value => state.value;
   T get lastNotNullValue => state.lastNotNullValue;
   T get pureValue => state.pureValue;
