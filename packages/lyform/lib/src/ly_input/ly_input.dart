@@ -24,7 +24,7 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
             (validator != null
                 ? LyValidationType.always
                 : LyValidationType.none),
-        _validator = validator ?? const LyEmptyValidator(),
+        _validator = validator ?? LyEmptyValidator<T>(),
         super(
           LyInputState(
             value: pureValue,
@@ -129,6 +129,9 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   T get value => state.value;
   T get lastNotNullValue => state.lastNotNullValue;
   T get pureValue => state.pureValue;
+
+  /// Indicates when the input has a validartor diferent from [LyEmptyValidator].
+  bool get hasValidator => _validator is! LyEmptyValidator<T>;
 
   bool Function(LyInput<T> self, T value)? onPreDirty;
   bool Function(LyInput<T> self, T value)? onPostDirty;
