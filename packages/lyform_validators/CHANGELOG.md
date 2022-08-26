@@ -1,3 +1,11 @@
+## 0.13.0
+
+ - **DOCS**: add docs in string validators.
+ - **DOCS**: add docs in `IterableNotEmtpy` and `Required`.
+ - **DOCS**: add docs for int validator classes.
+ - **DOCS**: add tests for int validators.
+ - **CHORE**: upgrade lyform dependency
+
 ## 0.12.0
 
  - **CHORE**: upgrade lyform dependency
