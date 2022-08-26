@@ -1,3 +1,8 @@
+## 0.13.0
+
+ - **FIX**: type error in js compiler.
+ - **FIX**: input is valid when is pure or validator run successfully.
+
 ## 0.12.0
 
  - **FIX**: apply dirty instead of pure over inputs in reset event handler.
