@@ -10,9 +10,6 @@ void main() {
   final input2 = LyInput<String>(
     pureValue: '',
   );
-  final input3 = LyInput<String>(
-    pureValue: '',
-  );
   group('LyFormAddInputsEvent', () {
     test('supports value equality', () {
       final addInputEvent1 = LyFormAddInputsEvent([input1, input2]);
