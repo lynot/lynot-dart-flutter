@@ -190,7 +190,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   /// Validate all inputs and return [true] if they all are valids.
   void validate() {
     for (final input in _inputs) {
-      if (input.hasValidator) {
+      if (input.validator != null && !input.isPure) {
         input.validate();
       }
     }
