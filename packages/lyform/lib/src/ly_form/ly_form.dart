@@ -80,6 +80,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   final _subscriptions = <StreamSubscription<LyInputState<dynamic>>>[];
 
   LyInput<dynamic> operator [](int index) => _inputs[index];
+
   @override
   int get length => _inputs.length;
 

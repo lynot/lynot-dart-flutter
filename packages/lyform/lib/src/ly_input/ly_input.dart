@@ -149,4 +149,8 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   void validate() {
     add(LyInputValidateEvent<T>());
   }
+
+  @override
+  String toString() =>
+      'LyInput(value: $value, error: $error, validationType: $validationType, debugName: $debugName)';
 }
