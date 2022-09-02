@@ -1,4 +1,4 @@
-import 'package:riverform/riveform.dart';
+import 'package:riverform/riverform.dart';
 
 class CustomSyncValidator<T> extends InputValidator<T> {
   CustomSyncValidator(this.function);

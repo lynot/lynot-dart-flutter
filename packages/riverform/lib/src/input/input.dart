@@ -1,4 +1,4 @@
-import 'package:riverform/riveform.dart';
+import 'package:riverform/riverform.dart';
 import 'package:riverpod/riverpod.dart';
 
 export '../validators/input_validator.dart';

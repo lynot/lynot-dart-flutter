@@ -1,4 +1,4 @@
-import 'package:riverform/riveform.dart';
+import 'package:riverform/riverform.dart';
 
 extension InputStateTypeExtensions on InputState {
   bool get isPure => type == InputStateType.pure;
