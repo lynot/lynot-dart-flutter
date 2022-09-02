@@ -1,0 +1,4 @@
+enum InputValidationMode {
+  implicit,
+  explicit,
+}

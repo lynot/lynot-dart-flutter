@@ -1,7 +1,4 @@
 library riveform;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/form/form.dart';
+export 'src/input/input.dart';

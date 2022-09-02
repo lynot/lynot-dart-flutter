@@ -1,20 +1,16 @@
-name: riveform
-description: A new Flutter package project.
+name: riverform
+description: A dart form implementation using riverpod package.
 version: 0.0.1
 homepage:
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
-  flutter: '>=1.17.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
+  async: ^2.9.0
+  equatable: ^2.0.5
   riverpod: ^1.0.3
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
-
-flutter:
+  lint: ^1.10.0
+  test: ^1.21.4
