@@ -1,12 +1,12 @@
 import 'package:riverform/riveform.dart';
 import 'package:riverpod/riverpod.dart';
 
+export '../validators/input_validator.dart';
 export 'input_notifier.dart';
 export 'input_state.dart';
 export 'input_state_extensions.dart';
 export 'input_state_type.dart';
 export 'input_validation_mode.dart';
-export 'input_validator.dart';
 
 class Input<T> {
   Input(

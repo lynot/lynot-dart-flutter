@@ -5,7 +5,7 @@ import 'package:async/async.dart';
 import 'package:equatable/equatable.dart';
 import 'package:riverform/src/input/input_state_type.dart';
 import 'package:riverform/src/input/input_validation_mode.dart';
-import 'package:riverform/src/input/input_validator.dart';
+import 'package:riverform/src/validators/input_validator.dart';
 import 'package:riverpod/riverpod.dart';
 
 class InputNotifier<T> extends StateNotifier<InputState<T>> {
@@ -15,11 +15,14 @@ class InputNotifier<T> extends StateNotifier<InputState<T>> {
     this.initialValue,
     this.validatorBuilder,
     this.validationMode = InputValidationMode.implicit,
-  }) : super(InputState(
+  }) : super(
+          InputState(
             type: initialValue == value
                 ? InputStateType.pure
                 : InputStateType.unknow,
-            value: value)) {
+            value: value,
+          ),
+        ) {
     if (validationMode == InputValidationMode.implicit) {
       validate();
     }
@@ -39,7 +42,6 @@ class InputNotifier<T> extends StateNotifier<InputState<T>> {
       state = InputState(
         type: InputStateType.pure,
         value: value,
-        error: null,
       );
     } else {
       // Set to unknow state, but conserve the error
@@ -62,7 +64,6 @@ class InputNotifier<T> extends StateNotifier<InputState<T>> {
       state = InputState(
         type: InputStateType.valid,
         value: state.value,
-        error: null,
       );
       return;
     }
@@ -75,7 +76,7 @@ class InputNotifier<T> extends StateNotifier<InputState<T>> {
 
     // cancel previous checking process
     if (validationProcess != null) {
-      validationProcess?.cancel();
+      await validationProcess?.cancel();
     }
 
     final validator = validatorBuilder!(read);
@@ -100,15 +101,14 @@ class InputNotifier<T> extends StateNotifier<InputState<T>> {
 }
 
 class InputState<T> extends Equatable {
-  final InputStateType type;
-  final String? error;
-  final T? value;
-
   const InputState({
     required this.type,
     this.error,
     required this.value,
   });
+  final InputStateType type;
+  final String? error;
+  final T? value;
 
   @override
   String toString() {

@@ -57,7 +57,7 @@ class Riverform {
 
     for (var i = 0; i < states.length; i++) {
       if (states[i].isUnknow || states[i].isPure) {
-        notifiers[i].validate();
+        await notifiers[i].validate();
       }
     }
   }
