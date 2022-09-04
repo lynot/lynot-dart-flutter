@@ -164,8 +164,8 @@ class RegisterPage extends StatelessWidget {
                       RiverformConsumer(
                         builder: (context, state, controller) {
                           return ElevatedButton(
-                            onPressed: () {
-                              controller.validate();
+                            onPressed: () async {
+                              await controller.validate();
                             },
                             child: Text(
                                 '${state.isPure ? 'Pure' : 'Changed'} - ${state.validState.name}'),

@@ -8,7 +8,7 @@ class RiverformController<T> {
     required this.validate,
   });
 
-  final Future<void> Function() validate;
+  final Future<bool> Function() validate;
 }
 
 class RiverformConsumer extends StatelessWidget {

@@ -74,7 +74,8 @@ class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
 
   CancelableOperation<String?>? validationProcess;
 
-  Future<void> validate() async {
+  // return true if completes and no error
+  Future<bool> validate() async {
     if (validatorBuilder == null) {
       state = InputStateData(
         value: state.value,
@@ -82,7 +83,7 @@ class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
         error: null,
         validState: InputValidState.valid,
       );
-      return;
+      return true;
     }
 
     state = InputStateData(
@@ -98,17 +99,21 @@ class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
     }
     final validator = validatorBuilder!.call(read, formId);
     validationProcess =
-        CancelableOperation.fromFuture(validator.validate(state.value)).then(
-      (error) {
-        state = InputStateData(
-          value: state.value,
-          initialValue: state.initialValue,
-          error: error,
-          validState:
-              error == null ? InputValidState.valid : InputValidState.invalid,
-        );
-        return null;
-      },
-    );
+        CancelableOperation.fromFuture(validator.validate(state.value));
+
+    final error = await validationProcess!.valueOrCancellation('CANCELED');
+
+    if (error != 'CANCELED') {
+      state = InputStateData(
+        value: state.value,
+        initialValue: state.initialValue,
+        error: error,
+        validState:
+            error == null ? InputValidState.valid : InputValidState.invalid,
+      );
+      return error == null;
+    }
+
+    return false;
   }
 }
