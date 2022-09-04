@@ -1,0 +1,23 @@
+name: flutter_riverform
+description: A new Flutter package project.
+version: 0.0.1
+
+homepage: https://github.com/lynot/lynot-dart-flutter
+repository: https://github.com/lynot/lynot-dart-flutter/tree/master/packages/flutter_riverform
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: '>=1.17.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.0.0-dev.9
+  riverform: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ^1.10.0
+
+flutter:

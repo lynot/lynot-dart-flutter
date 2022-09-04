@@ -1,4 +1,5 @@
 library riverform;
 
-export 'src/form/form.dart';
-export 'src/input/input.dart';
+export 'src/constants.dart';
+export 'src/form/riverform.dart';
+export 'src/input/rinput.dart';

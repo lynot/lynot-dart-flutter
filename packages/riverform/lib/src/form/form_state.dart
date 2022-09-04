@@ -1,7 +1,6 @@
-enum FormState {
-  /// Every input has no change
-  pure,
+import 'package:equatable/equatable.dart';
 
+enum FormValidState {
   /// The valid state is unknow until validation
   unknow,
 
@@ -13,4 +12,22 @@ enum FormState {
 
   /// Some inputs had errors
   invalid,
+}
+
+class FormStateData extends Equatable {
+  const FormStateData({
+    required this.values,
+    required this.validState,
+    required this.isPure,
+  });
+
+  final FormValidState validState;
+  final bool isPure;
+
+  final Map<String, dynamic> values;
+
+  @override
+  List<Object?> get props => [validState, isPure];
+
+  dynamic operator [](String inputId) => values[inputId];
 }

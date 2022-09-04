@@ -1,56 +1,71 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:async/async.dart';
-import 'package:equatable/equatable.dart';
-import 'package:riverform/src/input/input_state_type.dart';
-import 'package:riverform/src/input/input_validation_mode.dart';
-import 'package:riverform/src/validators/input_validator.dart';
+import 'package:riverform/riverform.dart';
 import 'package:riverpod/riverpod.dart';
 
-class InputNotifier<T> extends StateNotifier<InputState<T>> {
-  InputNotifier(
-    this.read, {
-    T? value,
-    this.initialValue,
+class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
+  InputNotifier({
+    required this.read,
+    required this.formId,
+    required T? initialValue,
+    required T? value,
     this.validatorBuilder,
     this.validationMode = InputValidationMode.implicit,
   }) : super(
-          InputState(
-            type: initialValue == value
-                ? InputStateType.pure
-                : InputStateType.unknow,
+          InputStateData(
             value: value,
+            initialValue: initialValue,
+            error: null,
+            validState: InputValidState.unknow,
           ),
         ) {
     if (validationMode == InputValidationMode.implicit) {
       validate();
     }
   }
-  final T? initialValue;
 
   final Reader read;
 
-  final InputValidator<T> Function(Reader read)? validatorBuilder;
+  final String formId;
+
+  final InputValidator<T> Function(Reader read, String formId)?
+      validatorBuilder;
 
   final InputValidationMode validationMode;
+
+  /// Reset the notifier with a new Pure value
+  void reset(T? initialValue) {
+    state = InputStateData(
+      value: state.value,
+      initialValue: initialValue,
+      error: state.error,
+      validState: state.validState,
+    );
+
+    // Dont need to call validate here because change the initialValue do not change validation
+  }
 
   void update(T? value) {
     if (value == state.value) return;
 
-    if (value == initialValue) {
-      state = InputState(
-        type: InputStateType.pure,
-        value: value,
-      );
-    } else {
-      // Set to unknow state, but conserve the error
-      state = InputState(
-        type: InputStateType.unknow,
-        value: value,
-        error: state.error,
-      );
-    }
+    state = InputStateData(
+      value: value,
+      initialValue: state.initialValue,
+      error: null,
+      validState: InputValidState.unknow,
+    );
+
+    invalidateValidation();
+  }
+
+  void invalidateValidation() {
+    state = InputStateData(
+      value: state.value,
+      initialValue: state.initialValue,
+      error: null,
+      validState: InputValidState.unknow,
+    );
 
     if (validationMode == InputValidationMode.implicit) {
       validate();
@@ -61,60 +76,39 @@ class InputNotifier<T> extends StateNotifier<InputState<T>> {
 
   Future<void> validate() async {
     if (validatorBuilder == null) {
-      state = InputState(
-        type: InputStateType.valid,
+      state = InputStateData(
         value: state.value,
+        initialValue: state.initialValue,
+        error: null,
+        validState: InputValidState.valid,
       );
       return;
     }
 
-    state = InputState(
-      type: InputStateType.checking,
+    state = InputStateData(
       value: state.value,
+      initialValue: state.initialValue,
       error: state.error,
+      validState: InputValidState.checking,
     );
 
     // cancel previous checking process
     if (validationProcess != null) {
       await validationProcess?.cancel();
     }
-
-    final validator = validatorBuilder!(read);
-
+    final validator = validatorBuilder!.call(read, formId);
     validationProcess =
         CancelableOperation.fromFuture(validator.validate(state.value)).then(
       (error) {
-        log(error ?? 'no error');
-        state = InputState(
-          type: error == null ? InputStateType.valid : InputStateType.invalid,
+        state = InputStateData(
           value: state.value,
+          initialValue: state.initialValue,
           error: error,
+          validState:
+              error == null ? InputValidState.valid : InputValidState.invalid,
         );
         return null;
       },
-      onError: (p0, p1) {
-        log('ERROR!');
-        return 'ERROR';
-      },
     );
   }
-}
-
-class InputState<T> extends Equatable {
-  const InputState({
-    required this.type,
-    this.error,
-    required this.value,
-  });
-  final InputStateType type;
-  final String? error;
-  final T? value;
-
-  @override
-  String toString() {
-    return 'state: ${type.name.replaceAll('InputStateType.', '')}, value: $value, error: $error';
-  }
-
-  @override
-  List<Object?> get props => [type, value, error];
 }

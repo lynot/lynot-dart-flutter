@@ -1,7 +1,4 @@
-enum InputStateType {
-  /// The input has no change
-  pure,
-
+enum InputValidState {
   // before validate
   unknow,
 

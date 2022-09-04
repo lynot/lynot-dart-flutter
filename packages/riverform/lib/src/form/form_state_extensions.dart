@@ -1,14 +1,12 @@
 import 'package:riverform/src/form/form_state.dart';
 
-extension FomExtensions on FormState {
-  bool get isPure => this == FormState.pure;
-  bool get isUnknow => this == FormState.unknow;
-  bool get isChecking => this == FormState.checking;
-  bool get isValid => this == FormState.valid;
-  bool get isInvalid => this == FormState.invalid;
+extension FomExtensions on FormValidState {
+  bool get isUnknow => this == FormValidState.unknow;
+  bool get isChecking => this == FormValidState.checking;
+  bool get isValid => this == FormValidState.valid;
+  bool get isInvalid => this == FormValidState.invalid;
 
   T when<T>({
-    T Function()? pure,
     T Function()? unknow,
     T Function()? checking,
     T Function()? valid,
@@ -16,27 +14,22 @@ extension FomExtensions on FormState {
     required T Function() orElse,
   }) {
     switch (this) {
-      case FormState.pure:
-        if (pure != null) {
-          return pure.call();
-        }
-        break;
-      case FormState.unknow:
+      case FormValidState.unknow:
         if (unknow != null) {
           return unknow.call();
         }
         break;
-      case FormState.checking:
+      case FormValidState.checking:
         if (checking != null) {
           return checking.call();
         }
         break;
-      case FormState.valid:
+      case FormValidState.valid:
         if (valid != null) {
           return valid.call();
         }
         break;
-      case FormState.invalid:
+      case FormValidState.invalid:
         if (invalid != null) {
           return invalid.call();
         }
