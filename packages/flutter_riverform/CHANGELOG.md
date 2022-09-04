@@ -1,3 +1,7 @@
+## 0.0.2-dev.3
+
+ - **PERF**: set initialValues optional on RiverformScope.
+
 ## 0.0.2-dev.2
 
  - **FEAT**: add simple flutter_riverform example: register.
