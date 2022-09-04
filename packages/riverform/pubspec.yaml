@@ -1,6 +1,6 @@
 name: riverform
 description: A dart form implementation using riverpod package.
-version: 0.0.1
+version: 0.0.2
 
 homepage: https://github.com/lynot/lynot-dart-flutter
 repository: https://github.com/lynot/lynot-dart-flutter/tree/master/packages/riverform

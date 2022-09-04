@@ -1,3 +1,10 @@
+## 0.13.0+1
+
+ - **DOCS**: add docs in string validators.
+ - **DOCS**: add docs in `IterableNotEmtpy` and `Required`.
+ - **DOCS**: add docs for int validator classes.
+ - **DOCS**: add tests for int validators.
+
 ## 0.13.0
 
  - **DOCS**: add docs in string validators.

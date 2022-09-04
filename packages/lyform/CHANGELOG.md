@@ -1,3 +1,11 @@
+## 0.13.0+1
+
+ - **PERF**: validate only the drity inputs.
+ - **PERF**: change validator property to nullable.
+ - **FIX**: type error in js compiler.
+ - **FIX**: input is valid when is pure or validator run successfully.
+ - **FIX**: input is valid when is pure or validator run successfully.
+
 ## 0.13.0
 
  - **FIX**: type error in js compiler.
