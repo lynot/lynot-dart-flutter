@@ -36,7 +36,7 @@ class Riverform {
 
         return FormStateData(
           isPure: values.every((input) => input.isPure),
-          values: const {},
+          values: inputsValues.map((id, state) => MapEntry(id, state.value)),
           validState: values.every(
             (input) => input.isValid,
           ) // If every input is Valid then Valid
