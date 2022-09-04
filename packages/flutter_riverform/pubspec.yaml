@@ -1,5 +1,5 @@
 name: flutter_riverform
-description: A new Flutter package project.
+description: A flutter implementation of riverform using flutter_riverpod package.
 version: 0.0.2-dev.2
 
 homepage: https://github.com/lynot/lynot-dart-flutter
