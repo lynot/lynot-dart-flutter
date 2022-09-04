@@ -1,3 +1,8 @@
+## 0.0.2-dev.3
+
+ - **FIX**: add correct snapshot of form input values.
+ - **FEAT**: add logic to await for validation values.
+
 ## 0.0.2-dev.2
 
  - **FIX**: fix library name.

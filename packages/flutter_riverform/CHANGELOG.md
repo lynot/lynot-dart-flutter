@@ -1,3 +1,7 @@
+## 0.0.2-dev.4
+
+ - **FEAT**: add logic to await for validation values.
+
 ## 0.0.2-dev.3
 
  - **PERF**: set initialValues optional on RiverformScope.
