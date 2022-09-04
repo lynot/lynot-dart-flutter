@@ -5,13 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class RiverformScope extends StatelessWidget {
   const RiverformScope({
     required this.form,
-    required this.formId,
+    this.formId = 'riverform',
     required this.initialValues,
     super.key,
     required this.child,
   });
 
-  final Map<String, dynamic> initialValues;
+  final Map<String, dynamic>? initialValues;
   final Riverform form;
   final String formId;
 
@@ -21,11 +21,12 @@ class RiverformScope extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        for (final input in form.inputs)
-          if (initialValues.containsKey(input.id))
-            input.initialValueProvider.overrideWithProvider(
-              (argument) => StateProvider((ref) => initialValues[input.id]),
-            )
+        if (initialValues != null)
+          for (final input in form.inputs)
+            if (initialValues!.containsKey(input.id))
+              input.initialValueProvider.overrideWithProvider(
+                (argument) => StateProvider((ref) => initialValues![input.id]),
+              )
       ],
       child: RiverformProvider(
         form: form,
