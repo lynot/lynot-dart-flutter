@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverform/flutter_riverform.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -195,7 +197,7 @@ class Logger extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
-    print('''
+    log('''
 {
   "provider": "${provider.name ?? provider.runtimeType}",
   "fomValue": "$previousValue"
