@@ -1,3 +1,7 @@
+## 0.0.2-dev.5
+
+ - **FEAT**: add WidgetRef to builders.
+
 ## 0.0.2-dev.4
 
  - **FEAT**: add logic to await for validation values.
