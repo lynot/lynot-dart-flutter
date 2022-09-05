@@ -19,6 +19,7 @@ class RiverformConsumer extends StatelessWidget {
 
   final Widget Function(
     BuildContext context,
+    WidgetRef ref,
     FormStateData state,
     RiverformController controller,
   ) builder;
@@ -32,6 +33,7 @@ class RiverformConsumer extends StatelessWidget {
         final state = ref.watch(form.provider(formId));
         return builder(
           context,
+          ref,
           state,
           RiverformController(validate: () => form.validate(formId)),
         );

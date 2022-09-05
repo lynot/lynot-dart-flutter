@@ -25,6 +25,7 @@ class RinputConsumer<T> extends StatelessWidget {
 
   final Widget Function(
     BuildContext context,
+    WidgetRef ref,
     InputStateData<T> state,
     RinputController inputController,
   ) builder;
@@ -44,6 +45,7 @@ class RinputConsumer<T> extends StatelessWidget {
 
         return builder(
           context,
+          ref,
           state,
           RinputController<T>(
             update: notifier.update,

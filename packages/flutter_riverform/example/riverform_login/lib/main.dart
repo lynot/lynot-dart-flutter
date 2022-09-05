@@ -107,7 +107,7 @@ class RegisterPage extends StatelessWidget {
                     children: [
                       RinputConsumer<String>(
                         inputId: 'name',
-                        builder: (context, state, controller) {
+                        builder: (context, ref, state, controller) {
                           return TextFormField(
                             onChanged: controller.update,
                             initialValue: state.value,
@@ -121,7 +121,7 @@ class RegisterPage extends StatelessWidget {
                       ),
                       RinputConsumer<String>(
                         inputId: 'email',
-                        builder: (context, state, controller) {
+                        builder: (context, ref, state, controller) {
                           return TextFormField(
                             onChanged: controller.update,
                             initialValue: state.value,
@@ -135,7 +135,7 @@ class RegisterPage extends StatelessWidget {
                       ),
                       RinputConsumer<String>(
                         inputId: 'password',
-                        builder: (context, state, controller) {
+                        builder: (context, ref, state, controller) {
                           return TextFormField(
                             initialValue: state.value,
                             onChanged: controller.update,
@@ -148,7 +148,7 @@ class RegisterPage extends StatelessWidget {
                       ),
                       RinputConsumer<String>(
                         inputId: 'confirm_password',
-                        builder: (context, state, controller) {
+                        builder: (context, ref, state, controller) {
                           return TextFormField(
                             initialValue: state.value,
                             onChanged: controller.update,
@@ -164,7 +164,7 @@ class RegisterPage extends StatelessWidget {
                         height: 24,
                       ),
                       RiverformConsumer(
-                        builder: (context, state, controller) {
+                        builder: (context, ref, state, controller) {
                           return ElevatedButton(
                             onPressed: () async {
                               await controller.validate();
