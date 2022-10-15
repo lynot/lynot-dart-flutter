@@ -7,7 +7,8 @@ class LyStringRequired extends LyValidator<String> {
   const LyStringRequired(super.message);
 
   @override
-  String? call(String value) => value.isNotEmpty ? null : message;
+  String? call(String value) =>
+      (value.isNotEmpty && !value.contains(RegExp(r'[0-9]$'))) ? null : message;
 
   @override
   String toString() {
@@ -35,7 +36,7 @@ class TestForm extends LyForm<String, String> {
   final name = LyInput<String>(
     pureValue: '',
     validationType: LyValidationType.always,
-    validator: const LyStringRequired('Name is required.'),
+    validator: const LyStringRequired('Invalid name.'),
     debugName: 'name',
   );
 
