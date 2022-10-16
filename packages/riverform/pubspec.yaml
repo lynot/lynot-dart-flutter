@@ -11,7 +11,7 @@ environment:
 dependencies:
   async: ^2.9.0
   equatable: ^2.0.5
-  riverpod: ^2.0.0-dev.9
+  riverpod: ^2.0.2
 
 dev_dependencies:
   lint: ^1.10.0
