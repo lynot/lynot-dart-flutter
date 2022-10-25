@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverform/src/riverform_provider.dart';
+import 'package:flutter_riverform/flutter_riverform.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverform/riverform.dart';
 
 class RinputController<T> {
   RinputController({
+    required this.key,
     required this.update,
     required this.validate,
   });
 
+  final Key key;
   final Future<void> Function() validate;
-  final void Function(T? value) update;
+  final void Function(T value) update;
 }
 
 class RinputConsumer<T> extends StatelessWidget {
@@ -48,6 +49,7 @@ class RinputConsumer<T> extends StatelessWidget {
           ref,
           state,
           RinputController<T>(
+            key: ValueKey(ref.watch(riverformKey(formId))),
             update: notifier.update,
             validate: notifier.validate,
           ),

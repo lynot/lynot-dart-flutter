@@ -5,11 +5,12 @@ class RiverformProvider extends InheritedWidget {
   const RiverformProvider({
     super.key,
     required this.form,
-    this.formId = 'default',
+    required this.formId,
     required super.child,
   });
 
   final Riverform form;
+
   final String formId;
 
   static RiverformProvider? of(BuildContext context) {

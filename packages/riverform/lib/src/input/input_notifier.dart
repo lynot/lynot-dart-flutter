@@ -6,10 +6,10 @@ import 'package:riverpod/riverpod.dart';
 
 class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
   InputNotifier({
-    required this.read,
+    required this.ref,
     required this.formId,
-    required T? initialValue,
-    required T? value,
+    required T value,
+    this.initialValue,
     this.validatorBuilder,
     this.validationMode = InputValidationMode.implicit,
   }) : super(
@@ -25,28 +25,31 @@ class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
     }
   }
 
-  final Reader read;
+  final Ref ref;
 
   final String formId;
 
-  final InputValidator<T> Function(Reader read, String formId)?
-      validatorBuilder;
+  final InputValidator<T> Function(Ref ref, String formId)? validatorBuilder;
 
   final InputValidationMode validationMode;
 
+  final T? initialValue;
+
   /// Reset the notifier with a new Pure value
-  void reset(T? initialValue) {
+  void reset() {
     state = InputStateData(
-      value: state.value,
+      value: initialValue,
       initialValue: initialValue,
-      error: state.error,
-      validState: state.validState,
+      error: null,
+      validState: InputValidState.unknow,
     );
 
-    // Dont need to call validate here because change the initialValue do not change validation
+    if (validationMode == InputValidationMode.implicit) {
+      validate();
+    }
   }
 
-  void update(T? value) {
+  void update(T value) {
     if (value == state.value) return;
 
     state = InputStateData(
@@ -97,7 +100,7 @@ class InputNotifier<T> extends StateNotifier<InputStateData<T>> {
     if (validationProcess != null) {
       await validationProcess?.cancel();
     }
-    final validator = validatorBuilder!.call(read, formId);
+    final validator = validatorBuilder!.call(ref, formId);
     validationProcess =
         CancelableOperation.fromFuture(validator.validate(state.value));
 

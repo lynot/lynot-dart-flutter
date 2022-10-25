@@ -13,7 +13,7 @@ class Riverform {
         _ref = ref;
 
         // watch for input changes
-        final allInputs = getAllInputs(formId);
+        final allInputs = inputs;
         final inputsValues = {
           for (final input in allInputs)
             input.id: ref.watch(input.provider(formId))
@@ -46,9 +46,19 @@ class Riverform {
   StateProviderRef? _ref;
 
   late List<Rinput> inputs;
-  final Map<String, List<Rinput>> _extraInputs = {};
 
   late StateProviderFamily<FormStateData, String> provider;
+
+  void reset(
+    String formId,
+  ) {
+    _assertRefDifferentOfNull();
+    final notifiers =
+        inputs.map((e) => _ref!.read(e.provider(formId).notifier)).toList();
+    for (final input in notifiers) {
+      input.reset();
+    }
+  }
 
   /// The returned value can only be used for post-validation process
   Future<bool> validate(
@@ -56,11 +66,10 @@ class Riverform {
   ) async {
     _assertRefDifferentOfNull();
 
-    final allInputs = getAllInputs(formId);
     final states =
-        allInputs.map((input) => _ref!.read(input.provider(formId))).toList();
+        inputs.map((input) => _ref!.read(input.provider(formId))).toList();
     final notifiers =
-        allInputs.map((e) => _ref!.read(e.provider(formId).notifier)).toList();
+        inputs.map((e) => _ref!.read(e.provider(formId).notifier)).toList();
 
     var isFormValid = true;
 
@@ -77,39 +86,8 @@ class Riverform {
     return isFormValid;
   }
 
-  // get all inputs, including extras
-  List<Rinput> getAllInputs(String formId) {
-    final inputs = this.inputs.toList();
-
-    if (_extraInputs.containsKey(formId)) {
-      inputs.addAll(_extraInputs[formId]!.toList());
-    }
-
-    return inputs;
-  }
-
   Rinput<T> input<T>(String inputId) {
     return inputs.firstWhere((element) => element.id == inputId) as Rinput<T>;
-  }
-
-  Rinput<T> extraInput<T>(String formId, String inputId) {
-    return _extraInputs[formId]!.firstWhere((element) => element.id == inputId)
-        as Rinput<T>;
-  }
-
-  void addExtraInput(
-    List<Rinput> inputs,
-    String formId,
-  ) {
-    _assertRefDifferentOfNull();
-
-    if (!_extraInputs.containsKey(formId)) {
-      _extraInputs[formId] = [];
-    }
-
-    _extraInputs[formId]!.addAll(inputs);
-
-    _ref!.refresh(provider(formId));
   }
 
   void _assertRefDifferentOfNull() {

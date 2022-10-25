@@ -31,13 +31,11 @@ typedef RiverformBuilder = Riverform Function(String formId);
 
 final passwordInput = Rinput<String>(
   'password',
-  defaultValue: '',
 );
 final registerForm = Riverform(
   inputs: [
     Rinput<String>(
       'name',
-      defaultValue: '',
       validatorBuilder: (read, formId) {
         return CustomAsyncValidator(
           (value) async {
@@ -49,7 +47,6 @@ final registerForm = Riverform(
     ),
     Rinput<String>(
       'email',
-      defaultValue: '',
       validatorBuilder: (read, formId) {
         return CustomAsyncValidator(
           (value) async {
@@ -64,16 +61,15 @@ final registerForm = Riverform(
     passwordInput,
     Rinput<String>(
       'confirm_password',
-      defaultValue: '',
       validationMode: InputValidationMode.explicit,
       dependencies: [passwordInput.provider],
       validationTriggers: (formId) => [
         passwordInput.provider(formId).select((state) => state.value),
       ],
-      validatorBuilder: (read, formId) {
+      validatorBuilder: (ref, formId) {
         return CustomSyncValidator(
           (value) {
-            return read(passwordInput.provider(formId)).value != value
+            return ref.read(passwordInput.provider(formId)).value != value
                 ? 'Password not match'
                 : null;
           },
@@ -82,6 +78,8 @@ final registerForm = Riverform(
     ),
   ],
 );
+
+RiverformController controller = RiverformController();
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -95,22 +93,26 @@ class RegisterPage extends StatelessWidget {
           child: SizedBox(
               width: 300,
               child: RiverformScope(
+                formId: 'register',
+                controller: controller,
                 initialValues: const {
+                  'name': '',
                   'email': 'valid@email.com',
                   'password': 'gente',
                   'confirm_password': 'gente',
                 },
                 form: registerForm,
-                formId: 'register',
                 child: AutofillGroup(
                   child: Column(
                     children: [
                       RinputConsumer<String>(
                         inputId: 'name',
                         builder: (context, ref, state, controller) {
+                          print(controller.key);
                           return TextFormField(
-                            onChanged: controller.update,
+                            key: controller.key,
                             initialValue: state.value,
+                            onChanged: controller.update,
                             autofillHints: const [AutofillHints.name],
                             decoration: InputDecoration(
                               label: const Text('Name'),
@@ -123,8 +125,9 @@ class RegisterPage extends StatelessWidget {
                         inputId: 'email',
                         builder: (context, ref, state, controller) {
                           return TextFormField(
-                            onChanged: controller.update,
+                            key: controller.key,
                             initialValue: state.value,
+                            onChanged: controller.update,
                             autofillHints: const [AutofillHints.email],
                             decoration: InputDecoration(
                               label: const Text('Email'),
@@ -137,6 +140,7 @@ class RegisterPage extends StatelessWidget {
                         inputId: 'password',
                         builder: (context, ref, state, controller) {
                           return TextFormField(
+                            key: controller.key,
                             initialValue: state.value,
                             onChanged: controller.update,
                             decoration: InputDecoration(
@@ -150,6 +154,7 @@ class RegisterPage extends StatelessWidget {
                         inputId: 'confirm_password',
                         builder: (context, ref, state, controller) {
                           return TextFormField(
+                            key: controller.key,
                             initialValue: state.value,
                             onChanged: controller.update,
                             onFieldSubmitted: (_) => controller.validate(),
@@ -164,13 +169,28 @@ class RegisterPage extends StatelessWidget {
                         height: 24,
                       ),
                       RiverformConsumer(
-                        builder: (context, ref, state, controller) {
-                          return ElevatedButton(
-                            onPressed: () async {
-                              await controller.validate();
-                            },
-                            child: Text(
-                                '${state.isPure ? 'Pure' : 'Changed'} - ${state.validState.name}'),
+                        builder: (context, ref, state) {
+                          return Row(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await controller.validate();
+                                },
+                                child: Text(
+                                    '${state.isPure ? 'Pure' : 'Changed'} - ${state.validState.name}'),
+                              ),
+                              const SizedBox(
+                                width: 16,
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red),
+                                onPressed: () {
+                                  controller.reset();
+                                },
+                                child: const Text('Reset'),
+                              ),
+                            ],
                           );
                         },
                       ),

@@ -13,8 +13,7 @@ export 'input_validation_mode.dart';
 class Rinput<T> {
   Rinput(
     this.id, {
-    this.defaultValue,
-    InputValidator<T> Function(Reader read, String formId)? validatorBuilder,
+    InputValidator<T> Function(Ref ref, String formId)? validatorBuilder,
     List<ProviderOrFamily>? dependencies,
     List<AlwaysAliveProviderListenable> Function(String formId)?
         validationTriggers,
@@ -23,7 +22,7 @@ class Rinput<T> {
   }) : super() {
     initialValueProvider = StateProviderFamily(
       (ref, arg) {
-        return defaultValue;
+        throw Exception('Rinput must set initial value');
       },
     );
 
@@ -39,9 +38,9 @@ class Rinput<T> {
         final initialValue = ref.watch(initialValueProvider(formId));
 
         final notifier = InputNotifier<T>(
-          initialValue: initialValue as T?,
+          initialValue: initialValue as T,
           value: initialValue,
-          read: ref.read,
+          ref: ref,
           formId: formId,
           validationMode: validationMode,
           validatorBuilder: validatorBuilder,
@@ -70,8 +69,6 @@ class Rinput<T> {
   }
 
   final String id;
-
-  final T? defaultValue;
 
   late StateNotifierProviderFamily<InputNotifier<T>, InputStateData<T>, String>
       provider;

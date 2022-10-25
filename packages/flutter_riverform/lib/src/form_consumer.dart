@@ -3,14 +3,6 @@ import 'package:flutter_riverform/src/riverform_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverform/riverform.dart';
 
-class RiverformController<T> {
-  RiverformController({
-    required this.validate,
-  });
-
-  final Future<bool> Function() validate;
-}
-
 class RiverformConsumer extends StatelessWidget {
   const RiverformConsumer({
     super.key,
@@ -21,7 +13,6 @@ class RiverformConsumer extends StatelessWidget {
     BuildContext context,
     WidgetRef ref,
     FormStateData state,
-    RiverformController controller,
   ) builder;
 
   @override
@@ -35,7 +26,6 @@ class RiverformConsumer extends StatelessWidget {
           context,
           ref,
           state,
-          RiverformController(validate: () => form.validate(formId)),
         );
       },
     );
