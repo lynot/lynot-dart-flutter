@@ -1,3 +1,7 @@
+## 0.0.2-dev.6
+
+ - **FEAT**: simplify riverform and add reset funtionality to flutter_riverform.
+
 ## 0.0.2-dev.5
 
  - **FEAT**: add WidgetRef to builders.

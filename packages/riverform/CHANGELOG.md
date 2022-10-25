@@ -1,3 +1,7 @@
+## 0.0.2-dev.4
+
+ - **FEAT**: simplify riverform and add reset funtionality to flutter_riverform.
+
 ## 0.0.2-dev.3
 
  - **FIX**: add correct snapshot of form input values.
