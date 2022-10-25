@@ -108,7 +108,6 @@ class RegisterPage extends StatelessWidget {
                       RinputConsumer<String>(
                         inputId: 'name',
                         builder: (context, ref, state, controller) {
-                          print(controller.key);
                           return TextFormField(
                             key: controller.key,
                             initialValue: state.value,
