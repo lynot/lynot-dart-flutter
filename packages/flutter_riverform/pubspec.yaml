@@ -1,6 +1,6 @@
 name: flutter_riverform
 description: A flutter implementation of riverform using flutter_riverpod package.
-version: 0.0.2-dev.6
+version: 0.0.3
 
 homepage: https://github.com/lynot/lynot-dart-flutter
 repository: https://github.com/lynot/lynot-dart-flutter/tree/master/packages/flutter_riverform
@@ -12,8 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.0.2
-  riverform: ^0.0.2-dev.4
+  flutter_riverpod: ^2.1.1
+  riverform: ^0.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
