@@ -1,3 +1,9 @@
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **CHORE**: update packages.
+
 ## 0.0.2-dev.6
 
  - **FEAT**: simplify riverform and add reset funtionality to flutter_riverform.
