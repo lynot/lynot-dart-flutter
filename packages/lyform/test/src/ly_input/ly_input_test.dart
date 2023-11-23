@@ -127,7 +127,7 @@ void main() {
         value: 'ly',
         lastNotNullValue: 'ly',
         pureValue: 'ly',
-      )
+      ),
     ],
     verify: (input) {
       expect(input.pureValue, equals('ly'));

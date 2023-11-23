@@ -119,7 +119,7 @@ void main() {
             pureValue: '',
             debugName: 'name',
           ),
-        ])
+        ]),
       ],
     );
 
@@ -163,7 +163,7 @@ void main() {
             pureValue: '',
             debugName: 'name',
           ),
-        ])
+        ]),
       ],
     );
 
@@ -182,7 +182,7 @@ void main() {
             lastNotNullValue: 'ly',
             pureValue: '',
             debugName: 'name',
-          )
+          ),
         ]),
         LyFormValidState<String, String>([
           LyInputState(
@@ -202,7 +202,7 @@ void main() {
               debugName: 'name',
             ),
           ],
-        )
+        ),
       ],
     );
 

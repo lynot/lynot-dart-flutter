@@ -5,14 +5,15 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.1 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
-  flutter_lyform: ^0.13.0
-  lyform_validators: ^0.13.0
+  flutter_bloc: ^8.1.3
+  flutter_lyform: ^0.13.0+1
+  lyform_validators: ^0.13.0+1
 dev_dependencies:
   lint: ^1.10.0
 
