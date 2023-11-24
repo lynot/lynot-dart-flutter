@@ -4,8 +4,6 @@ version: 0.13.0+1
 homepage: https://github.com/lynotofficial/lynot-dart-flutter
 repository: https://github.com/lynotofficial/lynot-dart-flutter/tree/master/packages/flutter_lyform
 
-publish_to: "none"
-
 environment:
   sdk: ">=3.0.0 <4.0.0"
   flutter: ">=3.10.0"
@@ -15,9 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
-  # lyform: ^0.13.0+1
-  lyform: 
-    path: ../lyform
+  lyform: ^0.13.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
