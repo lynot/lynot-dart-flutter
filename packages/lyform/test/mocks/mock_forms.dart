@@ -47,6 +47,25 @@ class TestForm extends LyForm<String, String> {
   }
 }
 
+class TestPureForm extends LyForm<String, String> {
+  TestPureForm() {
+    addInputs([name]);
+  }
+
+  final name = LyInput<String>(
+    pureValue: 'unknow',
+    validationType: LyValidationType.always,
+    validator: const LyStringRequired('Invalid name.'),
+    debugName: 'name',
+  );
+
+  @override
+  Stream<LyFormState<String, String>> onSubmit() async* {
+    await Future<void>.delayed(const Duration(seconds: 1));
+    yield success('Name save success!');
+  }
+}
+
 class MyBlocObserver extends BlocObserver {
   @override
   void onTransition(Bloc bloc, Transition transition) {

@@ -59,7 +59,7 @@ void main() {
   );
 
   blocTest<LyInput<String>, LyInputState<String>>(
-    'check that isValid is true when isPure is true',
+    'check that isValid is "false" when validate the invalid pure value',
     build: () => LyInput<String>(
       pureValue: '',
       validationType: LyValidationType.always,
@@ -67,20 +67,49 @@ void main() {
     ),
     wait: const Duration(seconds: 1),
     verify: (input) {
+      expect(input.isPure, isTrue);
+      expect(input.isValid, isFalse);
+    },
+  );
+
+  blocTest<LyInput<String>, LyInputState<String>>(
+    'check that isValid is "true" when validate the valid pure value',
+    build: () => LyInput<String>(
+      pureValue: 'hello',
+      validationType: LyValidationType.always,
+      validator: const LyStringRequired('Is required.'),
+    ),
+    wait: const Duration(seconds: 1),
+    verify: (input) {
+      expect(input.isPure, isTrue);
       expect(input.isValid, isTrue);
     },
   );
 
   blocTest<LyInput<String>, LyInputState<String>>(
-    'check that isInvalid is false when isPure is true',
+    'check that isInvalid is "true" when validate the invalid pure value',
     build: () => LyInput<String>(
       pureValue: '',
       validationType: LyValidationType.always,
       validator: const LyStringRequired('Is required.'),
     ),
     wait: const Duration(seconds: 1),
-    act: (bloc) => bloc.dirty(''),
     verify: (input) {
+      expect(input.isPure, isTrue);
+      expect(input.isInvalid, isTrue);
+    },
+  );
+
+  blocTest<LyInput<String>, LyInputState<String>>(
+    'check that isInvalid is "false" when validate the valid pure value',
+    build: () => LyInput<String>(
+      pureValue: 'hello',
+      validationType: LyValidationType.always,
+      validator: const LyStringRequired('Is required.'),
+    ),
+    wait: const Duration(seconds: 1),
+    verify: (input) {
+      expect(input.isPure, isTrue);
       expect(input.isInvalid, isFalse);
     },
   );
