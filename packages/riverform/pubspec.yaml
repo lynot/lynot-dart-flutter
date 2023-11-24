@@ -6,7 +6,7 @@ homepage: https://github.com/lynot/lynot-dart-flutter
 repository: https://github.com/lynot/lynot-dart-flutter/tree/master/packages/riverform
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   async: ^2.11.0
