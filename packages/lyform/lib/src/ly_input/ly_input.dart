@@ -122,7 +122,7 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   final LyValidationType validationType;
   final String? debugName;
 
-  bool get isValid => isPure || (error?.isEmpty ?? true);
+  bool get isValid => validator?.call(value) == null;
   bool get isInvalid => !isValid;
   bool get isPure => pureValue == value;
 
