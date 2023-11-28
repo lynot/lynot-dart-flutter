@@ -1,4 +1,3 @@
-library flutter_riverform;
 
 export 'package:riverform/riverform.dart';
 

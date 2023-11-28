@@ -89,8 +89,8 @@ void main() {
   group('LyListValidator', () {
     test('return null when one or more validators are valid', () {
       final lyListValidator = LyListValidator<String>([
-        lyStringRequired,
-        lyStringRequired,
+        lyStringRequired.call,
+        lyStringRequired.call,
       ]);
 
       expect(lyStringRequired(value), isNull);
@@ -106,9 +106,9 @@ void main() {
 
     test('return a message when one or more validators are invalid', () {
       final lyListValidator = LyListValidator<String>([
-        lyStringRequired,
-        LyEmptyValidator<String>(),
-        LyEmptyValidator<String>(),
+        lyStringRequired.call,
+        LyEmptyValidator<String>().call,
+        LyEmptyValidator<String>().call,
       ]);
 
       expect(lyStringRequired(emptyValue), equals(message));
