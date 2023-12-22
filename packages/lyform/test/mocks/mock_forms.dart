@@ -49,7 +49,10 @@ class TestForm extends LyForm<String, String> {
 
 class TestPureForm extends LyForm<String, String> {
   TestPureForm() {
-    addInputs([name]);
+    addInputs([
+      name,
+      lastname,
+    ]);
   }
 
   final name = LyInput<String>(
@@ -57,6 +60,13 @@ class TestPureForm extends LyForm<String, String> {
     validationType: LyValidationType.always,
     validator: const LyStringRequired('Invalid name.'),
     debugName: 'name',
+  );
+
+  final lastname = LyInput<String>(
+    pureValue: 'unknow',
+    validationType: LyValidationType.explicit,
+    validator: const LyStringRequired('Invalid lastname.'),
+    debugName: 'lastname',
   );
 
   @override

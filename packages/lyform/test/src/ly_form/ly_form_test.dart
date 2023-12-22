@@ -99,6 +99,12 @@ void main() {
             pureValue: 'unknow',
             debugName: 'name',
           ),
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'lastname',
+          ),
         ]),
       ],
       verify: (form) {
@@ -139,9 +145,9 @@ void main() {
       },
     );
 
-    blocTest<TestForm, LyFormState>(
+    blocTest<TestPureForm, LyFormState>(
       'check that form is a "pure and valid form" when make valid change a input',
-      build: () => TestForm(),
+      build: () => TestPureForm(),
       act: (form) {
         form.name.dirty('Laura');
       },
@@ -149,18 +155,30 @@ void main() {
       expect: () => [
         const LyFormPureState<String, String>([
           LyInputState(
-            value: '',
-            lastNotNullValue: '',
-            pureValue: '',
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
             debugName: 'name',
+          ),
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'lastname',
           ),
         ]),
         const LyFormValidState<String, String>([
           LyInputState(
             value: 'Laura',
             lastNotNullValue: 'Laura',
-            pureValue: '',
+            pureValue: 'unknow',
             debugName: 'name',
+          ),
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'lastname',
           ),
         ]),
       ],
