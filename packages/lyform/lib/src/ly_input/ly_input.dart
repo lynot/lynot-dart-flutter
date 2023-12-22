@@ -52,7 +52,7 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
             debugName: debugName,
           ),
         );
-        if (validationType == LyValidationType.always) {
+        if (validationType != LyValidationType.none) {
           validate();
         }
         onPostDirty?.call(this, event.value);
@@ -122,7 +122,14 @@ class LyInput<T> extends Bloc<LyInputEvent<T>, LyInputState<T>> {
   final LyValidationType validationType;
   final String? debugName;
 
-  bool get isValid => validator?.call(value) == null;
+  bool get isValid {
+    if (validationType.isAlways || (!isPure && validationType.isExplicit)) {
+      return validator?.call(value) == null;
+    }
+
+    return true;
+  }
+
   bool get isInvalid => !isValid;
   bool get isPure => pureValue == value;
 
