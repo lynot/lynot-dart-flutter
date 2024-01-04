@@ -1,3 +1,13 @@
+## 0.14.0
+
+ - **PERF**(lyform): validate only the drity inputs.
+ - **PERF**(lyform): change validator property to nullable.
+ - **FIX**(lyform): call validatior in `isValid` getter.
+ - **FIX**(lyform): validation when the form is pure.
+ - **FIX**(lyform): type error in js compiler.
+ - **FIX**(lyform): input is valid when is pure or validator run successfully.
+ - **FIX**(lyform): input is valid when is pure or validator run successfully.
+
 ## 0.13.0+1
 
  - **PERF**: validate only the drity inputs.

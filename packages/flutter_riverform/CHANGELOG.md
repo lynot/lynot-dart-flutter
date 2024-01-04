@@ -1,3 +1,15 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **PERF**(flutter_riverform): set initialValues optional on RiverformScope.
+ - **FEAT**: simplify riverform and add reset funtionality to flutter_riverform.
+ - **FEAT**(flutter_riverform): add WidgetRef to builders.
+ - **FEAT**(riverform): add logic to await for validation values.
+ - **FEAT**(flutter_riverform): add simple flutter_riverform example: register.
+ - **FEAT**: improve riverform and flutter_riverform packages.
+ - **BREAKING** **CHORE**: update packages.
+
 ## 0.1.0
 
 > Note: This release has breaking changes.

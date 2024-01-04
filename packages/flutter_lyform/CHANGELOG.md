@@ -1,3 +1,7 @@
+## 0.14.0
+
+ - **FIX**(lyform): validation when the form is pure.
+
 ## 0.13.0+1
 
  - Update a dependency to the latest release.

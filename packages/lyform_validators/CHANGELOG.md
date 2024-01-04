@@ -1,3 +1,10 @@
+## 0.14.0
+
+ - **DOCS**(lyform_validators): add docs in string validators.
+ - **DOCS**(lyform_validators): add docs in `IterableNotEmtpy` and `Required`.
+ - **DOCS**(lyform_validators): add docs for int validator classes.
+ - **DOCS**(lyform_validators): add tests for int validators.
+
 ## 0.13.0+1
 
  - **DOCS**: add docs in string validators.

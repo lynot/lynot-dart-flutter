@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  flutter_riverform: ^0.1.0
+  flutter_riverform: ^0.2.0
   flutter_riverpod: ^2.4.9
 
 dev_dependencies:
