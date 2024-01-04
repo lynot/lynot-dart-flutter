@@ -28,7 +28,6 @@ packages/lyform_validators/coverage/*
 # is commented out by default.
 .vscode/*
 !.vscode/tasks.json
-!.vscode/settings.json
 
 # Flutter/Dart/Pub related
 **/doc/api/
