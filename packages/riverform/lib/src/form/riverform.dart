@@ -16,7 +16,7 @@ class Riverform {
         final allInputs = inputs;
         final inputsValues = {
           for (final input in allInputs)
-            input.id: ref.watch(input.provider(formId))
+            input.id: ref.watch(input.provider(formId)),
         };
 
         final values = inputsValues.values;

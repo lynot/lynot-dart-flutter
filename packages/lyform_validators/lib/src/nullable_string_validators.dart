@@ -130,6 +130,8 @@ class LyNullableStringContains extends LyValidator<String?> {
 /// final validator = LyNullableStringMatches('Invalid email', r'^[a-zA-Z0-9]*$');
 /// final result = validation('abc');
 /// print(result); // Invalid email
+/// ```
+/// {@endtemplate}
 class LyNullableStringMatches extends LyValidator<String?> {
   /// {@macro nullable_string_matches_validator}
   LyNullableStringMatches(super.message, this.pattern);

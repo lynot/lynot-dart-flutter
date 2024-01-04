@@ -68,6 +68,127 @@ void main() {
     );
 
     blocTest<TestForm, LyFormState>(
+      'check that form is "pure" and "invalid" without make any cahnge in the inputs',
+      build: () => TestForm(),
+      wait: const Duration(seconds: 1),
+      expect: () => [
+        const LyFormPureState<String, String>([
+          LyInputState(
+            value: '',
+            lastNotNullValue: '',
+            pureValue: '',
+            debugName: 'name',
+          ),
+        ]),
+      ],
+      verify: (form) {
+        expect(form.isPure(), isTrue);
+        expect(form.isInvalid(), isTrue);
+      },
+    );
+
+    blocTest<TestPureForm, LyFormState>(
+      'check that form is "pure" and "valid" without make any cahnge in the inputs',
+      build: () => TestPureForm(),
+      wait: const Duration(seconds: 1),
+      expect: () => [
+        const LyFormPureState<String, String>([
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'name',
+          ),
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'lastname',
+          ),
+        ]),
+      ],
+      verify: (form) {
+        expect(form.isPure(), isTrue);
+        expect(form.isValid(), isTrue);
+      },
+    );
+
+    blocTest<TestForm, LyFormState>(
+      'check that form is a "pure and invalid form" when make invalid change a input',
+      build: () => TestForm(),
+      act: (form) {
+        form.name.dirty('007');
+      },
+      wait: const Duration(seconds: 1),
+      expect: () => [
+        const LyFormPureState<String, String>([
+          LyInputState(
+            value: '',
+            lastNotNullValue: '',
+            pureValue: '',
+            debugName: 'name',
+          ),
+        ]),
+        const LyFormInvalidState<String, String>([
+          LyInputState(
+            value: '007',
+            lastNotNullValue: '007',
+            pureValue: '',
+            debugName: 'name',
+            error: 'Invalid name.',
+          ),
+        ]),
+      ],
+      verify: (form) {
+        expect(form.isPure(), isFalse);
+        expect(form.isValid(), isFalse);
+      },
+    );
+
+    blocTest<TestPureForm, LyFormState>(
+      'check that form is a "pure and valid form" when make valid change a input',
+      build: () => TestPureForm(),
+      act: (form) {
+        form.name.dirty('Laura');
+      },
+      wait: const Duration(seconds: 1),
+      expect: () => [
+        const LyFormPureState<String, String>([
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'name',
+          ),
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'lastname',
+          ),
+        ]),
+        const LyFormValidState<String, String>([
+          LyInputState(
+            value: 'Laura',
+            lastNotNullValue: 'Laura',
+            pureValue: 'unknow',
+            debugName: 'name',
+          ),
+          LyInputState(
+            value: 'unknow',
+            lastNotNullValue: 'unknow',
+            pureValue: 'unknow',
+            debugName: 'lastname',
+          ),
+        ]),
+      ],
+      verify: (form) {
+        expect(form.isPure(), isFalse);
+        expect(form.isValid(), isTrue);
+      },
+    );
+
+    blocTest<TestForm, LyFormState>(
       'check that add one input in the index 1',
       build: () => TestForm(),
       act: (form) => form.addInput(1, lyInputAge),
@@ -88,6 +209,10 @@ void main() {
           ),
         ]),
       ],
+      verify: (form) {
+        expect(form.isPure(), isTrue);
+        expect(form.isValid(), isFalse);
+      },
     );
 
     blocTest<TestForm, LyFormState>(
@@ -119,7 +244,7 @@ void main() {
             pureValue: '',
             debugName: 'name',
           ),
-        ])
+        ]),
       ],
     );
 
@@ -163,7 +288,7 @@ void main() {
             pureValue: '',
             debugName: 'name',
           ),
-        ])
+        ]),
       ],
     );
 
@@ -182,7 +307,7 @@ void main() {
             lastNotNullValue: 'ly',
             pureValue: '',
             debugName: 'name',
-          )
+          ),
         ]),
         LyFormValidState<String, String>([
           LyInputState(
@@ -202,7 +327,7 @@ void main() {
               debugName: 'name',
             ),
           ],
-        )
+        ),
       ],
     );
 

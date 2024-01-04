@@ -3,7 +3,7 @@ import 'package:example/profile_form/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Future<void> main() async {
+void main() {
   Bloc.observer = AppBlocObserver();
   runApp(const App());
 }

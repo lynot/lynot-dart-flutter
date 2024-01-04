@@ -1,4 +1,3 @@
-library flutter_lyform;
 
 export 'package:lyform/lyform.dart';
 

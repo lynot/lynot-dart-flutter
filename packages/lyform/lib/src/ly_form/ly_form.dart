@@ -183,6 +183,8 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
     return _inputs.every((input) => input.isValid);
   }
 
+  bool isInvalid() => !isValid();
+
   /// Are every input Pure?
   bool isPure() {
     return _inputs.every((input) => input.isPure);
@@ -322,8 +324,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
     LyInput<dynamic> Function(
       LyInput<dynamic> value,
       LyInput<dynamic> element,
-    )
-        combine,
+    ) combine,
   ) =>
       _inputs.reduce(combine);
 

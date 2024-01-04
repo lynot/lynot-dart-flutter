@@ -37,6 +37,7 @@ class LyIntGreaterThan extends LyValidator<int> {
 /// final result = validation(10);
 /// print(result); // Must be greater than or equal to 11
 /// ```
+/// {@endtemplate}
 class LyIntGreaterEqualThan extends LyValidator<int> {
   /// {@macro int_greater_equal_than_validators}
   LyIntGreaterEqualThan(this.limit, String message) : super(message);
@@ -60,6 +61,7 @@ class LyIntGreaterEqualThan extends LyValidator<int> {
 /// final result = validation(15);
 /// print(result); // Must be less than 11
 /// ```
+/// {@endtemplate}
 class LyIntLesserThan extends LyValidator<int> {
   /// {@macro int_less_than_validators}
   LyIntLesserThan(this.limit, String message) : super(message);
@@ -83,6 +85,7 @@ class LyIntLesserThan extends LyValidator<int> {
 /// final result = validation(10);
 /// print(result); // Must be less than or equal to 8
 /// ```
+/// {@endtemplate}
 class LyIntLesserEquealThan extends LyValidator<int> {
   /// {@macro int_less_equal_than_validators}
   LyIntLesserEquealThan(this.limit, String message) : super(message);
@@ -106,6 +109,7 @@ class LyIntLesserEquealThan extends LyValidator<int> {
 /// final result = validation(-1);
 /// print(result); // Must be non negative
 /// ```
+/// {@endtemplate}
 class LyIntNonNegative extends LyValidator<int> {
   /// {@macro int_non_negative_validators}
   LyIntNonNegative(super.message);

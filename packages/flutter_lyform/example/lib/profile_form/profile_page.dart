@@ -1,5 +1,6 @@
 import 'package:example/profile_form/profile_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lyform/flutter_lyform.dart';
 
@@ -87,8 +88,12 @@ class ProfileView extends StatelessWidget {
               builder: (context, state) {
                 final bloc = context.read<ProfileForm>().age;
                 return TextField(
-                  onChanged: (value) => bloc.dirty(int.parse(value)),
+                  onChanged: (value) =>
+                      bloc.dirty(value.isEmpty ? 0 : int.parse(value)),
                   keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                   decoration: InputDecoration(
                     hintText: 'Age',
                     errorText: state.error,
@@ -99,6 +104,11 @@ class ProfileView extends StatelessWidget {
             const SizedBox(height: 16),
             LyFormBuilder<ProfileForm>(
               bloc: context.read<ProfileForm>(),
+              onPure: () => const MaterialButton(
+                color: Colors.blueGrey,
+                onPressed: null,
+                child: Text('Save Profile'),
+              ),
               onLoading: () => const Center(
                 child: CircularProgressIndicator(),
               ),

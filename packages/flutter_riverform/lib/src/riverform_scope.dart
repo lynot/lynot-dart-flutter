@@ -68,7 +68,7 @@ class RiverformScope extends ConsumerWidget {
         for (final input in form.inputs)
           input.initialValueProvider.overrideWithProvider(
             (argument) => StateProvider((ref) => initialValues[input.id]),
-          )
+          ),
       ],
       child: RiverformProvider(
         form: form,
