@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   flutter_riverform: ^0.1.0
-  flutter_riverpod: ^2.4.8
+  flutter_riverpod: ^2.4.9
 
 dev_dependencies:
   flutter_test:
