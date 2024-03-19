@@ -299,18 +299,18 @@ void main() {
         ..name.dirty('ly')
         ..submit(),
       skip: 1,
-      wait: const Duration(seconds: 1),
+      wait: const Duration(seconds: 2),
       expect: () => const [
-        LyFormLoadingState<String, String>([
-          LyInputState<String>(
+        LyFormValidState<String, String>([
+          LyInputState(
             value: 'ly',
             lastNotNullValue: 'ly',
             pureValue: '',
             debugName: 'name',
           ),
         ]),
-        LyFormValidState<String, String>([
-          LyInputState(
+        LyFormLoadingState<String, String>([
+          LyInputState<String>(
             value: 'ly',
             lastNotNullValue: 'ly',
             pureValue: '',
@@ -324,6 +324,65 @@ void main() {
               value: 'ly',
               lastNotNullValue: 'ly',
               pureValue: '',
+              debugName: 'name',
+            ),
+          ],
+        ),
+        LyFormPureState<String, String>([
+          LyInputState<String>(
+            value: 'ly',
+            lastNotNullValue: 'ly',
+            pureValue: 'ly',
+            debugName: 'name',
+          ),
+        ]),
+      ],
+    );
+
+    blocTest<TestForm, LyFormState>(
+      'check when submit event was called and is dropped when is more than one',
+      build: () => TestForm(),
+      act: (form) => form
+        ..name.dirty('ly')
+        ..submit()
+        ..submit()
+        ..submit(),
+      skip: 1,
+      wait: const Duration(seconds: 2),
+      expect: () => const [
+        LyFormValidState<String, String>([
+          LyInputState(
+            value: 'ly',
+            lastNotNullValue: 'ly',
+            pureValue: '',
+            debugName: 'name',
+          ),
+        ]),
+        LyFormLoadingState<String, String>([
+          LyInputState<String>(
+            value: 'ly',
+            lastNotNullValue: 'ly',
+            pureValue: '',
+            debugName: 'name',
+          ),
+        ]),
+        LyFormSuccessState<String, String>(
+          'Name save success!',
+          [
+            LyInputState<String>(
+              value: 'ly',
+              lastNotNullValue: 'ly',
+              pureValue: '',
+              debugName: 'name',
+            ),
+          ],
+        ),
+        LyFormPureState<String, String>(
+          [
+            LyInputState<String>(
+              value: 'ly',
+              lastNotNullValue: 'ly',
+              pureValue: 'ly',
               debugName: 'name',
             ),
           ],
