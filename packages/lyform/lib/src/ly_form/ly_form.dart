@@ -36,7 +36,7 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
         await Future.delayed(Duration.zero);
         await onSubmitEvent(emit);
       },
-      transformer: sequential(),
+      transformer: droppable(),
     );
 
     on<LyFormAddInputEvent>(
@@ -118,7 +118,8 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
 
   /// Called when the form is submitted.
   Future<void> onSubmitEvent(Emitter<LyFormState<D, E>> emit) async {
-    validate();
+    await validate();
+
     if (!isValid()) {
       emit(invalid());
     } else {
@@ -191,10 +192,11 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   }
 
   /// Validate all inputs and return [true] if they all are valids.
-  void validate() {
+  FutureOr<void> validate() async {
     for (final input in _inputs) {
       if (input.validator != null && !input.isPure) {
         input.validate();
+        await Future.delayed(Duration.zero);
       }
     }
   }
