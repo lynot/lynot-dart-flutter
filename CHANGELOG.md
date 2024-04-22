@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-04-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`lyform` - `v0.15.0`](#lyform---v0150)
+ - [`flutter_lyform` - `v0.15.0`](#flutter_lyform---v0150)
+ - [`lyform_validators` - `v0.15.0`](#lyform_validators---v0150)
+
+---
+
+#### `lyform` - `v0.15.0`
+
+ - **FIX**(ly-form): change submit transform event to droppable.
+
+#### `flutter_lyform` - `v0.15.0`
+
+ - Bump "flutter_lyform" to `0.15.0`.
+
+#### `lyform_validators` - `v0.15.0`
+
+ - Bump "lyform_validators" to `0.15.0`.
+
+
 ## 2024-01-04
 
 ### Changes

@@ -1,3 +1,7 @@
+## 0.15.0
+
+ - **FIX**(ly-form): change submit transform event to droppable.
+
 ## 0.14.0
 
  - **PERF**(lyform): validate only the drity inputs.

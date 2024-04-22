@@ -1,3 +1,7 @@
+## 0.15.0
+
+ - Bump "flutter_lyform" to `0.15.0`.
+
 ## 0.14.0
 
  - **FIX**(lyform): validation when the form is pure.

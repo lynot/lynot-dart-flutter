@@ -1,3 +1,7 @@
+## 0.15.0
+
+ - Bump "lyform_validators" to `0.15.0`.
+
 ## 0.14.0
 
  - **DOCS**(lyform_validators): add docs in string validators.
