@@ -230,6 +230,55 @@ void main() {
     );
 
     blocTest<TestForm, LyFormState>(
+      'check that all inputs with values as int was removed',
+      build: () => TestForm(),
+      act: (form) async {
+        form
+          ..addInput(1, lyInputAge)
+          ..addInput(2, lyInputAge);
+
+        await Future.delayed(
+          const Duration(milliseconds: 50),
+          () => form.removeInputsWhen((input) => input.value is int),
+        );
+
+        return form;
+      },
+      skip: 2,
+      expect: () => const [
+        LyFormPureState<String, String>([
+          LyInputState(
+            value: '',
+            lastNotNullValue: '',
+            pureValue: '',
+            debugName: 'name',
+          ),
+          LyInputState<int>(
+            value: 18,
+            lastNotNullValue: 18,
+            pureValue: 18,
+            debugName: 'age',
+          ),
+          LyInputState<int>(
+            value: 18,
+            lastNotNullValue: 18,
+            pureValue: 18,
+            debugName: 'age',
+          ),
+        ]),
+        LyFormPureState<String, String>([
+          LyInputState(
+            value: '',
+            lastNotNullValue: '',
+            pureValue: '',
+            debugName: 'name',
+          ),
+        ]),
+      ],
+      verify: (bloc) => expect(bloc.length, equals(1)),
+    );
+
+    blocTest<TestForm, LyFormState>(
       'check that input in the index 1 was removed',
       build: () => TestForm(),
       act: (form) => form
