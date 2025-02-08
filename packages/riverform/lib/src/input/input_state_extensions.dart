@@ -18,22 +18,18 @@ extension InputStateTypeExtensions<T> on InputStateData<T> {
         if (unknow != null) {
           return unknow.call();
         }
-        break;
       case InputValidState.checking:
         if (checking != null) {
           return checking.call();
         }
-        break;
       case InputValidState.valid:
         if (valid != null) {
           return valid.call();
         }
-        break;
       case InputValidState.invalid:
         if (invalid != null) {
           return invalid.call();
         }
-        break;
     }
 
     return orElse.call();

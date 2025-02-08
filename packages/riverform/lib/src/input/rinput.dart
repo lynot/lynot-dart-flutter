@@ -15,8 +15,7 @@ class Rinput<T> {
     this.id, {
     InputValidator<T> Function(Ref ref, String formId)? validatorBuilder,
     List<ProviderOrFamily>? dependencies,
-    List<AlwaysAliveProviderListenable> Function(String formId)?
-        validationTriggers,
+    List<ProviderListenable> Function(String formId)? validationTriggers,
     InputValidationMode validationMode = InputValidationMode.implicit,
     String? name,
   }) : super() {

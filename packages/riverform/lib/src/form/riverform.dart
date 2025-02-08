@@ -43,7 +43,7 @@ class Riverform {
     );
   }
 
-  StateProviderRef? _ref;
+  Ref? _ref;
 
   late List<Rinput> inputs;
 

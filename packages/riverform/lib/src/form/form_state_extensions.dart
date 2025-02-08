@@ -18,22 +18,18 @@ extension FomExtensions on FormValidState {
         if (unknow != null) {
           return unknow.call();
         }
-        break;
       case FormValidState.checking:
         if (checking != null) {
           return checking.call();
         }
-        break;
       case FormValidState.valid:
         if (valid != null) {
           return valid.call();
         }
-        break;
       case FormValidState.invalid:
         if (invalid != null) {
           return invalid.call();
         }
-        break;
     }
 
     return orElse.call();
