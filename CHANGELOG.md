@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-02-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`lyform` - `v0.15.1`](#lyform---v0151)
+
+---
+
+#### `lyform` - `v0.15.1`
+
+ - **FIX**(ly-form): change submit transform event to droppable.
+
+
 ## 2024-04-22
 
 ### Changes

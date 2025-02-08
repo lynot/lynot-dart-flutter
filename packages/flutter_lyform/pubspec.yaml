@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
-  lyform: ^0.15.0
+  lyform: ^0.15.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
