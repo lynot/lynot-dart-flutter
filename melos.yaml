@@ -60,7 +60,3 @@ scripts:
   coverage:
     run: |
       lcov-result-merger "packages/**/coverage/lcov.info" coverage/lcov.info
-
-command:
-  bootstrap:
-    usePubspecOverrides: true

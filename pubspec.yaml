@@ -6,4 +6,4 @@ environment:
 
 dev_dependencies:
   lockpick: ^0.0.4
-  melos: ^3.2.0
+  melos: ^6.3.2
