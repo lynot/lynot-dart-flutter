@@ -1,3 +1,5 @@
+## 0.15.1
+
 ## 0.15.0
 
  - Bump "lyform_validators" to `0.15.0`.

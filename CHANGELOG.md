@@ -15,6 +15,25 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`lyform_validators` - `v0.15.1`](#lyform_validators---v0151)
+
+---
+
+#### `lyform_validators` - `v0.15.1`
+
+
+## 2025-02-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`lyform` - `v0.15.1`](#lyform---v0151)
 
 ---
