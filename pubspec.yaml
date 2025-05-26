@@ -2,8 +2,8 @@ name: workspace
 description: required by melos ^3.0.0
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.8.0 <4.0.0"
 
 dev_dependencies:
   lockpick: ^0.0.4
-  melos: ^6.3.2
+  melos: ^6.3.3
