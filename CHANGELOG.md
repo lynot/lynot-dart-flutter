@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-05-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_lyform` - `v0.15.2`](#flutter_lyform---v0152)
+
+---
+
+#### `flutter_lyform` - `v0.15.2`
+
+
+## 2025-05-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`lyform_validators` - `v0.15.2`](#lyform_validators---v0152)
+
+---
+
+#### `lyform_validators` - `v0.15.2`
+
+
+## 2025-05-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`lyform` - `v0.15.2`](#lyform---v0152)
+
+---
+
+#### `lyform` - `v0.15.2`
+
+
+## 2025-02-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_lyform` - `v0.15.1`](#flutter_lyform---v0151)
+
+---
+
+#### `flutter_lyform` - `v0.15.1`
+
+
+## 2025-02-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`lyform_validators` - `v0.15.1`](#lyform_validators---v0151)
+
+---
+
+#### `lyform_validators` - `v0.15.1`
+
+
+## 2025-02-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`lyform` - `v0.15.1`](#lyform---v0151)
+
+---
+
+#### `lyform` - `v0.15.1`
+
+ - **FIX**(ly-form): change submit transform event to droppable.
+
+
 ## 2024-04-22
 
 ### Changes

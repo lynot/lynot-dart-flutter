@@ -82,7 +82,7 @@ final registerForm = Riverform(
 RiverformController controller = RiverformController();
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {

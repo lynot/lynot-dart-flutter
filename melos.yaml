@@ -5,52 +5,30 @@ packages:
 
 scripts:
   sync:
-    run: melos exec -c 1 "lockpick sync ./"
-
-  format:dart:
-    run: melos exec --no-flutter "dart format ."
-
-  format:flutter:
-    run: melos exec --flutter "flutter format ."
-
-  format:
-    run: |
-      melos run format:dart
-      melos run format:flutter
+    run: dart run melos exec -c 1 "lockpick sync ./"
 
   fix:
-    run: melos exec "dart fix --apply"
-
-  test:format:dart:
-    run: melos exec --no-flutter"dart format --set-exit-if-changed ."
-
-  test:format:flutter:
-    run: melos exec --flutter --depends-on="flutter_test" "flutter format --set-exit-if-changed ."
-
-  test:format:
-    run: |
-      melos run test:format:dart
-      melos run test:format:flutter
+    run: dart run melos exec "dart fix --apply"
 
   test:analyze:dart:
-    run: melos exec --no-flutter "dart analyze"
+    run: dart run melos exec -c 1 --no-flutter "dart analyze"
 
   test:analyze:flutter:
-    run: melos exec --flutter "flutter analyze"
+    run: dart run melos exec -c 1  --flutter "flutter analyze"
 
   test:analyze:
     run: |
-      melos run test:analyze:dart
-      melos run test:analyze:flutter
+      dart run melos run test:analyze:dart
+      dart run melos run test:analyze:flutter
 
   test:only:
-    run: melos exec --dir-exists="test" -c 1 "flutter test --coverage"
+    run: dart run melos exec --dir-exists="test" -c 1 "flutter test --coverage"
 
   test:
     run: |
-      melos run test:format
-      melos run test:analyze
-      melos run test:only
+      dart run melos format --set-exit-if-changed
+      dart run melos run test:analyze
+      dart run melos run test:only
 
   coverage:install:
     run: |
@@ -60,7 +38,3 @@ scripts:
   coverage:
     run: |
       lcov-result-merger "packages/**/coverage/lcov.info" coverage/lcov.info
-
-command:
-  bootstrap:
-    usePubspecOverrides: true
