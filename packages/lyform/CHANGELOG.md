@@ -1,3 +1,7 @@
+## 0.15.3
+
+ - **FEAT**(lyform): add new event to remove all inputs from the form that satisfy `test`.
+
 ## 0.15.2
 
 ## 0.15.1

@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`lyform` - `v0.15.3`](#lyform---v0153)
+
+---
+
+#### `lyform` - `v0.15.3`
+
+ - **FEAT**(lyform): add new event to remove all inputs from the form that satisfy `test`.
+
+
+## 2025-05-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_lyform` - `v0.15.2`](#flutter_lyform---v0152)
 
 ---
