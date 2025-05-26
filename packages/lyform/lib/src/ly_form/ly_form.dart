@@ -54,6 +54,25 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
       },
       transformer: sequential(),
     );
+
+    on<LyFormRemoveInputsWhenEvent>(
+      (event, emit) async {
+        await Future.delayed(Duration.zero);
+        final inputsToRemove = _inputs.where(event.test).toList();
+
+        for (final input in inputsToRemove) {
+          final index = _inputs.indexOf(input);
+          if (index >= 0) {
+            _inputs.removeAt(index);
+            await _subscriptions.removeAt(index).cancel();
+          }
+        }
+
+        await Future.delayed(Duration.zero);
+        await onChangedEvent(emit);
+      },
+      transformer: sequential(),
+    );
   }
 
   @override
@@ -234,6 +253,11 @@ abstract class LyForm<D, E> extends Bloc<LyFormEvent, LyFormState<D, E>>
   /// [index] is the index where the input will be removed.
   void removeInput(int index) {
     add(LyFormRemoveInputEvent(index));
+  }
+
+  /// Removes all inputs from this form that satisfy [test].
+  void removeInputsWhen(bool Function(LyInput<dynamic>) test) {
+    add(LyFormRemoveInputsWhenEvent(test));
   }
 
   /// Add inputs to the form.

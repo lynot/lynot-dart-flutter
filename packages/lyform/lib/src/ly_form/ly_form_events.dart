@@ -33,6 +33,15 @@ class LyFormRemoveInputEvent extends LyFormEvent {
   List<Object?> get props => [index];
 }
 
+class LyFormRemoveInputsWhenEvent extends LyFormEvent {
+  const LyFormRemoveInputsWhenEvent(this.test);
+
+  final bool Function(LyInput<dynamic>) test;
+
+  @override
+  List<Object?> get props => [test];
+}
+
 class LyFormChangedEvent extends LyFormEvent {
   const LyFormChangedEvent(this.debugName);
 
