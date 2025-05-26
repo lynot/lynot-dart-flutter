@@ -1,3 +1,5 @@
+## 0.15.2
+
 ## 0.15.1
 
  - **FIX**(ly-form): change submit transform event to droppable.
