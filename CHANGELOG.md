@@ -15,6 +15,25 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_lyform` - `v0.15.2`](#flutter_lyform---v0152)
+
+---
+
+#### `flutter_lyform` - `v0.15.2`
+
+
+## 2025-05-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`lyform_validators` - `v0.15.2`](#lyform_validators---v0152)
 
 ---
